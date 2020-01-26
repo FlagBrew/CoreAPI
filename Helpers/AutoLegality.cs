@@ -17,7 +17,6 @@ namespace CoreAPI.Helpers
             bool valid = Enum.TryParse<GameVersion>(ver, true, out var game);
             if (valid)
                 ProcessALM(pk, game);
-            Legalizer.AllowBruteForce = false;
             return;
         }
 
@@ -36,7 +35,6 @@ namespace CoreAPI.Helpers
 
         private PKM Legalize(PKM pk, GameVersion ver)
         {
-            Console.WriteLine(Legalizer.AllowBruteForce);
             var OriginlTrainer = pk.OT_Name;
             var HandlingTrainer = pk.HT_Name;
             var KeepOriginalData = true;

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using PKHeX.Core;
 using QRCoder;
+using static CoreAPI.Models.Encounter;
 
 namespace CoreAPI.Helpers
 {
@@ -490,6 +492,82 @@ namespace CoreAPI.Helpers
                 version = GameVersion.YW;
             }
             return version;
+        }
+
+        public static string GetStringFromRegex(string regexpattern, string data)
+        {
+            Regex r = new Regex(regexpattern);
+            if (r.Match(data).Success)
+            {
+                return r.Match(data).Value;
+            }
+            return "";
+        }
+        public static List<GenerationLocation> GetLocations(string pokemon, string generation, string[] moves)
+        {
+            // If the pokemon doesn't exist, then we return a null list and handle it on the controller
+            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon))
+            {
+                return null;
+            }
+            var encounters = EncounterLearn.GetLearnSummary(pokemon, moves);
+            var encountertype = "";
+            var genlocs = new List<GenerationLocation>();
+            var firstrun = true;
+            var locations = new List<Location>();
+            foreach (var encounter in encounters)
+            {
+                // Lines start start with Equal signs define the encounter type
+                if (encounter.StartsWith("="))
+                {
+                    if (!firstrun)
+                    {
+                        // Check to see if the Locations list isn't empty
+                        if(locations.Count > 0)
+                        {
+                            // Add the GenerationLocation entry
+                            genlocs.Add(new GenerationLocation
+                            {
+                                EncounterType = encountertype,
+                                Locations = locations
+                            });
+                        }
+                        // create a new locations list
+                        locations = new List<Location>();
+                    } else
+                    {
+                        firstrun = false; 
+                    }
+                    // set the encountertype and then next loop
+                    encountertype = encounter.Replace("=", "");
+                    continue;
+                }
+                // get the generation from the encounter line
+                var gen = GetStringFromRegex(@"Gen[0-9]", encounter);
+                // Check to see if the generation is the one we want
+                if (!gen.Contains(generation))
+                {
+                    // if it doesn't, next loop
+                    continue;
+                }
+                // Now we get the location
+                var loc = GetStringFromRegex(@"(?<=.{8}).+?(?=:)", encounter);
+                // And the games for the location
+                var games = GetStringFromRegex(@"([\t ][A-Z |,]{1,100}$|Any)", encounter);
+                // We also have to do some cleanup on the games data
+                games = games.Replace(" ", "");
+                games = games.Trim(':');
+                games = games.Trim('\t');
+                // Now we need to split the games list into an array
+                var gamesArray = games.Split(',');
+                // Next we add the data to the location list
+                locations.Add(new Location
+                {
+                    Name = loc,
+                    Games = gamesArray,
+                });
+            }
+            return genlocs;
         }
     }
 }

@@ -17,24 +17,22 @@ namespace CoreAPI.Controllers
         [HttpPost]
         public PokemonSummary Post([FromForm] [Required] IFormFile pokemon)
         {
-            using (var memoryStream = new MemoryStream())
+            using var memoryStream = new MemoryStream();
+            pokemon.CopyTo(memoryStream);
+            byte[] data = memoryStream.ToArray();
+            try
             {
-                pokemon.CopyTo(memoryStream);
-                byte[] data = memoryStream.ToArray();
-                try
+                var pkm = PKMConverter.GetPKMfromBytes(data);
+                if (pkm == null)
                 {
-                    var pkm = PKMConverter.GetPKMfromBytes(data);
-                    if (pkm == null)
-                    {
-                        throw new System.ArgumentException("Bad data!");
-                    }
-                    PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
-                    return PS;
-                } catch (Exception e)
-                {
-                    return null;
+                    throw new System.ArgumentException("Bad data!");
                 }
-                
+                PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
+                return PS;
+            }
+            catch
+            {
+                return null;
             }
         }
     }

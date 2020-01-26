@@ -19,31 +19,30 @@ namespace CoreAPI.Controllers
         // POST: api/Legalize
         public Legalize Post([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
         {
-            using (var memoryStream = new MemoryStream())
+            using var memoryStream = new MemoryStream();
+            pokemon.CopyTo(memoryStream);
+            PKM pkm;
+            byte[] data = memoryStream.ToArray();
+            try
             {
-                pokemon.CopyTo(memoryStream);
-                PKM pkm;
-                byte[] data = memoryStream.ToArray();
-                try
+                pkm = PKMConverter.GetPKMfromBytes(data);
+                if (pkm == null)
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
-                    if (pkm == null)
-                    {
-                        throw new System.ArgumentException("Bad data!");
-                    }
-                } catch (Exception e)
-                {
-                    Response.StatusCode = 400;
-                    return null;
+                    throw new System.ArgumentException("Bad data!");
                 }
-
-                if (Version == "" || Version == null)
-                {
-                    Version = Utils.GetGameVersion(pkm).ToString();
-                }
-                Legalize L = new Legalize(pkm, Version);
-                return L;
             }
+            catch
+            {
+                Response.StatusCode = 400;
+                return null;
+            }
+
+            if (Version == "" || Version == null)
+            {
+                Version = Utils.GetGameVersion(pkm).ToString();
+            }
+            Legalize L = new Legalize(pkm, Version);
+            return L;
         }
     }
 }

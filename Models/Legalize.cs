@@ -12,7 +12,7 @@ namespace CoreAPI.Models
         public string Pokemon { get; }
         public bool Success { get; }
         public string Species { get; }
-        public string Report { get; }
+        public string[] Report { get; }
         public bool Ran { get; }
         public string QR { get; }
 
@@ -20,7 +20,7 @@ namespace CoreAPI.Models
         {
             var al =  new AutoLegality(pk, version);
             Success = al.Successful;
-            Report = al.Report;
+            Report = al.Report.Split('\n');
             Ran = al.Ran;
             if (Success)
             {
@@ -29,7 +29,7 @@ namespace CoreAPI.Models
                 try
                 {
                   QR = Utils.GenerateQR(QRMessageUtil.GetMessage(al.GetLegalPKM()));
-                } catch (Exception e)
+                } catch
                 {
                     QR = "";
                 }
