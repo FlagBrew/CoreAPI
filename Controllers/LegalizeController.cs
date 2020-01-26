@@ -12,12 +12,13 @@ using PKHeX.Core;
 
 namespace CoreAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class LegalizeController : ControllerBase
     {
         // POST: api/Legalize
-        public Legalize Post([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
+        [Route("api/[controller]")]
+        [HttpPost]
+        public Legalize Legalize([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -43,6 +44,36 @@ namespace CoreAPI.Controllers
             }
             Legalize L = new Legalize(pkm, Version);
             return L;
+        }
+        // POST: api/LegalityCheck 
+        [Route("api/LegalityCheck")]
+        [HttpPost]
+        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
+        {
+            using var memoryStream = new MemoryStream();
+            pokemon.CopyTo(memoryStream);
+            PKM pkm;
+            byte[] data = memoryStream.ToArray();
+            try
+            {
+                pkm = PKMConverter.GetPKMfromBytes(data);
+                if (pkm == null)
+                {
+                    throw new System.ArgumentException("Bad data!");
+                }
+            }
+            catch
+            {
+                Response.StatusCode = 400;
+                return null;
+            }
+
+            if (Version == "" || Version == null)
+            {
+                Version = Utils.GetGameVersion(pkm).ToString();
+            }
+            var la = new LegalityAnalysis(pkm);
+            return la.Report();
         }
     }
 }
