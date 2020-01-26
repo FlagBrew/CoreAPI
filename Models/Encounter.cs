@@ -7,8 +7,8 @@ namespace CoreAPI.Models
 {
     public class Encounter
     {
-        public string Generation { get; set; }
-        public List<GenerationLocation> Encounters { get; set; }
+        public string Generation { get; }
+        public List<GenerationLocation> Encounters { get; }
         
         public Encounter(string pokemon, string generation, string[] moves)
         {
@@ -19,7 +19,7 @@ namespace CoreAPI.Models
         public class GenerationLocation
         {
             public string EncounterType { get; set; }
-            public List<Location> Locations { get; set;}
+            public List<Location> Locations { get; set; }
         }
         public class Location
         {

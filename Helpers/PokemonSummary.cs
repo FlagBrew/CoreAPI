@@ -15,6 +15,7 @@ namespace CoreAPI.Helpers
         public int ItemNum { get; }
         public string IllegalReasons { get; }
         public string HT { get; }
+        public string QR { get; }
         public PokemonSummary(PKM pkm, GameStrings strings) : base(pkm, strings)
         {
             Move1_Type = MoveType.MT[pkm.Move1].Type;
@@ -30,6 +31,7 @@ namespace CoreAPI.Helpers
             ItemNum = pkm.HeldItem;
             var LC = new LegalityAnalysis(pkm);
             IllegalReasons = LC.Report();
+            QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkm.DecryptedBoxData));
         }
 
     }
