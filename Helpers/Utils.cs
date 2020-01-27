@@ -513,38 +513,34 @@ namespace CoreAPI.Helpers
             var encounters = EncounterLearn.GetLearnSummary(pokemon, moves);
             var encountertype = "";
             var genlocs = new List<GenerationLocation>();
-            var firstrun = true;
             var locations = new List<Location>();
             foreach (var encounter in encounters)
             {
+                //Console.WriteLine(encounter);
                 // Lines start start with Equal signs define the encounter type
                 if (encounter.StartsWith("="))
                 {
-                    if (!firstrun)
+                    Console.WriteLine(encounter);
+                    // Check to see if the Locations list isn't empty
+                    if (locations.Count > 0)
                     {
-                        // Check to see if the Locations list isn't empty
-                        if(locations.Count > 0)
+                        // Add the GenerationLocation entry
+                        genlocs.Add(new GenerationLocation
                         {
-                            // Add the GenerationLocation entry
-                            genlocs.Add(new GenerationLocation
-                            {
-                                EncounterType = encountertype,
-                                Locations = locations
-                            });
-                        }
-                        // create a new locations list
-                        locations = new List<Location>();
-                    } else
-                    {
-                        firstrun = false; 
+                            EncounterType = encountertype,
+                            Locations = locations
+                        });
                     }
+                    // create a new locations list
+                    locations = new List<Location>();
                     // set the encountertype and then next loop
                     encountertype = encounter.Replace("=", "");
                     continue;
                 }
                 // get the generation from the encounter line
-                var gen = GetStringFromRegex(@"Gen[0-9]", encounter);
+                var gen = GetStringFromRegex(@"Gen[1-9]", encounter);
                 // Check to see if the generation is the one we want
+                Console.WriteLine(encounter);
                 if (!gen.Contains(generation))
                 {
                     // if it doesn't, next loop
@@ -565,6 +561,16 @@ namespace CoreAPI.Helpers
                 {
                     Name = loc,
                     Games = gamesArray,
+                });
+            }
+            // Add the last entry provided the location count isn't 0.
+            if (locations.Count > 0)
+            {
+                // Add the GenerationLocation entry
+                genlocs.Add(new GenerationLocation
+                {
+                    EncounterType = encountertype,
+                    Locations = locations
                 });
             }
             return genlocs;
