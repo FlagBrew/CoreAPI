@@ -520,7 +520,6 @@ namespace CoreAPI.Helpers
                 // Lines start start with Equal signs define the encounter type
                 if (encounter.StartsWith("="))
                 {
-                    Console.WriteLine(encounter);
                     // Check to see if the Locations list isn't empty
                     if (locations.Count > 0)
                     {
@@ -540,7 +539,6 @@ namespace CoreAPI.Helpers
                 // get the generation from the encounter line
                 var gen = GetStringFromRegex(@"Gen[1-9]", encounter);
                 // Check to see if the generation is the one we want
-                Console.WriteLine(encounter);
                 if (!gen.Contains(generation))
                 {
                     // if it doesn't, next loop
