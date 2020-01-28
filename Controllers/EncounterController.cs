@@ -7,15 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using CoreAPI.Models;
 using System.ComponentModel.DataAnnotations;
 using CoreAPI.Helpers;
+using PKHeX.Core;
+
 namespace CoreAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class EncounterController : ControllerBase
     {
         // POST: api/Encounter
         [HttpPost]
-        public Encounter Post([FromForm] [Required] string query, [FromForm] [Required] string generation)
+        [Route("api/[controller]")]
+        public Encounter PokeInfo([FromForm] [Required] string query, [FromForm] [Required] string generation)
         {
             var data = Utils.SplitQueryString(Utils.FixQueryString(query));
             if (data.Length < 1)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using CoreAPI.Models;
 using PKHeX.Core;
 using QRCoder;
 using static CoreAPI.Models.Encounter;
@@ -11,6 +12,7 @@ namespace CoreAPI.Helpers
     public class Utils
     {
         private static readonly List<string> pkmnWithFemaleForms = new List<string> { "abomasnow", "aipom", "alakazam", "ambipom", "beautifly", "bibarel", "bidoof", "blaziken", "buizel", "butterfree", "cacturne", "camerupt", "combee", "combusken", "croagunk", "dodrio", "doduo", "donphan", "dustox", "finneon", "floatzel", "frillish", "gabite", "garchomp", "gible", "girafarig", "gligar", "gloom", "golbat", "goldeen", "gulpin", "gyarados", "heracross", "hippopotas", "hippowdon", "houndoom", "hypno", "jellicent", "kadabra", "kricketot", "kricketune", "ledian", "ledyba", "ludicolo", "lumineon", "luxio", "luxray", "magikarp", "mamoswine", "medicham", "meditite", "meganium", "milotic", "murkrow", "nidoran", "numel", "nuzleaf", "octillery", "pachirisu", "pikachu", "piloswine", "politoed", "pyroar", "quagsire", "raichu", "raticate", "rattata", "relicanth", "rhydon", "rhyhorn", "rhyperior", "roselia", "roserade", "scizor", "scyther", "seaking", "shiftry", "shinx", "sneasel", "snover", "spinda", "staraptor", "staravia", "starly", "steelix", "sudowoodo", "swalot", "tangrowth", "torchic", "toxicroak", "unfezant", "unown", "ursaring", "venusaur", "vileplume", "weavile", "wobbuffet", "wooper", "xatu", "zubat" };
+        private static readonly List<string> pkmnEggGroups = new List<string> { "Monster", "Water 1", "Bug", "Flying", "Field" , "Fairy", "Grass", "Human-Like", "Water 3", "Mineral", "Amorphous", "Water 2", "Ditto", "Dragon", "Undiscovered" };
         public static string FixQueryString(string queryStr)
         {
             queryStr = queryStr.Replace("| ", "|").Replace(" | ", "|").Replace(" |", "|").ToLower();
@@ -572,6 +574,106 @@ namespace CoreAPI.Helpers
                 });
             }
             return genlocs;
+        }
+        public enum PokeColor
+        {
+            Red,
+            Blue,
+            Yellow,
+            Green,
+            Black,
+            Brown,
+            Purple,
+            Gray,
+            White,
+            Pink,
+        }
+
+        public static string[] GetFormList(in int species)
+        {
+            var s = GameInfo.Strings;
+            if (species == (int)Species.Alcremie)
+                return FormConverter.GetAlcremieFormList(s.forms);
+            return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, 8).ToArray();
+        }
+
+
+        public static BasePokemon GetBasePokemon(int species, int form)
+        {
+            try
+            {
+                var gameStrings = GameInfo.Strings;
+                var pi = PersonalTable.SWSH.GetFormeEntry(species, form);
+                if (pi.HP == 0)
+                    pi = PersonalTable.USUM.GetFormeEntry(species, form);
+
+                var abilities = new List<string>();
+                var types = new List<string>();
+                var groups = new List<string>();
+                foreach (var a in pi.Abilities)
+                {
+                    abilities.Add(gameStrings.abilitylist[a]);
+                }
+                foreach (var t in pi.Types)
+                {
+                    types.Add(gameStrings.types[t]);
+                }
+                foreach (var e in pi.EggGroups)
+                {
+                    groups.Add(pkmnEggGroups[e - 1]);
+                }
+                var bp = new BasePokemon
+                {
+                    HP = pi.HP,
+                    ATK = pi.ATK,
+                    DEF = pi.DEF,
+                    SPE = pi.SPE,
+                    SPA = pi.SPA,
+                    SPD = pi.SPD,
+                    CatchRate = pi.CatchRate,
+                    EvoStage = pi.EvoStage,
+                    Gender = pi.Gender,
+                    HatchCycles = pi.HatchCycles,
+                    BaseFriendship = pi.BaseFriendship,
+                    EXPGrowth = pi.EXPGrowth,
+                    Ability1 = "N/A",
+                    Ability2 = "N/A",
+                    AbilityH = "N/A",
+                    Color = Enum.GetNames(typeof(PokeColor))[pi.Color],
+                    Height = pi.Height,
+                    Weight = pi.Weight,
+                    HasHiddenAbility = false,
+                    Types = types,
+                    EggGroups = groups,
+                    IsDualGender = pi.IsDualGender,
+                    Genderless = pi.Genderless,
+                    OnlyFemale = pi.OnlyFemale,
+                    OnlyMale = pi.OnlyMale,
+                    BST = pi.BST
+                };
+                switch (abilities.Count)
+                {
+                    case 1:
+                        bp.Ability1 = abilities[0];
+                        bp.Ability2 = abilities[0];
+                        break;
+                    case 2:
+                        bp.Ability1 = abilities[0];
+                        bp.Ability2 = abilities[1];
+                        break;
+                    case 3:
+                        bp.Ability1 = abilities[0];
+                        bp.Ability2 = abilities[1];
+                        bp.AbilityH = abilities[2];
+                        bp.HasHiddenAbility = true;
+                        break;
+
+                }
+                return bp;
+            } catch
+            {
+                return null;
+            }
         }
     }
 }
