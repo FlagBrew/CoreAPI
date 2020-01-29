@@ -73,36 +73,38 @@ namespace CoreAPI.Controllers
             pokemon.CopyTo(memoryStream);
             PKM pkm;
             byte[] data = memoryStream.ToArray();
-            var gen = 0;
-            try
+
+            if (generation == "" || generation == null)
             {
-                if (generation != null)
+                try
                 {
-                    try
-                    {
-                        gen = Int32.Parse(generation);
-                    }
-                    catch
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
                 }
-                if(gen != 0)
+                catch
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
-                } else
-                {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
-                }
-                if (pkm == null)
-                {
-                    throw new System.ArgumentException("Bad data!");
+                    Response.StatusCode = 400;
+                    return null;
                 }
             }
-            catch
+            else
             {
-                Response.StatusCode = 400;
-                return null;
+                try
+                {
+                    pkm = Utils.GetPKMwithGen(generation, data);
+                    if (pkm == null)
+                    {
+                        throw new System.ArgumentException("Bad generation!");
+                    }
+                }
+                catch
+                {
+                    Response.StatusCode = 400;
+                    return null;
+                }
             }
 
             if (Version == "" || Version == null)

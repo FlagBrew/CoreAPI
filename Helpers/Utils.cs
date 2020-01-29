@@ -43,6 +43,23 @@ namespace CoreAPI.Helpers
              return true;
         }
 
+        public static PKM GetPKMwithGen(string generation, byte[] data)
+        {
+            return generation switch
+            {
+                "1" => new PK1(data),
+                "2" => new PK2(data),
+                "3" => new PK3(data),
+                "4" => new PK4(data),
+                "5" => new PK5(data),
+                "6" => new PK6(data),
+                "7" => new PK7(data),
+                "8" => new PK8(data),
+                "LGPE" => new PB7(data),
+                _ => null,
+            };
+        }
+
         public static string GetGeneration(PKM pkm)
         {
             var Generation = "";
@@ -53,7 +70,6 @@ namespace CoreAPI.Helpers
             else if (pkm.GetType() == typeof(PK5))
             {
                 Generation = "5";
-
             }
             else if (pkm.GetType() == typeof(PK6))
             {
