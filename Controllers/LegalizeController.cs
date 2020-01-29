@@ -24,31 +24,23 @@ namespace CoreAPI.Controllers
             pokemon.CopyTo(memoryStream);
             PKM pkm;
             byte[] data = memoryStream.ToArray();
-            var gen = 0;
             try
             {
-                if (generation != null)
+                if (generation == "" || generation == null)
                 {
-                    try
-                    {
-                        gen = Int32.Parse(generation);
-                    }
-                    catch
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
                 }
-                if (gen != 0)
-                {
-                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
-                }
                 else
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
-                }
-                if (pkm == null)
-                {
-                    throw new System.ArgumentException("Bad data!");
+                    pkm = Utils.GetPKMwithGen(generation, data);
+                    if (pkm == null)
+                    {
+                        throw new System.ArgumentException("Bad generation!");
+                    }
                 }
             }
             catch
@@ -73,10 +65,9 @@ namespace CoreAPI.Controllers
             pokemon.CopyTo(memoryStream);
             PKM pkm;
             byte[] data = memoryStream.ToArray();
-
-            if (generation == "" || generation == null)
+            try
             {
-                try
+                if (generation == "" || generation == null)
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
@@ -84,15 +75,7 @@ namespace CoreAPI.Controllers
                         throw new System.ArgumentException("Bad data!");
                     }
                 }
-                catch
-                {
-                    Response.StatusCode = 400;
-                    return null;
-                }
-            }
-            else
-            {
-                try
+                else
                 {
                     pkm = Utils.GetPKMwithGen(generation, data);
                     if (pkm == null)
@@ -100,11 +83,11 @@ namespace CoreAPI.Controllers
                         throw new System.ArgumentException("Bad generation!");
                     }
                 }
-                catch
-                {
-                    Response.StatusCode = 400;
-                    return null;
-                }
+            }
+            catch
+            {
+                Response.StatusCode = 400;
+                return null;
             }
 
             if (Version == "" || Version == null)

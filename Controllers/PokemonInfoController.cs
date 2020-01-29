@@ -23,31 +23,23 @@ namespace CoreAPI.Controllers
             pokemon.CopyTo(memoryStream);
             byte[] data = memoryStream.ToArray();
             PKM pkm;
-            var gen = 0;
             try
             {
-                if (generation != null)
+                if (generation == "" || generation == null)
                 {
-                    try
-                    {
-                        gen = Int32.Parse(generation);
-                    } catch
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
                 }
-
-                if (gen != 0)
-                {
-                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
-                }
                 else
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
-                }
-                if (pkm == null)
-                {
-                    throw new System.ArgumentException("Bad data!");
+                    pkm = Utils.GetPKMwithGen(generation, data);
+                    if (pkm == null)
+                    {
+                        throw new System.ArgumentException("Bad generation!");
+                    }
                 }
                 PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
                 return PS;
