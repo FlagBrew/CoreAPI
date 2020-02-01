@@ -17,14 +17,34 @@ namespace CoreAPI.Controllers
         // POST: api/PokemonInfo
         [HttpPost]
         [Route("api/[controller]")]
-        public PokemonSummary Post([FromForm] [Required] IFormFile pokemon)
+        public PokemonSummary Post([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
             byte[] data = memoryStream.ToArray();
+            PKM pkm;
+            var gen = 0;
             try
             {
-                var pkm = PKMConverter.GetPKMfromBytes(data);
+                if (generation != null)
+                {
+                    try
+                    {
+                        gen = Int32.Parse(generation);
+                    } catch
+                    {
+                        throw new System.ArgumentException("Bad data!");
+                    }
+                }
+
+                if (gen != 0)
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
+                }
+                else
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                }
                 if (pkm == null)
                 {
                     throw new System.ArgumentException("Bad data!");

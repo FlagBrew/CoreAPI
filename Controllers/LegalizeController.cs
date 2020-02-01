@@ -18,15 +18,34 @@ namespace CoreAPI.Controllers
         // POST: api/Legalize
         [Route("api/[controller]")]
         [HttpPost]
-        public Legalize Legalize([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
+        public Legalize Legalize([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
             PKM pkm;
             byte[] data = memoryStream.ToArray();
+            var gen = 0;
             try
             {
-                pkm = PKMConverter.GetPKMfromBytes(data);
+                if (generation != null)
+                {
+                    try
+                    {
+                        gen = Int32.Parse(generation);
+                    }
+                    catch
+                    {
+                        throw new System.ArgumentException("Bad data!");
+                    }
+                }
+                if (gen != 0)
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
+                }
+                else
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                }
                 if (pkm == null)
                 {
                     throw new System.ArgumentException("Bad data!");
@@ -48,15 +67,33 @@ namespace CoreAPI.Controllers
         // POST: api/LegalityCheck 
         [Route("api/LegalityCheck")]
         [HttpPost]
-        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version)
+        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
             PKM pkm;
             byte[] data = memoryStream.ToArray();
+            var gen = 0;
             try
             {
-                pkm = PKMConverter.GetPKMfromBytes(data);
+                if (generation != null)
+                {
+                    try
+                    {
+                        gen = Int32.Parse(generation);
+                    }
+                    catch
+                    {
+                        throw new System.ArgumentException("Bad data!");
+                    }
+                }
+                if(gen != 0)
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data, gen);
+                } else
+                {
+                    pkm = PKMConverter.GetPKMfromBytes(data);
+                }
                 if (pkm == null)
                 {
                     throw new System.ArgumentException("Bad data!");
