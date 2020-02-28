@@ -30,6 +30,7 @@ namespace CoreAPI.Helpers
                 Report = la.Report();
             }
             else
+                Legalizer.AllowBruteForce = false;
                 legalpk = Legalize(pkm, ver);
         }
 
@@ -44,8 +45,7 @@ namespace CoreAPI.Helpers
                 KeepOriginalData = false;
                 HandlingTrainer = "PKHeX";
             }
-            var sav = SaveUtil.GetBlankSAV(ver, HandlingTrainer);
-            var updated = sav.Legalize(pk);
+            var updated = Legalizer.Legalize(pk);
             // These are the data that PKHEX AutoMod sets by itself
             var NewSID = updated.SID;
             var NewOT = updated.OT_Name;

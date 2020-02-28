@@ -31,7 +31,7 @@ namespace CoreAPI.Helpers
             ItemNum = pkm.HeldItem;
             var LC = new LegalityAnalysis(pkm);
             IllegalReasons = LC.Report();
-            QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkm.DecryptedBoxData));
+            QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkm));
         }
 
     }
