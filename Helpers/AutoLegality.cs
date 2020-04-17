@@ -87,7 +87,6 @@ namespace CoreAPI.Helpers
         private PKM Legalize(PKM pk, GameVersion ver)
         {
             var KeepOriginalData = true;
-            var HT_Info = pk.HT_Name;
             Successful = false;
             SimpleTrainerInfo info = getInfo(pk, ver);
 
@@ -105,16 +104,18 @@ namespace CoreAPI.Helpers
                 {
                     updated = Legalizer.Legalize(pk);
                     info.ApplyToPKM(updated);
-                    updated.HT_Affection = pk.HT_Affection;
-                    updated.HT_Feeling = pk.HT_Feeling;
-                    updated.HT_Friendship = pk.HT_Friendship;
-                    updated.HT_Gender = pk.HT_Gender;
-                    updated.HT_Intensity = pk.HT_Intensity;
-                    updated.HT_Memory = pk.HT_Memory;
-                    updated.HT_Name = pk.HT_Name;
-                    updated.HT_TextVar = pk.HT_TextVar;
-                    updated.HT_Trash = pk.HT_Trash;
-                    Console.WriteLine(pk.HT_Name);
+                    if(!la.Report().Contains("Handling Trainer"))
+                    {
+                        updated.HT_Affection = pk.HT_Affection;
+                        updated.HT_Feeling = pk.HT_Feeling;
+                        updated.HT_Friendship = pk.HT_Friendship;
+                        updated.HT_Gender = pk.HT_Gender;
+                        updated.HT_Intensity = pk.HT_Intensity;
+                        updated.HT_Memory = pk.HT_Memory;
+                        updated.HT_Name = pk.HT_Name;
+                        updated.HT_TextVar = pk.HT_TextVar;
+                        updated.HT_Trash = pk.HT_Trash;
+                    }
                 } else
                 {
                     updated = Legalizer.Legalize(pk);

@@ -18,7 +18,7 @@ namespace CoreAPI.Controllers
         // POST: api/Legalize
         [Route("api/[controller]")]
         [HttpPost]
-        public Legalize Legalize([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version, [FromForm] string generation)
+        public Legalize Legalize([FromForm] [Required] IFormFile pokemon, [FromForm] string version, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -49,12 +49,12 @@ namespace CoreAPI.Controllers
                 return null;
             }
 
-            if (Version == "" || Version == null)
+            if (version == "" || version == null)
             {
-                Version = Utils.GetGameVersion(pkm).ToString();
+                version = Utils.GetGameVersion(pkm).ToString();
             }
 
-                Legalize L = new Legalize(pkm, Version);
+                Legalize L = new Legalize(pkm, version);
             return L;
         }
         // POST: api/LegalityCheck 
