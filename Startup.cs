@@ -20,6 +20,7 @@ namespace CoreAPI
             LegalityAnalysis.MoveStrings = GameInfo.Strings.movelist;
             LegalityAnalysis.SpeciesStrings = GameInfo.Strings.specieslist;
 
+
             Configuration = configuration;
         }
 

@@ -53,7 +53,8 @@ namespace CoreAPI.Controllers
             {
                 Version = Utils.GetGameVersion(pkm).ToString();
             }
-            Legalize L = new Legalize(pkm, Version);
+
+                Legalize L = new Legalize(pkm, Version);
             return L;
         }
         // POST: api/LegalityCheck 
