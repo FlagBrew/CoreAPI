@@ -9,6 +9,7 @@ using CoreAPI.Helpers;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using PKHeX.Core;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CoreAPI.Controllers
 {
@@ -60,7 +61,7 @@ namespace CoreAPI.Controllers
         // POST: api/LegalityCheck 
         [Route("api/LegalityCheck")]
         [HttpPost]
-        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromHeader] string Version, [FromForm] string generation)
+        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -91,12 +92,24 @@ namespace CoreAPI.Controllers
                 return null;
             }
 
-            if (Version == "" || Version == null)
-            {
-                Version = Utils.GetGameVersion(pkm).ToString();
-            }
             var la = new LegalityAnalysis(pkm);
             return la.Report();
+        }
+        // ignore the following weird spagehti codes, but piepie62 nearly drove me to drinkin on trying to come up with a solution.
+        [Route("pksm/legality/check")]
+        [HttpPost]
+        public string clRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string Generation)
+        {
+
+            return CheckLegality(pkmn, Generation);
+        }
+
+        [Route("api/v1/bot/auto_legality")]
+        [HttpPost]
+        public Legalize alRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string version, [FromHeader] string Generation)
+        {
+
+            return Legalize(pkmn, version, Generation);
         }
     }
 }
