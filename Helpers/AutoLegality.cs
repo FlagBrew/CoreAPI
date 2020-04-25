@@ -103,18 +103,39 @@ namespace CoreAPI.Helpers
                 if (KeepOriginalData)
                 {
                     updated = Legalizer.Legalize(pk);
-                    info.ApplyToPKM(updated);
-                    if(!la.Report().Contains("Handling Trainer"))
+                    var report = la.Report().ToLower();
+                    if(!report.Contains("handling trainer"))
                     {
-                        updated.HT_Affection = pk.HT_Affection;
-                        updated.HT_Feeling = pk.HT_Feeling;
-                        updated.HT_Friendship = pk.HT_Friendship;
-                        updated.HT_Gender = pk.HT_Gender;
-                        updated.HT_Intensity = pk.HT_Intensity;
-                        updated.HT_Memory = pk.HT_Memory;
-                        updated.HT_Name = pk.HT_Name;
-                        updated.HT_TextVar = pk.HT_TextVar;
-                        updated.HT_Trash = pk.HT_Trash;
+                        if (!report.Contains("untraded"))
+                        {
+                            info.ApplyToPKM(updated);
+                            if (!report.Contains("memory"))
+                                updated.HT_Memory = pk.HT_Memory;
+                            if (!report.Contains("affection"))
+                                updated.HT_Affection = pk.HT_Affection;
+                            if (!report.Contains("feeling"))
+                                updated.HT_Feeling = pk.HT_Feeling;
+                            if (!report.Contains("friendship"))
+                                updated.HT_Friendship = pk.HT_Friendship;
+                            if (!report.Contains("intensity"))
+                                updated.HT_Intensity = pk.HT_Intensity;
+                            if (!report.Contains("trash"))
+                                updated.HT_Trash = pk.HT_Trash;
+                            updated.HT_Gender = pk.HT_Gender;
+                            updated.HT_Name = pk.HT_Name;
+                            updated.HT_TextVar = pk.HT_TextVar;
+                        }
+                    } else
+                    {
+                        updated.OT_Memory = pk.OT_Memory;
+                        updated.OT_Friendship = pk.OT_Friendship;
+                        updated.OT_Name = pk.OT_Name;
+                        updated.OT_Affection = pk.OT_Affection;
+                        updated.OT_Feeling = pk.OT_Feeling;
+                        updated.OT_Gender = pk.OT_Gender;
+                        updated.OT_Intensity = pk.OT_Intensity;
+                        updated.OT_TextVar = pk.OT_TextVar;
+                        updated.OT_Trash = pk.OT_Trash;
                     }
                 } else
                 {
