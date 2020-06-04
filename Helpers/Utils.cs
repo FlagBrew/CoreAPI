@@ -34,6 +34,71 @@ namespace CoreAPI.Helpers
             return true;
         }
 
+        public static bool PokemonExistsInGeneration(string generation, int speciesNum)
+        {
+            switch(generation)
+            {
+                case "1":
+                    if(speciesNum >= 1 && speciesNum <= 151)
+                    {
+                        return true;
+                    }
+                    break;
+                case "2":
+                    if (speciesNum >= 1 && speciesNum <= 251)
+                    {
+                        return true;
+                    }
+                    break;
+                case "3":
+                    if (speciesNum >= 1 && speciesNum <= 386)
+                    {
+                        return true;
+                    }
+                    break;
+                case "4":
+                    if (speciesNum >= 1 && speciesNum <= 493)
+                    {
+                        return true;
+                    }
+                    break;
+                case "5":
+                    if (speciesNum >= 1 && speciesNum <= 649)
+                    {
+                        return true;
+                    }
+                    break;
+                case "6":
+                    if (speciesNum >= 1 && speciesNum <= 721)
+                    {
+                        return true;
+                    }
+                    break;
+                case "7":
+                    if (speciesNum >= 1 && speciesNum <= 809)
+                    {
+                        return true;
+                    }
+                    break;
+                case "LGPE":
+                    if (speciesNum >= 1 && speciesNum <= 151 || speciesNum == 808 || speciesNum == 809)
+                    {
+                        return true;
+                    }
+                    break;
+                case "8":
+                    if (speciesNum >= 1 && speciesNum <= 896)
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Fucker didn't provide any generation, go fuck yourself");
+                    return false;
+            }
+            return false;
+        }
+
         public static bool MoveExists(string Name)
         {
             if (!Util.GetMovesList(GameLanguage.DefaultLanguage).Any(m => m.ToLower().Contains(Name)))

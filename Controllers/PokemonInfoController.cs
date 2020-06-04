@@ -32,14 +32,22 @@ namespace CoreAPI.Controllers
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
+                    generation = Utils.GetGeneration(pkm);
                 }
                 else
                 {
+                    Console.WriteLine(generation);
                     pkm = Utils.GetPKMwithGen(generation, data);
                     if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad generation!");
                     }
+                }
+                Console.WriteLine(pkm.Species);
+                if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
+                {
+                    Response.StatusCode = 400;
+                    return null;
                 }
                 PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
                 return PS;

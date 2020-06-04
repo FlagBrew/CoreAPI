@@ -26,7 +26,6 @@ namespace CoreAPI.Helpers
 
         public static void Initalize()
         {
-            //InitializeCoreStrings();
             Legalizer.AllowBruteForce = true;
         }
 
@@ -37,18 +36,6 @@ namespace CoreAPI.Helpers
             if (valid)
                 ProcessALM(pk, game);
             return;
-        }
-
-        private static void InitializeCoreStrings()
-        {
-            var lang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Substring(0, 2);
-            Util.SetLocalization(typeof(LegalityCheckStrings), lang);
-            Util.SetLocalization(typeof(MessageStrings), lang);
-            RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
-
-            // Update Legality Analysis strings
-            LegalityAnalysis.MoveStrings = GameInfo.Strings.movelist;
-            LegalityAnalysis.SpeciesStrings = GameInfo.Strings.specieslist;
         }
 
         private void ProcessALM(PKM pkm, GameVersion ver = GameVersion.GP)

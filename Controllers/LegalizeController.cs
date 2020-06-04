@@ -34,6 +34,7 @@ namespace CoreAPI.Controllers
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
+                    generation = Utils.GetGeneration(pkm);
                 }
                 else
                 {
@@ -54,8 +55,12 @@ namespace CoreAPI.Controllers
             {
                 version = Utils.GetGameVersion(pkm).ToString();
             }
-
-                Legalize L = new Legalize(pkm, version);
+            if(!Utils.PokemonExistsInGeneration(generation, pkm.Species))
+            {
+                Response.StatusCode = 400;
+                return null;
+            }
+           Legalize L = new Legalize(pkm, version);
             return L;
         }
         // POST: api/LegalityCheck 
@@ -76,6 +81,7 @@ namespace CoreAPI.Controllers
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
+                    generation = Utils.GetGeneration(pkm);
                 }
                 else
                 {
@@ -87,6 +93,12 @@ namespace CoreAPI.Controllers
                 }
             }
             catch
+            {
+                Response.StatusCode = 400;
+                return null;
+            }
+
+            if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
             {
                 Response.StatusCode = 400;
                 return null;
