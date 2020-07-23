@@ -269,9 +269,9 @@ namespace CoreAPI.Helpers
             {
                 formSet = true;
             }
-            pokemonName = pokemonName.Replace("'", "").Replace("é", "e").Replace("’", "");
+            pokemonName = pokemonName.Replace("'", "").Replace("é", "e").Replace("’", "").Replace(" ", "-");
             form = form.Replace("%-C", "").Replace("%", "").Replace("é", "e");
-            var url = "https://sprites.fm1337.com/";
+            var url = "http://server.charizard-is.best/"; // god fucking dammit I forgot the slash earlier and they're not using HTTPS. Fuck me.
             if (generation == "LGPE")
             {
                 generation = "7";
