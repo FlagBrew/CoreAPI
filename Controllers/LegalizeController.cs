@@ -55,13 +55,12 @@ namespace CoreAPI.Controllers
             {
                 version = Utils.GetGameVersion(pkm).ToString();
             }
-            if(!Utils.PokemonExistsInGeneration(generation, pkm.Species))
+            if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
             {
                 Response.StatusCode = 400;
                 return null;
             }
-           Legalize L = new Legalize(pkm, version);
-            return L;
+            return new Legalize(pkm, version);
         }
         // POST: api/LegalityCheck 
         [Route("api/LegalityCheck")]

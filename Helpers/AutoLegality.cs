@@ -5,16 +5,21 @@ using System.Threading;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CoreAPI.Helpers
 {
 
     public class AutoLegality
     {
+        private PKM startingPK;
+        private CancellationTokenSource cts;
+        private GameVersion gv;
         private static PKM legalpk;
         private static LegalityAnalysis la;
-        private static bool Initialized;
-        private readonly Random _random = new Random();
+        private static bool Initialized = false;
+        public bool OkayToRun = false;
         public bool Successful = false;
         public bool Ran = true;
         public string Report;
@@ -25,41 +30,57 @@ namespace CoreAPI.Helpers
             {
                 return;
             }
-            Initialized = true;
             Initalize();
         }
 
-        public static void Initalize()
+        private static void Initalize()
         {
-            Legalizer.AllowBruteForce = true;
+            Legalizer.AllowBruteForce = false;
+            Legalizer.EnableEasterEggs = false;
+            Legalizer.AllowAPI = true;
+            APILegality.PrioritizeGame = true;
+            APILegality.UseTrainerData = false;
+            Initialized = true;
         }
 
-        public AutoLegality(PKM pk, string ver)
+        public AutoLegality(PKM pk, string ver, CancellationTokenSource cancellationTokenSource)
         {
             EnsureInitialized();
             bool valid = Enum.TryParse<GameVersion>(ver, true, out var game);
             if (valid)
-                ProcessALM(pk, game);
+            {
+                OkayToRun = true;
+                startingPK = pk;
+                gv = game;
+                cts = cancellationTokenSource;
+            }
             return;
         }
 
-        private void ProcessALM(PKM pkm, GameVersion ver = GameVersion.GP)
+        public PKM LegalizePokemon()
+        {
+            return ProcessALM(startingPK, gv);
+        }
+
+        private PKM ProcessALM(PKM pkm, GameVersion ver = GameVersion.GP)
         {
             la = new LegalityAnalysis(pkm);
+            var tcs = new TaskCompletionSource<string>();
             if (la.Valid)
             {
                 legalpk = pkm;
                 Ran = false;
                 Report = la.Report();
-                return;
+                return legalpk;
             }
-            /*if (la.Report().ToLower().Contains("invalid move")){
-                Ran = true; // because piepie62 and griffin wanted to make my program a liar. GG guys GG.
-                Successful = false;
-                Report = la.Report();
-                return;
-            }*/
-            legalpk = Legalize(pkm, ver);
+            Task.Run (() =>
+            {
+                Console.WriteLine(String.Format("Legalization on Thread ({0}) has started at: {1}", Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("F")));
+                legalpk = Legalize(pkm, ver);
+                Console.WriteLine(String.Format("Legalization on Thread ({0}) has finished at: {1}", Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("F")));
+                cts.Cancel();
+            }, cts.Token);
+            return legalpk;
         }
 
         private SimpleTrainerInfo getInfo(PKM pk, GameVersion ver)
@@ -75,16 +96,6 @@ namespace CoreAPI.Helpers
             info.Gender = pk.OT_Gender;
             return info;
         }
-
-        private int ChooseRandomMove(int[] moves)
-        {
-            var mvs = la.AllSuggestedMovesAndRelearn().Where(move => !moves.Contains(move));
-            if(mvs.Count() == 0)
-            {
-                return 0;
-            }
-            return mvs.ElementAt(Rand.RandomNum() % mvs.Count());
-        }
         private PKM Legalize(PKM pk, GameVersion ver)
         {
             Report = la.Report();
@@ -92,55 +103,21 @@ namespace CoreAPI.Helpers
             sav.TID = pk.TID;
             sav.SID = pk.SID;
             sav.Language = pk.Language;
-            Legalizer.AllowBruteForce = true;
-            Legalizer.EnableEasterEggs = false;
-            Legalizer.AllowAPI = true;
-            APILegality.PrioritizeGame = true;
-            APILegality.UseTrainerData = false;
-            var r = new Regex(@"invalid move ([1-4]):", RegexOptions.IgnoreCase);
-            var matches = r.Matches(la.Report());
-            foreach (Match match in matches)
-            {
-                int movePos;
-                if (int.TryParse(match.Groups[1].Value, out movePos))
-                {
-                    var mvs = pk.Moves;
-                    mvs[movePos - 1] = ChooseRandomMove(pk.Moves);
-                    pk.Moves = mvs;
-                }
-            }
 
             PKM upd = sav.Legalize(pk.Clone());
             upd.SetTrainerData(getInfo(pk, ver));
             la = new LegalityAnalysis(upd);
-            if(la.Valid)
+            if (la.Valid)
             {
                 legalpk = upd;
                 Successful = true;
+                return legalpk;
                 //Report = la.Report();
             }
-            else
-            {
-                upd = sav.Legalize(pk.Clone());
-                la = new LegalityAnalysis(upd);
-                if (la.Valid)
-                {
-                    legalpk = upd;
-                    Successful = true;
-                } else
-                {
-                    Console.WriteLine(la.Report());
-                }
-            }
-
-            if (Successful)
-            {
-                return legalpk;
-            }
-
             return null;
         }
-        public PKM GetLegalPKM()
+
+        public PKM getLegalPK()
         {
             return legalpk;
         }
