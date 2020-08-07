@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CoreAPI.Models;
 using System.ComponentModel.DataAnnotations;
 using CoreAPI.Helpers;
-using PKHeX.Core;
 
 namespace CoreAPI.Controllers
 {
@@ -19,8 +15,8 @@ namespace CoreAPI.Controllers
         [Route("api/[controller]")]
         public Encounter PokeInfo([FromForm] [Required] string query, [FromForm] [Required] string generation)
         {
-            var data = Utils.SplitQueryString(Utils.FixQueryString(query));
-            if (data.Length < 1)
+            var data = Utils.SplitQueryString(query);
+            if (data.Length == 0)
             {
                 Response.StatusCode = 400;
                 return null;
@@ -28,18 +24,18 @@ namespace CoreAPI.Controllers
             // Make sure the generation is between 1 and 8 and is actually a number
             try
             {
-                var gen = Int32.Parse(generation);
-                if(gen < 1 || gen > 8)
+                var gen = int.Parse(generation);
+                if (gen < 1 || gen > 8)
                 {
                     throw new ArgumentOutOfRangeException("Must be between 1 and 8");
                 }
-            } catch
+            }
+            catch
             {
                 Response.StatusCode = 400;
                 return null;
             }
-            Encounter enc = new Encounter(data[0], generation, data.Skip(1).ToArray());
-            return enc;
+            return new Encounter(data[0], generation, data.Skip(1).ToArray());
         }
     }
 }

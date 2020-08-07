@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using CoreAPI.Helpers;
 using PKHeX.Core;
 
@@ -17,7 +14,6 @@ namespace CoreAPI.Models
         public bool Ran { get; }
         public string QR { get;  }
 
-
         public Legalize(PKM pk, string version)
         {
             CancellationTokenSource cts = new CancellationTokenSource(10000);
@@ -30,7 +26,7 @@ namespace CoreAPI.Models
                 {
                     if (cts.IsCancellationRequested)
                     {
-                        pkmn = al.getLegalPK();
+                        pkmn = al.GetLegalPK();
                         break;
                     }
                     Thread.Sleep(100);
@@ -58,7 +54,7 @@ namespace CoreAPI.Models
                         Species = "";
                         Success = false;
                         Ran = true;
-                        Report = new string[1] { "Stuck in legalization!" };
+                        Report = new[] { "Stuck in legalization!" };
                     }
                 } else
                 {
@@ -68,7 +64,7 @@ namespace CoreAPI.Models
             {
                 Ran = false;
                 Success = false;
-                Report = new string[1] { "Could not run legalization!" };
+                Report = new[] { "Could not run legalization!" };
             }
         }
     }

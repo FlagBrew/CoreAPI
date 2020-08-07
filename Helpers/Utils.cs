@@ -9,29 +9,21 @@ using static CoreAPI.Models.Encounter;
 
 namespace CoreAPI.Helpers
 {
-    public class Utils
+    public static class Utils
     {
         private static readonly List<string> pkmnWithFemaleForms = new List<string> { "abomasnow", "aipom", "alakazam", "ambipom", "beautifly", "bibarel", "bidoof", "blaziken", "buizel", "butterfree", "cacturne", "camerupt", "combee", "combusken", "croagunk", "dodrio", "doduo", "donphan", "dustox", "finneon", "floatzel", "frillish", "gabite", "garchomp", "gible", "girafarig", "gligar", "gloom", "golbat", "goldeen", "gulpin", "gyarados", "heracross", "hippopotas", "hippowdon", "houndoom", "hypno", "jellicent", "kadabra", "kricketot", "kricketune", "ledian", "ledyba", "ludicolo", "lumineon", "luxio", "luxray", "magikarp", "mamoswine", "medicham", "meditite", "meganium", "milotic", "murkrow", "nidoran", "numel", "nuzleaf", "octillery", "pachirisu", "pikachu", "piloswine", "politoed", "pyroar", "quagsire", "raichu", "raticate", "rattata", "relicanth", "rhydon", "rhyhorn", "rhyperior", "roselia", "roserade", "scizor", "scyther", "seaking", "shiftry", "shinx", "sneasel", "snover", "spinda", "staraptor", "staravia", "starly", "steelix", "sudowoodo", "swalot", "tangrowth", "torchic", "toxicroak", "unfezant", "unown", "ursaring", "venusaur", "vileplume", "weavile", "wobbuffet", "wooper", "xatu", "zubat" };
         private static readonly List<string> pkmnEggGroups = new List<string> { "Monster", "Water 1", "Bug", "Flying", "Field" , "Fairy", "Grass", "Human-Like", "Water 3", "Mineral", "Amorphous", "Water 2", "Ditto", "Dragon", "Undiscovered" };
-        public static string FixQueryString(string queryStr)
-        {
-            queryStr = queryStr.Replace("| ", "|").Replace(" | ", "|").Replace(" |", "|").ToLower();
-            return queryStr;
-        }
+
+        private static readonly string[] Splitters = {"| ", " |", " | ", "|"};
 
         public static string[] SplitQueryString(string queryStr)
         {
-            var queries = queryStr.Split('|');
-            return queries;
+            return queryStr.ToLower().Split(Splitters, 0);
         }
 
         public static bool PokemonExists(string Name)
         {
-            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == Name))
-            {
-                return false;
-            }
-            return true;
+            return Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == Name);
         }
 
         public static bool PokemonExistsInGeneration(string generation, int speciesNum)
@@ -81,7 +73,7 @@ namespace CoreAPI.Helpers
                     }
                     break;
                 case "LGPE":
-                    if (speciesNum >= 1 && speciesNum <= 151 || speciesNum == 808 || speciesNum == 809)
+                    if ((speciesNum >= 1 && speciesNum <= 151) || speciesNum == 808 || speciesNum == 809)
                     {
                         return true;
                     }
@@ -97,15 +89,6 @@ namespace CoreAPI.Helpers
                     return false;
             }
             return false;
-        }
-
-        public static bool MoveExists(string Name)
-        {
-            if (!Util.GetMovesList(GameLanguage.DefaultLanguage).Any(m => m.ToLower().Contains(Name)))
-            {
-                return false;
-            }
-             return true;
         }
 
         public static PKM GetPKMwithGen(string generation, byte[] data)
@@ -127,44 +110,19 @@ namespace CoreAPI.Helpers
 
         public static string GetGeneration(PKM pkm)
         {
-            var Generation = "";
-            if (pkm.GetType() == typeof(PK4))
+            return pkm switch
             {
-                Generation = "4";
-            }
-            else if (pkm.GetType() == typeof(PK5))
-            {
-                Generation = "5";
-            }
-            else if (pkm.GetType() == typeof(PK6))
-            {
-                Generation = "6";
-            }
-            else if (pkm.GetType() == typeof(PK7))
-            {
-                Generation = "7";
-            }
-            else if (pkm.GetType() == typeof(PB7))
-            {
-                Generation = "LGPE";
-            }
-            else if (pkm.GetType() == typeof(PK8))
-            {
-                Generation = "8";
-            }
-            else if (pkm.GetType() == typeof(PK3))
-            {
-                Generation = "3";
-            }
-            else if (pkm.GetType() == typeof(PK2))
-            {
-                Generation = "2";
-            }
-            else if (pkm.GetType() == typeof(PK1))
-            {
-                Generation = "1";
-            }
-            return Generation;
+                PK1 _ => "1",
+                PK2 _ => "2",
+                PK3 _ => "3",
+                PK4 _ => "4",
+                PK5 _ => "5",
+                PK6 _ => "6",
+                PK7 _ => "7",
+                PB7 _ => "LGPE",
+                PK8 _ => "8",
+                _ => ""
+            };
         }
         // For fuck's sake rewrite this later, I can't stand looking at it anymore
         public static string GetPokeSprite(int pokemonNum, string pokemonName, string pokemonGender, string form, string generation, bool isShiny)
@@ -193,7 +151,6 @@ namespace CoreAPI.Helpers
                         if (pokemonName.Contains("♂"))
                         {
                             pokemonName = "nidoran-m";
-
                         }
                         else
                         {
@@ -276,7 +233,7 @@ namespace CoreAPI.Helpers
             {
                 generation = "7";
             }
-            int result = Int32.Parse(generation);
+            int result = int.Parse(generation);
             switch (generation)
             {
                 case "1":
@@ -404,7 +361,7 @@ namespace CoreAPI.Helpers
                 case 646:
                 case 550:
                     {
-                        if (result == 5 && pokemonName.ToLower() == "kyurem" || result < 5 && pokemonName.ToLower() == "rotom")
+                        if ((result == 5 && pokemonName.ToLower() == "kyurem") || (result < 5 && pokemonName.ToLower() == "rotom"))
                         {
                             formSet = true;
                         }
@@ -498,7 +455,7 @@ namespace CoreAPI.Helpers
             }
             if (pkmnWithFemaleForms.Any(p => p == pokemonName.ToLower()) && pokemonGender == "F" && result > 3 && !formSet)
             {
-                if (form.ToLower() == "normal" && form == "")
+                if (form.ToLower() == "normal" && form.Length == 0)
                 {
                     url += "-f";
                     formSet = true;
@@ -514,14 +471,12 @@ namespace CoreAPI.Helpers
         public static string GetForm(PKM pkm, int alt)
         {
             var ds = FormConverter.GetFormList(pkm.Species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, pkm.Format);
-            if (ds.Count() > 1)
+            if (ds.Length > 1)
             {
                 return ds[alt];
             }
-            else
-            {
-                return ds[0];
-            }
+
+            return ds[0];
         }
         public static string GenerateQR(string data)
         {
@@ -536,54 +491,27 @@ namespace CoreAPI.Helpers
 
         public static GameVersion GetGameVersion(PKM pkm)
         {
-            GameVersion version = 0;
-            if (pkm.GetType() == typeof(PK4))
+            return pkm switch
             {
-                version = GameVersion.HG;
-            }
-            else if (pkm.GetType() == typeof(PK5))
-            {
-                version = GameVersion.B2;
-
-            }
-            else if (pkm.GetType() == typeof(PK6))
-            {
-                version = GameVersion.OR;
-            }
-            else if (pkm.GetType() == typeof(PK7))
-            {
-                version = GameVersion.UM;
-            }
-            else if (pkm.GetType() == typeof(PB7))
-            {
-                version = GameVersion.GE;
-            }
-            else if (pkm.GetType() == typeof(PK8))
-            {
-                version = GameVersion.SW;
-            }
-            else if (pkm.GetType() == typeof(PK3))
-            {
-                version = GameVersion.E;
-            }
-            else if (pkm.GetType() == typeof(PK2))
-            {
-                version = GameVersion.C;
-            }
-            else if (pkm.GetType() == typeof(PK1))
-            {
-                version = GameVersion.YW;
-            }
-            return version;
+                PK1 _ => GameVersion.YW,
+                PK2 _ => GameVersion.C,
+                PK3 _ => GameVersion.E,
+                PK4 _ => GameVersion.HG,
+                PK5 _ => GameVersion.B2,
+                PK6 _ => GameVersion.OR,
+                PK7 _ => GameVersion.UM,
+                PB7 _ => GameVersion.GE,
+                PK8 _ => GameVersion.SW,
+                _ => 0
+            };
         }
 
         public static string GetStringFromRegex(string regexpattern, string data)
         {
             Regex r = new Regex(regexpattern);
-            if (r.Match(data).Success)
-            {
-                return r.Match(data).Value;
-            }
+            var match = r.Match(data);
+            if (match.Success)
+                return match.Value;
             return "";
         }
         public static List<GenerationLocation> GetLocations(string pokemon, string generation, string[] moves)
@@ -620,7 +548,7 @@ namespace CoreAPI.Helpers
                     continue;
                 }
                 // get the generation from the encounter line
-                var gen = GetStringFromRegex(@"Gen[1-9]", encounter);
+                var gen = GetStringFromRegex("Gen[1-9]", encounter);
                 // Check to see if the generation is the one we want
                 if (!gen.Contains(generation))
                 {
@@ -628,7 +556,7 @@ namespace CoreAPI.Helpers
                     continue;
                 }
                 // Now we get the location
-                var loc = GetStringFromRegex(@"(?<=.{8}).+?(?=:)", encounter);
+                var loc = GetStringFromRegex("(?<=.{8}).+?(?=:)", encounter);
                 // And the games for the location
                 var games = GetStringFromRegex(@"([\t ][A-Z |,]{1,100}$|Any)", encounter);
                 // We also have to do some cleanup on the games data
@@ -656,6 +584,7 @@ namespace CoreAPI.Helpers
             }
             return genlocs;
         }
+
         public enum PokeColor
         {
             Red,
@@ -677,7 +606,6 @@ namespace CoreAPI.Helpers
                 return FormConverter.GetAlcremieFormList(s.forms);
             return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, 8).ToArray();
         }
-
 
         public static BasePokemon GetBasePokemon(int species, int form)
         {
@@ -748,10 +676,10 @@ namespace CoreAPI.Helpers
                         bp.AbilityH = abilities[2];
                         bp.HasHiddenAbility = true;
                         break;
-
                 }
                 return bp;
-            } catch
+            }
+            catch
             {
                 return null;
             }
