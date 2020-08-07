@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CoreAPI.Helpers;
 namespace CoreAPI.Models
 {
@@ -9,7 +6,7 @@ namespace CoreAPI.Models
     {
         public string Generation { get; }
         public List<GenerationLocation> Encounters { get; }
-        
+
         public Encounter(string pokemon, string generation, string[] moves)
         {
             Generation = generation;
@@ -21,6 +18,7 @@ namespace CoreAPI.Models
             public string EncounterType { get; set; }
             public List<Location> Locations { get; set; }
         }
+
         public class Location
         {
             public string Name { get; set; }

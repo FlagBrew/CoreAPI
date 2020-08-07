@@ -1,51 +1,34 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using System.Linq;
 using System.Threading;
 using PKHeX.Core;
 using PKHeX.Core.AutoMod;
-using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace CoreAPI.Helpers
 {
-
     public class AutoLegality
     {
         private PKM startingPK;
         private CancellationTokenSource cts;
         private GameVersion gv;
-        private static PKM legalpk;
-        private static LegalityAnalysis la;
-        private static bool Initialized = false;
+        private PKM legalpk;
+        private LegalityAnalysis la;
         public bool OkayToRun = false;
         public bool Successful = false;
         public bool Ran = true;
         public string Report;
 
-        public static void EnsureInitialized()
-        {
-            if (Initialized)
-            {
-                return;
-            }
-            Initalize();
-        }
-
-        private static void Initalize()
+        static AutoLegality()
         {
             Legalizer.AllowBruteForce = false;
             Legalizer.EnableEasterEggs = false;
             Legalizer.AllowAPI = true;
             APILegality.PrioritizeGame = true;
             APILegality.UseTrainerData = false;
-            Initialized = true;
         }
 
         public AutoLegality(PKM pk, string ver, CancellationTokenSource cancellationTokenSource)
         {
-            EnsureInitialized();
             bool valid = Enum.TryParse<GameVersion>(ver, true, out var game);
             if (valid)
             {
@@ -54,7 +37,6 @@ namespace CoreAPI.Helpers
                 gv = game;
                 cts = cancellationTokenSource;
             }
-            return;
         }
 
         public PKM LegalizePokemon()
@@ -65,7 +47,6 @@ namespace CoreAPI.Helpers
         private PKM ProcessALM(PKM pkm, GameVersion ver = GameVersion.GP)
         {
             la = new LegalityAnalysis(pkm);
-            var tcs = new TaskCompletionSource<string>();
             if (la.Valid)
             {
                 legalpk = pkm;
@@ -75,26 +56,28 @@ namespace CoreAPI.Helpers
             }
             Task.Run (() =>
             {
-                Console.WriteLine(String.Format("Legalization on Thread ({0}) has started at: {1}", Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("F")));
+                var thread = Thread.CurrentThread.ManagedThreadId;
+                Console.WriteLine($"Legalization on Thread ({thread}) has started at: {DateTime.Now:F}");
                 legalpk = Legalize(pkm, ver);
-                Console.WriteLine(String.Format("Legalization on Thread ({0}) has finished at: {1}", Thread.CurrentThread.ManagedThreadId, DateTime.Now.ToString("F")));
+                Console.WriteLine($"Legalization on Thread ({thread}) has finished at: {DateTime.Now:F}");
                 cts.Cancel();
             }, cts.Token);
             return legalpk;
         }
 
-        private SimpleTrainerInfo getInfo(PKM pk, GameVersion ver)
+        private SimpleTrainerInfo GetTrainerInfo(PKM pk, GameVersion ver)
         {
-            SimpleTrainerInfo info = new SimpleTrainerInfo(ver);
-            info.OT = pk.OT_Name;
-            info.SID = pk.SID;
-            info.TID = pk.TID;
-            info.Language = pk.Language;
-            info.SubRegion = pk.Region;
-            info.Country = pk.Country;
-            info.ConsoleRegion = pk.ConsoleRegion;
-            info.Gender = pk.OT_Gender;
-            return info;
+            return new SimpleTrainerInfo(ver)
+            {
+                OT = pk.OT_Name,
+                SID = pk.SID,
+                TID = pk.TID,
+                Language = pk.Language,
+                SubRegion = pk.Region,
+                Country = pk.Country,
+                ConsoleRegion = pk.ConsoleRegion,
+                Gender = pk.OT_Gender
+            };
         }
         private PKM Legalize(PKM pk, GameVersion ver)
         {
@@ -105,7 +88,7 @@ namespace CoreAPI.Helpers
             sav.Language = pk.Language;
 
             PKM upd = sav.Legalize(pk.Clone());
-            upd.SetTrainerData(getInfo(pk, ver));
+            upd.SetTrainerData(GetTrainerInfo(pk, ver));
             la = new LegalityAnalysis(upd);
             if (la.Valid)
             {
@@ -117,7 +100,7 @@ namespace CoreAPI.Helpers
             return null;
         }
 
-        public PKM getLegalPK()
+        public PKM GetLegalPK()
         {
             return legalpk;
         }

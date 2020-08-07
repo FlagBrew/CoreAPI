@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CoreAPI.Models;
 using CoreAPI.Helpers;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using PKHeX.Core;
-using System.Reflection.Metadata.Ecma335;
 
 namespace CoreAPI.Controllers
 {
@@ -27,7 +22,7 @@ namespace CoreAPI.Controllers
             byte[] data = memoryStream.ToArray();
             try
             {
-                if (generation == "" || generation == null)
+                if (string.IsNullOrEmpty(generation))
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
@@ -51,7 +46,7 @@ namespace CoreAPI.Controllers
                 return null;
             }
 
-            if (version == "" || version == null)
+            if (string.IsNullOrEmpty(version))
             {
                 version = Utils.GetGameVersion(pkm).ToString();
             }
@@ -73,7 +68,7 @@ namespace CoreAPI.Controllers
             byte[] data = memoryStream.ToArray();
             try
             {
-                if (generation == "" || generation == null)
+                if (string.IsNullOrEmpty(generation))
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
@@ -111,7 +106,6 @@ namespace CoreAPI.Controllers
         [HttpPost]
         public string clRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string Generation)
         {
-
             return CheckLegality(pkmn, Generation);
         }
 
@@ -119,7 +113,6 @@ namespace CoreAPI.Controllers
         [HttpPost]
         public Legalize alRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string version, [FromHeader] string Generation)
         {
-
             return Legalize(pkmn, version, Generation);
         }
     }

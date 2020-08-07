@@ -25,12 +25,12 @@ namespace CoreAPI.Controllers
             PKM pkm;
             try
             {
-                if (generation == "" || generation == null)
+                if (string.IsNullOrEmpty(generation))
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
                     {
-                        throw new System.ArgumentException("Bad data!");
+                        throw new ArgumentException("Bad data!");
                     }
                     generation = Utils.GetGeneration(pkm);
                 }
@@ -49,8 +49,7 @@ namespace CoreAPI.Controllers
                     Response.StatusCode = 400;
                     return null;
                 }
-                PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
-                return PS;
+                return new PokemonSummary(pkm, GameInfo.Strings);
             }
             catch
             {
@@ -82,11 +81,7 @@ namespace CoreAPI.Controllers
                     }
                 }
 
-
-
-
-                var bp = Utils.GetBasePokemon((int)s, formNum);
-                return bp;
+                return Utils.GetBasePokemon((int)s, formNum);
             }
             catch
             {
