@@ -73,9 +73,6 @@ namespace CoreAPI.Helpers
                 SID = pk.SID,
                 TID = pk.TID,
                 Language = pk.Language,
-                SubRegion = pk.Region,
-                Country = pk.Country,
-                ConsoleRegion = pk.ConsoleRegion,
                 Gender = pk.OT_Gender
             };
         }
