@@ -8,6 +8,9 @@ using PKHeX.Core;
 using System;
 using CoreAPI.Models;
 using System.Linq;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CoreAPI.Controllers
 {
@@ -80,7 +83,7 @@ namespace CoreAPI.Controllers
                         return null;
                     }
                 }
-
+                Console.WriteLine(Utils.GetBasePokemon((int)s, formNum).Color);
                 return Utils.GetBasePokemon((int)s, formNum);
             }
             catch
@@ -109,6 +112,27 @@ namespace CoreAPI.Controllers
             {
                 return null;
             }
+        }
+
+        [HttpPost]
+        [Route("api/bot/pokemon_info")]
+        public JObject GetPokemonSummaryBot([FromForm] [Required] IFormFile pkmn)
+        {
+            var serializerSettings = new JsonSerializerSettings();
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            dynamic json = JObject.FromObject(Post(pkmn, ""));
+            return json;
+        }
+
+
+        [HttpPost]
+        [Route("api/bot/base_info")]
+        public JObject GetBaseInfoBot([FromForm][Required] string pkmn, [FromForm] string form)
+        {
+            var serializerSettings = new JsonSerializerSettings();
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            dynamic json = JObject.FromObject(BasePokemon(pkmn, form));
+            return json;
         }
     }
 }

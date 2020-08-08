@@ -5,17 +5,22 @@ using PKHeX.Core;
 using CoreAPI.Models;
 using CoreAPI.Helpers;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json.Linq;
+using System;
+using AutoModPlugins;
 
 namespace CoreAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class LearnableMoveController : ControllerBase
     {
         // POST: api/LearnableMove
         [HttpPost]
-        public List<LearnableMove> Post([FromForm] [Required] string query)
+        [Route("api/[controller]")]
+        public List<LearnableMove> Post([FromForm][Required] string query, [FromForm] string generation)
         {
+            //var sav = SaveUtil.GetBlankSAV(Utils.GetGameVersion(generation), "Scatman");
+            //PKM asdf = new PKM()
             var data = Utils.SplitQueryString(query);
             if (data.Length < 2)
             {
@@ -45,8 +50,14 @@ namespace CoreAPI.Controllers
                     break;
                 }
             }
-
             return moves;
+        }
+
+        [HttpPost]
+        [Route("api/bot/moves")]
+        public List<LearnableMove> MoveCheckBot([FromForm][Required] string query, [FromForm] string generation)
+        {
+            return Post(query, generation);
         }
     }
 }

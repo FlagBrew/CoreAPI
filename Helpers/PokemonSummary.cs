@@ -16,6 +16,7 @@ namespace CoreAPI.Helpers
         public string IllegalReasons { get; }
         public string HT { get; }
         public string QR { get; }
+        public string Base64 { get;  }
 
         public PokemonSummary(PKM pkm, GameStrings strings) : base(pkm, strings)
         {
@@ -33,6 +34,7 @@ namespace CoreAPI.Helpers
             var LC = new LegalityAnalysis(pkm);
             IllegalReasons = LC.Report();
             QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkm));
+            Base64 = System.Convert.ToBase64String(pkm.DecryptedBoxData);
         }
     }
 }

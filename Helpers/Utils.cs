@@ -124,13 +124,27 @@ namespace CoreAPI.Helpers
                 _ => ""
             };
         }
+
+
+        public static GameVersion GetGameVersion(string generation)
+        {
+            return generation switch
+            {
+                "1" => GameVersion.RBY,
+                "2" => GameVersion.GSC,
+                "3" => GameVersion.RSE,
+                "4" => GameVersion.DPPt,
+                "5" => GameVersion.B2W2,
+                "6" => GameVersion.ORAS,
+                "7" => GameVersion.USUM,
+                "8" => GameVersion.SWSH,
+                _ => GameVersion.Any,
+            };
+        }
+
         // For fuck's sake rewrite this later, I can't stand looking at it anymore
         public static string GetPokeSprite(int pokemonNum, string pokemonName, string pokemonGender, string form, string generation, bool isShiny)
         {
-            if (pokemonNum > 807 || generation == "8")
-            {
-                return "https://flagbrew.org/static/img/blank.png";
-            }
             var formSet = false;
             switch (pokemonName)
             {
@@ -184,13 +198,16 @@ namespace CoreAPI.Helpers
                     }
                 case "Meowstic":
                     {
-                        if (pokemonGender == "M")
+                        if (generation != "8")
                         {
-                            form = "male";
-                        }
-                        else
-                        {
-                            form = "female";
+                            if (pokemonGender == "M")
+                            {
+                                form = "male";
+                            }
+                            else
+                            {
+                                form = "female";
+                            }
                         }
                         break;
                     }
@@ -310,6 +327,23 @@ namespace CoreAPI.Helpers
                 case "7":
                     {
                         url += "ultra-sun-ultra-moon/";
+                        if (isShiny)
+                        {
+                            url += "shiny/" + pokemonName.ToLower();
+                        }
+                        else
+                        {
+                            url += "normal/" + pokemonName.ToLower();
+                        }
+                        break;
+                    }
+                case "8":
+                    {
+                        url += "sprites/8/";
+                        if(pokemonGender == "female")
+                        {
+                            url += "female/";
+                        }
                         if (isShiny)
                         {
                             url += "shiny/" + pokemonName.ToLower();

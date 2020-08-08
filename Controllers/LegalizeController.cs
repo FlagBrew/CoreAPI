@@ -5,6 +5,7 @@ using CoreAPI.Helpers;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using PKHeX.Core;
+using Newtonsoft.Json.Linq;
 
 namespace CoreAPI.Controllers
 {
@@ -107,6 +108,16 @@ namespace CoreAPI.Controllers
         public string clRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string Generation)
         {
             return CheckLegality(pkmn, Generation);
+        }
+        [Route("api/bot/check")]
+        [HttpPost]
+        public dynamic botCLRoute([FromForm] [Required] IFormFile pkmn)
+        {
+            // wheeeeeeee -Griffin
+            dynamic jsonObject = new JObject();
+            jsonObject.IllegalReasons = CheckLegality(pkmn, "");
+            System.Console.WriteLine(jsonObject);
+            return jsonObject;
         }
 
         [Route("api/v1/bot/auto_legality")]
