@@ -24,6 +24,8 @@ namespace CoreAPI.Helpers
         public string QR { get; }
         public bool IsLegal { get; }
         public List<string> Ribbons { get; }
+        public string Base64 { get;  }
+
         public PokemonSummary(PKM pkm, GameStrings strings) : base(pkm, strings)
         {
             Ribbons = new List<string>();
@@ -49,7 +51,7 @@ namespace CoreAPI.Helpers
             IllegalReasons = LC.Report();
             IsLegal = LC.Valid;
             QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkm));
+            Base64 = System.Convert.ToBase64String(pkm.DecryptedBoxData);
         }
-
     }
 }

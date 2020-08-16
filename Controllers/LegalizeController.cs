@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CoreAPI.Models;
 using CoreAPI.Helpers;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using PKHeX.Core;
-using System.Reflection.Metadata.Ecma335;
+using Newtonsoft.Json.Linq;
 
 namespace CoreAPI.Controllers
 {
@@ -27,7 +23,7 @@ namespace CoreAPI.Controllers
             byte[] data = memoryStream.ToArray();
             try
             {
-                if (generation == "" || generation == null)
+                if (string.IsNullOrEmpty(generation))
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
@@ -51,17 +47,16 @@ namespace CoreAPI.Controllers
                 return null;
             }
 
-            if (version == "" || version == null)
+            if (string.IsNullOrEmpty(version))
             {
                 version = Utils.GetGameVersion(pkm).ToString();
             }
-            if(!Utils.PokemonExistsInGeneration(generation, pkm.Species))
+            if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
             {
                 Response.StatusCode = 400;
                 return null;
             }
-           Legalize L = new Legalize(pkm, version);
-            return L;
+            return new Legalize(pkm, version);
         }
         // POST: api/LegalityCheck 
         [Route("api/LegalityCheck")]
@@ -74,7 +69,7 @@ namespace CoreAPI.Controllers
             byte[] data = memoryStream.ToArray();
             try
             {
-                if (generation == "" || generation == null)
+                if (string.IsNullOrEmpty(generation))
                 {
                     pkm = PKMConverter.GetPKMfromBytes(data);
                     if (pkm == null)
@@ -112,15 +107,23 @@ namespace CoreAPI.Controllers
         [HttpPost]
         public string clRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string Generation)
         {
-
             return CheckLegality(pkmn, Generation);
+        }
+        [Route("api/bot/check")]
+        [HttpPost]
+        public dynamic botCLRoute([FromForm] [Required] IFormFile pkmn)
+        {
+            // wheeeeeeee -Griffin
+            dynamic jsonObject = new JObject();
+            jsonObject.IllegalReasons = CheckLegality(pkmn, "");
+            System.Console.WriteLine(jsonObject);
+            return jsonObject;
         }
 
         [Route("api/v1/bot/auto_legality")]
         [HttpPost]
         public Legalize alRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string version, [FromHeader] string Generation)
         {
-
             return Legalize(pkmn, version, Generation);
         }
     }
