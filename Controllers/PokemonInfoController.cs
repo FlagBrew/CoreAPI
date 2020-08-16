@@ -8,6 +8,8 @@ using PKHeX.Core;
 using System;
 using CoreAPI.Models;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CoreAPI.Controllers
 {
@@ -17,7 +19,7 @@ namespace CoreAPI.Controllers
         // POST: api/PokemonInfo
         [HttpPost]
         [Route("api/[controller]")]
-        public PokemonSummary Post([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
+        public string Post([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -36,25 +38,36 @@ namespace CoreAPI.Controllers
                 }
                 else
                 {
-                    Console.WriteLine(generation);
+                    //Console.WriteLine(generation
                     pkm = Utils.GetPKMwithGen(generation, data);
                     if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad generation!");
                     }
                 }
+                Console.WriteLine(generation);
                 Console.WriteLine(pkm.Species);
+                Console.WriteLine(pkm.GetType());
                 if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
                 {
                     Response.StatusCode = 400;
                     return null;
                 }
+                DefaultContractResolver contractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                };
+
                 PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
-                return PS;
+                return JsonConvert.SerializeObject(PS, new JsonSerializerSettings
+                {
+                    ContractResolver = contractResolver,
+                    Formatting = Formatting.Indented
+                });
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                return e.ToString();
             }
         }
         // POST: api/BasePokemon

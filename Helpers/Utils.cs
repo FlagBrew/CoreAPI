@@ -110,10 +110,21 @@ namespace CoreAPI.Helpers
 
         public static PKM GetPKMwithGen(string generation, byte[] data)
         {
+            Console.WriteLine("byte: 1 (index 0) " + data[0]);
+            Console.WriteLine("byte: 2 (index 1) " + data[1]);
+            Console.WriteLine("byte: 3 (index 2) " + data[2]);
+            Console.WriteLine("byte: 4 (index 3) " + data[3]);
+            /*
+            Console.WriteLine(data[1]);
+            if(generation == "1")
+            {
+                data[0] = data[1];
+            }
+            */
             return generation switch
             {
-                "1" => new PK1(data),
-                "2" => new PK2(data),
+                "1" => new PokeList1(data)[0],
+                "2" => new PokeList2(data)[0],
                 "3" => new PK3(data),
                 "4" => new PK4(data),
                 "5" => new PK5(data),
