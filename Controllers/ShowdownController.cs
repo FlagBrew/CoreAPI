@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AutoModPlugins;
 using PKHeX.Core;
 using CoreAPI.Helpers;
 using PKHeX.Core.AutoMod;
