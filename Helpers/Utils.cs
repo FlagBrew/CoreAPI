@@ -668,14 +668,20 @@ namespace CoreAPI.Helpers
                 {
                     abilities.Add(gameStrings.abilitylist[a]);
                 }
-                foreach (var t in pi.Types)
+                types.Add(gameStrings.types[pi.Type1]);
+                if (pi.Type2 != -1)
                 {
-                    types.Add(gameStrings.types[t]);
+                    types.Add(gameStrings.types[pi.Type2]);
                 }
-                foreach (var e in pi.EggGroups)
+                if (pi.EggGroup1 != -1)
                 {
-                    groups.Add(pkmnEggGroups[e - 1]);
+                    groups.Add(pkmnEggGroups[pi.EggGroup1 - 1]);
                 }
+                if (pi.EggGroup2 != -1)
+                {
+                    groups.Add(pkmnEggGroups[pi.EggGroup2 - 1]);
+                }
+
                 var bp = new BasePokemon
                 {
                     HP = pi.HP,

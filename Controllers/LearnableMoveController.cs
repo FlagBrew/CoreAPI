@@ -7,7 +7,6 @@ using CoreAPI.Helpers;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json.Linq;
 using System;
-using AutoModPlugins;
 
 namespace CoreAPI.Controllers
 {

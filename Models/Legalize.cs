@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Threading;
 using CoreAPI.Helpers;
 using PKHeX.Core;
@@ -12,59 +13,73 @@ namespace CoreAPI.Models
         public string Species { get; }
         public string[] Report { get; }
         public bool Ran { get; }
-        public string QR { get;  }
+        public string QR { get; }
 
         public Legalize(PKM pk, string version)
         {
-            CancellationTokenSource cts = new CancellationTokenSource(10000);
-            var al = new AutoLegality(pk, version, cts);
-            if (al.OkayToRun)
+            try
             {
-                PKM pkmn;
-                al.LegalizePokemon();
-                while (true)
+
+
+                CancellationTokenSource cts = new CancellationTokenSource(10000);
+                var al = new AutoLegality(pk, version, cts);
+                if (al.OkayToRun)
                 {
-                    if (cts.IsCancellationRequested)
+                    PKM pkmn;
+                    al.LegalizePokemon();
+                    while (true)
                     {
-                        pkmn = al.GetLegalPK();
-                        break;
+                        if (cts.IsCancellationRequested)
+                        {
+                            pkmn = al.GetLegalPK();
+                            break;
+                        }
+                        Thread.Sleep(100);
                     }
-                    Thread.Sleep(100);
-                }
-                Success = al.Successful;
-                Report = al.Report.Split('\n');
-                Ran = al.Ran;
-                if (Success)
-                {
-                    try
+                    Success = al.Successful;
+                    Report = al.Report.Split('\n');
+                    Ran = al.Ran;
+                    if (Success)
                     {
-                        Pokemon = Convert.ToBase64String(pkmn.DecryptedBoxData);
-                        Species = new PokemonSummary(pkmn, GameInfo.Strings).Species;
                         try
                         {
-                            QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkmn));
+                            Pokemon = Convert.ToBase64String(pkmn.DecryptedBoxData);
+                            Species = new PokemonSummary(pkmn, GameInfo.Strings).Species;
+                            try
+                            {
+                                QR = Utils.GenerateQR(QRMessageUtil.GetMessage(pkmn));
+                            }
+                            catch
+                            {
+                                QR = "";
+                            }
                         }
                         catch
                         {
-                            QR = "";
+                            Pokemon = "";
+                            Species = "";
+                            Success = false;
+                            Ran = true;
+                            Report = new[] { "Stuck in legalization!" };
                         }
-                    } catch
+                    }
+                    else
                     {
                         Pokemon = "";
-                        Species = "";
-                        Success = false;
-                        Ran = true;
-                        Report = new[] { "Stuck in legalization!" };
                     }
-                } else
-                {
-                    Pokemon = "";
                 }
-            } else
+                else
+                {
+                    Ran = false;
+                    Success = false;
+                    Report = new[] { "Could not run legalization!" };
+                }
+            }
+            catch (Exception e)
             {
-                Ran = false;
-                Success = false;
-                Report = new[] { "Could not run legalization!" };
+                Console.WriteLine(e.Message);
+                Console.WriteLine(version);
+                Console.WriteLine(System.Convert.ToBase64String(pk.DecryptedBoxData));
             }
         }
     }

@@ -20,9 +20,7 @@ namespace CoreAPI.Helpers
 
         static AutoLegality()
         {
-            Legalizer.AllowBruteForce = false;
             Legalizer.EnableEasterEggs = false;
-            Legalizer.AllowAPI = true;
             APILegality.PrioritizeGame = true;
             APILegality.UseTrainerData = false;
         }
