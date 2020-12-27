@@ -20,7 +20,7 @@ namespace CoreAPI.Controllers
         // POST: api/PokemonInfo
         [HttpPost]
         [Route("api/[controller]")]
-        public dynamic Post([FromForm][Required] IFormFile pokemon, [FromForm] string generation [FromForm] bool bot)
+        public dynamic Post([FromForm][Required] IFormFile pokemon, [FromForm] string generation, [FromForm] bool bot)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -135,11 +135,11 @@ namespace CoreAPI.Controllers
 
         [HttpPost]
         [Route("api/bot/pokemon_info")]
-        public JObject GetPokemonSummaryBot([FromForm][Required] IFormFile pkmn)
+        public JObject GetPokemonSummaryBot([FromForm][Required] IFormFile pkmn, [FromForm] bool bot=true)
         {
             var serializerSettings = new JsonSerializerSettings();
             serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            dynamic json = JObject.FromObject(Post(pkmn, ""));
+            dynamic json = JObject.FromObject(Post(pkmn, "", bot));
             return json;
         }
 
