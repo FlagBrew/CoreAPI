@@ -10,6 +10,7 @@ using PKHeX.Core.AutoMod;
 using CoreAPI.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace CoreAPI.Controllers
 {
@@ -32,7 +33,20 @@ namespace CoreAPI.Controllers
                 {
                     throw new System.ArgumentException("Your Pokemon does not exist!");
                 }
-                return JObject.FromObject(pks);
+
+                DefaultContractResolver contractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                };
+
+
+                Response.ContentType = "application/json";
+                return JsonConvert.DeserializeObject(JsonConvert.SerializeObject(pks, new JsonSerializerSettings
+                {
+                    ContractResolver = contractResolver,
+                    Formatting = Formatting.Indented
+                }));
+
             } catch (Exception e) {
                 dynamic error = new JObject();
                 error.message = e.Message;
