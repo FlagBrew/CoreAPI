@@ -68,7 +68,7 @@ namespace CoreAPI.Helpers
                 new Stat() { Stat_Name = "Special Defense", Stat_IV = SPD_IV, Stat_EV = SPD_EV, Stat_Total = SPD },
             };
             Generation = Utils.GetGeneration(pkm);
-            Form = Utils.GetForm(pkm, pkm.AltForm);
+            Form = Utils.GetForm(pkm, pkm.Form);
             HeldItemSpriteURL = "";
             HT = pkm.HT_Name;
             DexNumber = pkm.Species;

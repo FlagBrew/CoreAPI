@@ -26,7 +26,7 @@ namespace CoreAPI.Models
                 if (al.OkayToRun)
                 {
                     PKM pkmn;
-                    al.LegalizePokemon();
+                    al.LegalizePokemon(cts);
                     while (true)
                     {
                         if (cts.IsCancellationRequested)

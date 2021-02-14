@@ -657,9 +657,9 @@ namespace CoreAPI.Helpers
             try
             {
                 var gameStrings = GameInfo.Strings;
-                var pi = PersonalTable.SWSH.GetFormeEntry(species, form);
+                var pi = PersonalTable.SWSH.GetFormEntry(species, form);
                 if (pi.HP == 0)
-                    pi = PersonalTable.USUM.GetFormeEntry(species, form);
+                    pi = PersonalTable.USUM.GetFormEntry(species, form);
                    
 
                 var abilities = new List<string>();
