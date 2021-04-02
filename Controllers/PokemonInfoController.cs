@@ -20,7 +20,7 @@ namespace CoreAPI.Controllers
         // POST: api/PokemonInfo
         [HttpPost]
         [Route("api/[controller]")]
-        public PokemonSummary Post([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
+        public dynamic Post([FromForm][Required] IFormFile pokemon, [FromForm] string generation, [FromForm] bool bot)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -39,32 +39,51 @@ namespace CoreAPI.Controllers
                 }
                 else
                 {
-                    Console.WriteLine(generation);
+                    //Console.WriteLine(generation
                     pkm = Utils.GetPKMwithGen(generation, data);
                     if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad generation!");
                     }
                 }
+/*                Console.WriteLine(generation);
                 Console.WriteLine(pkm.Species);
+                Console.WriteLine(pkm.GetType());*/
                 if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
                 {
-                    Response.StatusCode = 400;
-                    return null;
+                    throw new ArgumentException("Pokemon is not in generation");
                 }
-                return new PokemonSummary(pkm, GameInfo.Strings);
+                if (bot)
+                {
+                    return new PokemonSummary(pkm, GameInfo.Strings);
+                }
+                else
+                {
+                    DefaultContractResolver contractResolver = new DefaultContractResolver
+                    {
+                        NamingStrategy = new SnakeCaseNamingStrategy()
+                    };
+
+                    PokemonSummary PS = new PokemonSummary(pkm, GameInfo.Strings);
+                    return JsonConvert.SerializeObject(PS, new JsonSerializerSettings
+                    {
+                        ContractResolver = contractResolver,
+                        Formatting = Formatting.Indented
+                    });
+                }
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                Console.WriteLine(e);
+                return e.ToString();
             }
         }
         // POST: api/BasePokemon
         [HttpPost]
         [Route("api/BasePokemon")]
-        public BasePokemon BasePokemon([FromForm] [Required] string pokemon, [FromForm] string form)
+        public BasePokemon BasePokemon([FromForm][Required] string pokemon, [FromForm] string form, [FromForm] int generation)
         {
-            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon))
+            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon.ToLower()))
             {
                 Response.StatusCode = 400;
                 return null;
@@ -75,16 +94,15 @@ namespace CoreAPI.Controllers
                 var formNum = 0;
                 if (form != null)
                 {
-                    var forms = FormConverter.GetFormList((int)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, 8);
+                    var forms = FormConverter.GetFormList((int)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, generation);
                     formNum = StringUtil.FindIndexIgnoreCase(forms, form);
                     if (formNum < 0 || formNum >= forms.Length)
                     {
-                        Response.StatusCode = 400;
-                        return null;
+                        Console.WriteLine("No form data found for the following query " + pokemon + " " + form + " " + generation + " forms available: " + String.Join(", ", forms.ToArray()));
+                        formNum = 0;
                     }
                 }
-                Console.WriteLine(Utils.GetBasePokemon((int)s, formNum).Color);
-                return Utils.GetBasePokemon((int)s, formNum);
+                return Utils.GetBasePokemon((int)s, formNum, generation);
             }
             catch
             {
@@ -95,9 +113,9 @@ namespace CoreAPI.Controllers
         // POST: api/GetForms
         [HttpPost]
         [Route("api/PokemonForms")]
-        public string[] GetPokemonForms([FromForm] [Required] string pokemon)
+        public string[] GetPokemonForms([FromForm][Required] string pokemon)
         {
-            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon))
+            if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon.ToLower()))
             {
                 Response.StatusCode = 400;
                 return null;
@@ -116,23 +134,37 @@ namespace CoreAPI.Controllers
 
         [HttpPost]
         [Route("api/bot/pokemon_info")]
-        public JObject GetPokemonSummaryBot([FromForm] [Required] IFormFile pkmn)
+        public dynamic GetPokemonSummaryBot([FromForm][Required] IFormFile pkmn, [FromForm] bool bot=true)
         {
-            var serializerSettings = new JsonSerializerSettings();
-            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            dynamic json = JObject.FromObject(Post(pkmn, ""));
-            return json;
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new SnakeCaseNamingStrategy()
+            };
+
+            Response.ContentType = "application/json";
+            return JsonConvert.DeserializeObject(JsonConvert.SerializeObject(Post(pkmn, "", bot), new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            }));
         }
 
 
         [HttpPost]
         [Route("api/bot/base_info")]
-        public JObject GetBaseInfoBot([FromForm][Required] string pkmn, [FromForm] string form)
+        public dynamic GetBaseInfoBot([FromForm][Required] string pkmn, [FromForm] string form, [FromForm] int generation)
         {
-            var serializerSettings = new JsonSerializerSettings();
-            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            dynamic json = JObject.FromObject(BasePokemon(pkmn, form));
-            return json;
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new SnakeCaseNamingStrategy()
+            };
+
+            Response.ContentType = "application/json";
+            return JsonConvert.DeserializeObject(JsonConvert.SerializeObject(BasePokemon(pkmn, form, generation), new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            }));
         }
     }
 }

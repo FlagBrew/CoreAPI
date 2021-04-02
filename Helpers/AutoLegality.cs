@@ -37,12 +37,12 @@ namespace CoreAPI.Helpers
             }
         }
 
-        public PKM LegalizePokemon()
+        public PKM LegalizePokemon(CancellationTokenSource cts)
         {
-            return ProcessALM(startingPK, gv);
+            return ProcessALM(startingPK, cts, gv);
         }
 
-        private PKM ProcessALM(PKM pkm, GameVersion ver = GameVersion.GP)
+        private PKM ProcessALM(PKM pkm, CancellationTokenSource cts, GameVersion ver = GameVersion.GP)
         {
             la = new LegalityAnalysis(pkm);
             if (la.Valid)
@@ -50,6 +50,7 @@ namespace CoreAPI.Helpers
                 legalpk = pkm;
                 Ran = false;
                 Report = la.Report();
+                cts.Cancel();
                 return legalpk;
             }
             Task.Run (() =>
@@ -81,7 +82,6 @@ namespace CoreAPI.Helpers
             sav.TID = pk.TID;
             sav.SID = pk.SID;
             sav.Language = pk.Language;
-
             PKM upd = sav.Legalize(pk.Clone());
             upd.SetTrainerData(GetTrainerInfo(pk, ver));
             la = new LegalityAnalysis(upd);
@@ -90,7 +90,6 @@ namespace CoreAPI.Helpers
                 legalpk = upd;
                 Successful = true;
                 return legalpk;
-                //Report = la.Report();
             }
             return null;
         }

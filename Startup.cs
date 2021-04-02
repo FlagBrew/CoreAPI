@@ -16,6 +16,7 @@ namespace CoreAPI
         {
             // Initalize everything needed
             Helpers.MoveType.MT = File.ReadAllLines("./Moves.csv").Skip(1).Select(m => Helpers.MoveType.ReadCsv(m)).ToList();
+            Helpers.Sprite.loadJSON();
             EncounterEvent.RefreshMGDB(string.Empty);
             RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
             

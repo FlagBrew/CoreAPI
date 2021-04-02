@@ -43,5 +43,6 @@ namespace CoreAPI.Models
         public bool OnlyMale { get; set; }
         public int BST { get; set; }
         public string SpriteURL { get; set; }
+        public string SpeciesSpriteURL { get; set; }
     }
 }

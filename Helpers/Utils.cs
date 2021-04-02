@@ -93,10 +93,21 @@ namespace CoreAPI.Helpers
 
         public static PKM GetPKMwithGen(string generation, byte[] data)
         {
+/*            Console.WriteLine("byte: 1 (index 0) " + data[0]);
+            Console.WriteLine("byte: 2 (index 1) " + data[1]);
+            Console.WriteLine("byte: 3 (index 2) " + data[2]);
+            Console.WriteLine("byte: 4 (index 3) " + data[3]);*/
+            /*
+            Console.WriteLine(data[1]);
+            if(generation == "1")
+            {
+                data[0] = data[1];
+            }
+            */
             return generation switch
             {
-                "1" => new PK1(data),
-                "2" => new PK2(data),
+                "1" => new PokeList1(data)[0],
+                "2" => new PokeList2(data)[0],
                 "3" => new PK3(data),
                 "4" => new PK4(data),
                 "5" => new PK5(data),
@@ -245,7 +256,7 @@ namespace CoreAPI.Helpers
             }
             pokemonName = pokemonName.Replace("'", "").Replace("é", "e").Replace("’", "").Replace(" ", "-");
             form = form.Replace("%-C", "").Replace("%", "").Replace("é", "e");
-            var url = "http://server.charizard-is.best/"; // god fucking dammit I forgot the slash earlier and they're not using HTTPS. Fuck me.
+            var url = "https://sprites.fm1337.com/";
             if (generation == "LGPE")
             {
                 generation = "7";
@@ -641,14 +652,15 @@ namespace CoreAPI.Helpers
             return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, 8).ToArray();
         }
 
-        public static BasePokemon GetBasePokemon(int species, int form)
+        public static BasePokemon GetBasePokemon(int species, int form, int generation)
         {
             try
             {
                 var gameStrings = GameInfo.Strings;
-                var pi = PersonalTable.SWSH.GetFormeEntry(species, form);
+                var pi = PersonalTable.SWSH.GetFormEntry(species, form);
                 if (pi.HP == 0)
-                    pi = PersonalTable.USUM.GetFormeEntry(species, form);
+                    pi = PersonalTable.USUM.GetFormEntry(species, form);
+                   
 
                 var abilities = new List<string>();
                 var types = new List<string>();
@@ -698,7 +710,8 @@ namespace CoreAPI.Helpers
                     Genderless = pi.Genderless,
                     OnlyFemale = pi.OnlyFemale,
                     OnlyMale = pi.OnlyMale,
-                    BST = pi.BST
+                    BST = pi.BST,
+                    SpeciesSpriteURL = Sprite.getFormURL(species, generation.ToString(), gameStrings.forms[form], false, (pi.Gender == 1 ? "F" : pi.Gender == 0 ? "M": "-"), gameStrings.Species[species]),
                 };
                 switch (abilities.Count)
                 {
@@ -719,8 +732,9 @@ namespace CoreAPI.Helpers
                 }
                 return bp;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 return null;
             }
         }

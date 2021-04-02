@@ -6,6 +6,7 @@ using System.IO;
 using System.ComponentModel.DataAnnotations;
 using PKHeX.Core;
 using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace CoreAPI.Controllers
 {
@@ -61,7 +62,7 @@ namespace CoreAPI.Controllers
         // POST: api/LegalityCheck 
         [Route("api/LegalityCheck")]
         [HttpPost]
-        public string CheckLegality([FromForm] [Required] IFormFile pokemon, [FromForm] string generation)
+        public dynamic CheckLegality([FromForm] [Required] IFormFile pokemon, [FromForm] string generation, bool bot)
         {
             using var memoryStream = new MemoryStream();
             pokemon.CopyTo(memoryStream);
@@ -90,24 +91,30 @@ namespace CoreAPI.Controllers
             catch
             {
                 Response.StatusCode = 400;
-                return null;
+                return "Bad Data Was Provided";
             }
 
             if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
             {
                 Response.StatusCode = 400;
-                return null;
+                return "Pokemon not in generation!";
             }
 
             var la = new LegalityAnalysis(pkm);
-            return la.Report();
+
+            if (bot)
+            {
+                return la.Report();
+            }
+
+            return new { report = la.Report().Replace("\r", string.Empty).Split('\n'), legal = la.Valid };
         }
         // ignore the following weird spagehti codes, but piepie62 nearly drove me to drinkin on trying to come up with a solution.
         [Route("pksm/legality/check")]
         [HttpPost]
         public string clRoute([FromForm] [Required] IFormFile pkmn, [FromHeader] string Generation)
         {
-            return CheckLegality(pkmn, Generation);
+            return CheckLegality(pkmn, Generation, false);
         }
         [Route("api/bot/check")]
         [HttpPost]
@@ -115,8 +122,8 @@ namespace CoreAPI.Controllers
         {
             // wheeeeeeee -Griffin
             dynamic jsonObject = new JObject();
-            jsonObject.IllegalReasons = CheckLegality(pkmn, "");
-            System.Console.WriteLine(jsonObject);
+            jsonObject.IllegalReasons = CheckLegality(pkmn, "", true);
+            // System.Console.WriteLine(jsonObject);
             return jsonObject;
         }
 
