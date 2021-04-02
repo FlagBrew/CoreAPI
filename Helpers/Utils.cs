@@ -93,10 +93,10 @@ namespace CoreAPI.Helpers
 
         public static PKM GetPKMwithGen(string generation, byte[] data)
         {
-            Console.WriteLine("byte: 1 (index 0) " + data[0]);
+/*            Console.WriteLine("byte: 1 (index 0) " + data[0]);
             Console.WriteLine("byte: 2 (index 1) " + data[1]);
             Console.WriteLine("byte: 3 (index 2) " + data[2]);
-            Console.WriteLine("byte: 4 (index 3) " + data[3]);
+            Console.WriteLine("byte: 4 (index 3) " + data[3]);*/
             /*
             Console.WriteLine(data[1]);
             if(generation == "1")

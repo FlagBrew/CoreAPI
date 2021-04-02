@@ -123,7 +123,7 @@ namespace CoreAPI.Controllers
             // wheeeeeeee -Griffin
             dynamic jsonObject = new JObject();
             jsonObject.IllegalReasons = CheckLegality(pkmn, "", true);
-            System.Console.WriteLine(jsonObject);
+            // System.Console.WriteLine(jsonObject);
             return jsonObject;
         }
 

@@ -46,13 +46,12 @@ namespace CoreAPI.Controllers
                         throw new System.ArgumentException("Bad generation!");
                     }
                 }
-                Console.WriteLine(generation);
+/*                Console.WriteLine(generation);
                 Console.WriteLine(pkm.Species);
-                Console.WriteLine(pkm.GetType());
+                Console.WriteLine(pkm.GetType());*/
                 if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
                 {
-                    Response.StatusCode = 400;
-                    return null;
+                    throw new ArgumentException("Pokemon is not in generation");
                 }
                 if (bot)
                 {
@@ -75,6 +74,7 @@ namespace CoreAPI.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 return e.ToString();
             }
         }

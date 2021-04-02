@@ -25,7 +25,10 @@ namespace CoreAPI.Helpers
             string speciesNumText = species.ToString();
             if (speciesNumText.Length == 2)
             {
-                speciesNumText = "0" + species.ToString();
+                speciesNumText =  "0" + species.ToString();
+            } else if (speciesNumText.Length == 1)
+            {
+                speciesNumText = "00" + species.ToString();
             }
 
             var url = "https://sprites.fm1337.com/pokemon-gen" + (generation != "8" ? "7x/" : "8/") + (shiny ? "shiny/" : "regular/");
@@ -43,10 +46,12 @@ namespace CoreAPI.Helpers
             url += SpeciesName.ToLower();
             if (jsonKey != "$")
             {
-                url += jsonKey;
+                url += "-" + jsonKey;
             }
 
             url += ".png";
+            // replace spaces with dashes
+            url = url.Replace(' ', '-');
             return url;
         }
 
@@ -63,6 +68,7 @@ namespace CoreAPI.Helpers
                 forms = spriteJSON[species]["gen-8"];
             } else
             {
+                // Console.WriteLine(species);
                 forms = spriteJSON[species]["gen-7"];
             }
             foreach (JProperty sn in forms["forms"])
@@ -71,9 +77,9 @@ namespace CoreAPI.Helpers
                 var formName = rgx.Replace(Form, "").ToLower().Replace(" ", "");
                 if (sn.Name.Contains(formName))
                 {
-                    if (forms[sn]["is_alias_of"] != null)
+                    if (forms["forms"][sn.Name]["is_alias_of"] != null)
                     {
-                        return (String)forms[species][forms[sn]["is_alias_of"]];
+                        return (String)forms["forms"][sn.Name]["is_alias_of"];
                     }
                     return sn.Name;
                 }
