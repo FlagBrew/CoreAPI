@@ -11,7 +11,7 @@ COPY --from=build /build/Moves.csv /app/
 RUN mkdir /app/data
 COPY --from=build /build/data/pokemon.json /app/data/pokemon.json
 
-EXPOSE 5556
+EXPOSE 5555
 WORKDIR /app
 ENV PATH=/app:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 CMD ["CoreAPI"]
