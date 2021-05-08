@@ -33,4 +33,4 @@ jobs:
     steps:
       - run: |
           set +x
-          curl -XPOST -H 'X-Webhook-Auth: ${{ secrets.WEBHOOK_SECRET }}' -H "Content-type: application/json" -d '{"app": "flagbrew", "service": "coreapi-beta"}' '${{ secrets.WEBHOOK_URL }}'
+          curl -XPOST -H 'X-Webhook-Auth: ${{ secrets.WEBHOOK_SECRET }}' -H "Content-type: application/json" -d '{"app": "flagbrew", "service": "coreapi"}' '${{ secrets.WEBHOOK_URL }}'
