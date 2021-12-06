@@ -21,11 +21,11 @@ namespace CoreAPI.Helpers
         public int Stat_EV { get; set; }
         public string Stat_Total { get; set; }
     }
-    public class PokemonSummary : PKMSummary
+    public class PokemonSummary : EntitySummary
     {
         public string SpeciesSpriteURL { get; }
         public string HeldItemSpriteURL { get; }
-        public string Form { get; }
+        public new string Form { get; }
         public string Generation { get; }
         public int Size { get; }
         public int ItemNum { get; }
