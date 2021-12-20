@@ -10,7 +10,6 @@ COPY --from=build /build/bin/Release/netcoreapp3.1/* /app/
 COPY --from=build /build/Moves.csv /app/
 RUN mkdir /app/data
 COPY --from=build /build/data/pokemon.json /app/data/pokemon.json
-RUN dotnet add package runtime.linux-x64.CoreCompat.System.Drawing
 
 EXPOSE 5555
 WORKDIR /app
