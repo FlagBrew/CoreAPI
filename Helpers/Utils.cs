@@ -49,6 +49,7 @@ namespace CoreAPI.Helpers
                     }
                     break;
                 case "4":
+                case "BDSP":
                     if (speciesNum >= 1 && speciesNum <= 493)
                     {
                         return true;
@@ -115,6 +116,7 @@ namespace CoreAPI.Helpers
                 "7" => new PK7(data),
                 "8" => new PK8(data),
                 "LGPE" => new PB7(data),
+                "BDSP" => new PB8(data),
                 _ => null,
             };
         }
@@ -132,6 +134,7 @@ namespace CoreAPI.Helpers
                 PK7 _ => "7",
                 PB7 _ => "LGPE",
                 PK8 _ => "8",
+                PB8 _ => "BDSP",
                 _ => ""
             };
         }
@@ -149,6 +152,7 @@ namespace CoreAPI.Helpers
                 "6" => GameVersion.ORAS,
                 "7" => GameVersion.USUM,
                 "8" => GameVersion.SWSH,
+                "8.5" => GameVersion.BDSP,
                 _ => GameVersion.Any,
             };
         }
@@ -297,6 +301,7 @@ namespace CoreAPI.Helpers
                         break;
                     }
                 case "4":
+                case "BDSP":
                     {
                         url += "heartgold-soulsilver/";
                         if (isShiny)
@@ -547,6 +552,7 @@ namespace CoreAPI.Helpers
                 PK7 _ => GameVersion.UM,
                 PB7 _ => GameVersion.GE,
                 PK8 _ => GameVersion.SW,
+                PB8 _ => GameVersion.BD,
                 _ => 0
             };
         }

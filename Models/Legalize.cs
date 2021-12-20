@@ -3,6 +3,7 @@ using System.Buffers.Text;
 using System.Threading;
 using CoreAPI.Helpers;
 using PKHeX.Core;
+using Sentry;
 
 namespace CoreAPI.Models
 {
@@ -15,22 +16,29 @@ namespace CoreAPI.Models
         public bool Ran { get; }
         public string QR { get; }
 
+        public void ass(string abc)
+        {
+
+        }
+
         public Legalize(PKM pk, string version)
         {
+            CancellationTokenSource cts = new CancellationTokenSource(10000);
             try
             {
-
-
-                CancellationTokenSource cts = new CancellationTokenSource(10000);
                 var al = new AutoLegality(pk, version, cts);
                 if (al.OkayToRun)
                 {
                     PKM pkmn;
-                    al.LegalizePokemon(cts);
+                    Thread thread = new Thread(() => {
+                        al.LegalizePokemon(cts);
+                    });
+                    thread.Start();
                     while (true)
                     {
                         if (cts.IsCancellationRequested)
                         {
+                            thread.Interrupt();
                             pkmn = al.GetLegalPK();
                             break;
                         }
@@ -77,9 +85,19 @@ namespace CoreAPI.Models
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(version);
-                Console.WriteLine(System.Convert.ToBase64String(pk.DecryptedBoxData));
+                cts.Cancel();
+                if(SentrySdk.IsEnabled)
+                {
+                    SentrySdk.ConfigureScope(scope =>
+                    {
+                        scope.Contexts["pokemon"] = new
+                        {
+                            Version = version,
+                            Base64 = Convert.ToBase64String(pk.DecryptedBoxData)
+                        };
+                    });
+                    SentrySdk.CaptureException(e);
+                }
             }
         }
     }
