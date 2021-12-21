@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1.22-bionic as build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1.416-bionic as build
 COPY . /build
 WORKDIR /build
 
