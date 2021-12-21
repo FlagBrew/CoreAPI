@@ -1,10 +1,10 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1.22-bionic as build
 COPY . /build
 WORKDIR /build
 
 RUN dotnet build --configuration Release
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.22-bionic
 RUN mkdir /app
 COPY --from=build /build/bin/Release/net6.0/* /app/
 COPY --from=build /build/Moves.csv /app/
