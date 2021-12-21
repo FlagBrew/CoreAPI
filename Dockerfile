@@ -6,7 +6,7 @@ RUN dotnet build --configuration Release
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.22-bionic
 RUN mkdir /app
-COPY --from=build /build/bin/Release/net6.0/* /app/
+COPY --from=build /build/bin/Release/netcoreapp3.1/* /app/
 COPY --from=build /build/Moves.csv /app/
 RUN mkdir /app/data
 COPY --from=build /build/data/pokemon.json /app/data/pokemon.json
