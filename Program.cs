@@ -9,8 +9,6 @@ namespace CoreAPI
 {
     public static class Program
     {
-        private static PerformanceCounter cpuCounter;
-
         public static void Main(string[] args)
         {
             String sentryDsn = Environment.GetEnvironmentVariable("SENTRY_DSN");
@@ -33,7 +31,7 @@ namespace CoreAPI
 
         public static void startApplication(string[] args)
         {
-            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            //cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             Thread cpuThread = new Thread(monitorCPU);
             cpuThread.Start();
             CreateHostBuilder(args).Build().Run();
@@ -43,7 +41,7 @@ namespace CoreAPI
         {
             while (true)
             {
-                float value = cpuCounter.NextValue();
+                float value = 10;
                 if (value >= 100)
                 {
                     Environment.Exit(0x00000041); // Exit now CPU usage is too high
