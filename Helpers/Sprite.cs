@@ -31,7 +31,7 @@ namespace CoreAPI.Helpers
                 speciesNumText = "00" + species.ToString();
             }
 
-            var url = "https://sprites.fm1337.com/pokemon-gen" + (generation != "8" ? "7x/" : "8/") + (shiny ? "shiny/" : "regular/");
+            var url = "https://cdn.sigkill.tech/sprites/pokemon-gen" + (generation != "8" ? "7x/" : "8/") + (shiny ? "shiny/" : "regular/");
 
             string jsonKey = getFormNameForJSON(speciesNumText, generation, Form);
 
@@ -41,9 +41,12 @@ namespace CoreAPI.Helpers
             {
                 url += "female/";
             }
+            
+            var speciesName = SpeciesName.ToLower();
+            // strip colons
+            speciesName.Replace(":", string.Empty);
 
-
-            url += SpeciesName.ToLower();
+            url += speciesName;
             if (jsonKey != "$")
             {
                 url += "-" + jsonKey;
@@ -88,14 +91,14 @@ namespace CoreAPI.Helpers
         }
         private static IEnumerable<string> getAllForms(int species)
         {
-            string[] pkx_forms_1 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 1);
-            string[] pkx_forms_2 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 2);
-            string[] pkx_forms_3 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 3);
-            string[] pkx_forms_4 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 4);
-            string[] pkx_forms_5 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 5);
-            string[] pkx_forms_6 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 6);
-            string[] pkx_forms_7 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 7);
-            string[] pkx_forms_8 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 8);
+            string[] pkx_forms_1 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen1);
+            string[] pkx_forms_2 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen2);
+            string[] pkx_forms_3 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen3);
+            string[] pkx_forms_4 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen4);
+            string[] pkx_forms_5 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen5);
+            string[] pkx_forms_6 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen6);
+            string[] pkx_forms_7 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen7);
+            string[] pkx_forms_8 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen8);
 
             return pkx_forms_1.Union(pkx_forms_2).Union(pkx_forms_3).Union(pkx_forms_4).Union(pkx_forms_5).Union(pkx_forms_6).Union(pkx_forms_7).Union(pkx_forms_8);
         }

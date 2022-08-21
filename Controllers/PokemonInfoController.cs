@@ -30,7 +30,7 @@ namespace CoreAPI.Controllers
             {
                 if (string.IsNullOrEmpty(generation))
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    pkm = EntityFormat.GetFromBytes(data);
                     if (pkm == null)
                     {
                         throw new ArgumentException("Bad data!");
@@ -81,7 +81,7 @@ namespace CoreAPI.Controllers
         // POST: api/BasePokemon
         [HttpPost]
         [Route("api/BasePokemon")]
-        public BasePokemon BasePokemon([FromForm][Required] string pokemon, [FromForm] string form, [FromForm] int generation)
+        public BasePokemon BasePokemon([FromForm][Required] string pokemon, [FromForm] string form, [FromForm] string generation)
         {
             if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon.ToLower()))
             {
@@ -94,7 +94,7 @@ namespace CoreAPI.Controllers
                 var formNum = 0;
                 if (form != null)
                 {
-                    var forms = FormConverter.GetFormList((int)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, generation);
+                    var forms = FormConverter.GetFormList((int)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, Utils.GetEntityFromGeneration(generation));
                     formNum = StringUtil.FindIndexIgnoreCase(forms, form);
                     if (formNum < 0 || formNum >= forms.Length)
                     {
@@ -113,7 +113,7 @@ namespace CoreAPI.Controllers
         // POST: api/GetForms
         [HttpPost]
         [Route("api/PokemonForms")]
-        public string[] GetPokemonForms([FromForm][Required] string pokemon)
+        public string[] GetPokemonForms([FromForm][Required] string pokemon, [FromForm] string generation = "8")
         {
             if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon.ToLower()))
             {
@@ -123,7 +123,7 @@ namespace CoreAPI.Controllers
             try
             {
                 Species s = (Species)Enum.Parse(typeof(Species), pokemon, true);
-                Utils.GetFormList((int)s);
+                Utils.GetFormList((int)s, generation);
                 return Utils.GetFormList((int)s);
             }
             catch
@@ -152,7 +152,7 @@ namespace CoreAPI.Controllers
 
         [HttpPost]
         [Route("api/bot/base_info")]
-        public dynamic GetBaseInfoBot([FromForm][Required] string pkmn, [FromForm] string form, [FromForm] int generation)
+        public dynamic GetBaseInfoBot([FromForm][Required] string pkmn, [FromForm] string form, [FromForm] string generation)
         {
             DefaultContractResolver contractResolver = new DefaultContractResolver
             {

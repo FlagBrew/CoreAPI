@@ -26,7 +26,7 @@ namespace CoreAPI.Controllers
             {
                 if (string.IsNullOrEmpty(generation))
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    pkm = EntityFormat.GetFromBytes(data);
                     if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad data!");
@@ -72,7 +72,7 @@ namespace CoreAPI.Controllers
             {
                 if (string.IsNullOrEmpty(generation))
                 {
-                    pkm = PKMConverter.GetPKMfromBytes(data);
+                    pkm = EntityFormat.GetFromBytes(data);
                     if (pkm == null)
                     {
                         throw new System.ArgumentException("Bad data!");

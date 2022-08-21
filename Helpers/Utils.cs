@@ -11,7 +11,7 @@ namespace CoreAPI.Helpers
 {
     public static class Utils
     {
-        private static readonly List<string> pkmnWithFemaleForms = new List<string> { "abomasnow", "aipom", "alakazam", "ambipom", "beautifly", "bibarel", "bidoof", "blaziken", "buizel", "butterfree", "cacturne", "camerupt", "combee", "combusken", "croagunk", "dodrio", "doduo", "donphan", "dustox", "finneon", "floatzel", "frillish", "gabite", "garchomp", "gible", "girafarig", "gligar", "gloom", "golbat", "goldeen", "gulpin", "gyarados", "heracross", "hippopotas", "hippowdon", "houndoom", "hypno", "jellicent", "kadabra", "kricketot", "kricketune", "ledian", "ledyba", "ludicolo", "lumineon", "luxio", "luxray", "magikarp", "mamoswine", "medicham", "meditite", "meganium", "milotic", "murkrow", "nidoran", "numel", "nuzleaf", "octillery", "pachirisu", "pikachu", "piloswine", "politoed", "pyroar", "quagsire", "raichu", "raticate", "rattata", "relicanth", "rhydon", "rhyhorn", "rhyperior", "roselia", "roserade", "scizor", "scyther", "seaking", "shiftry", "shinx", "sneasel", "snover", "spinda", "staraptor", "staravia", "starly", "steelix", "sudowoodo", "swalot", "tangrowth", "torchic", "toxicroak", "unfezant", "unown", "ursaring", "venusaur", "vileplume", "weavile", "wobbuffet", "wooper", "xatu", "zubat" };
+        private static readonly List<string> pkmnWithFemaleForms = new List<string> { "abomasnow", "aipom", "alakazam", "ambipom", "beautifly", "bibarel", "bidoof", "blaziken", "buizel", "butterfree", "cacturne", "camerupt", "combee", "combusken", "croagunk", "dodrio", "doduo", "donphan", "dustox", "finneon", "floatzel", "frillish", "gabite", "garchomp", "gible", "girafarig", "gligar", "gloom", "golbat", "goldeen", "gulpin", "gyarados", "heracross", "hippopotas", "hippowdon", "houndoom", "hypno", "jellicent", "kadabra", "kricketot", "kricketune", "ledian", "ledyba", "ludicolo", "lumineon", "luxio", "luxray", "magikarp", "mamoswine", "medicham", "meditite", "meganium", "milotic", "murkrow", "nidoran", "numel", "nuzleaf", "octillery", "pachirisu", "pikachu", "piloswine", "politoed", "pyroar", "quagsire", "raichu", "raticate", "rattata", "relicanth", "rhydon", "rhyhorn", "rhyperior", "roselia", "roserade", "scizor", "scyther", "seaking", "shiftry", "shinx", "sneasel", "snover", "spinda", "staraptor", "staravia", "starly", "steelix", "sudowoodo", "swalot", "tangrowth", "torchic", "toxicroak", "unfezant", "unown", "ursaring", "venusaur", "vileplume", "weavile", "wobbuffet", "wooper", "xatu", "zubat", "meowstic", "indeedee", "basculegion" };
         private static readonly List<string> pkmnEggGroups = new List<string> { "Monster", "Water 1", "Bug", "Flying", "Field" , "Fairy", "Grass", "Human-Like", "Water 3", "Mineral", "Amorphous", "Water 2", "Ditto", "Dragon", "Undiscovered" };
 
         private static readonly string[] Splitters = {"| ", " |", " | ", "|"};
@@ -85,8 +85,16 @@ namespace CoreAPI.Helpers
                         return true;
                     }
                     break;
+                case "PLA":
+                    // Gotta build the list manually >_< (and yes I manually typed out all these, it sucked)
+                    var supported = new List<int>(){ 722, 723, 724, 155, 156, 157, 501, 502, 503, 399, 400, 396, 397, 398, 403, 404, 405, 265, 266, 267, 268, 269, 77, 78, 133, 134, 135, 136, 196, 197, 470, 471, 700, 41, 42, 169, 425, 426, 401, 402, 418, 419, 412, 413, 414, 74, 75, 76, 234, 899, 446, 143, 46, 47, 172, 25, 26, 63, 64, 65, 390, 391, 392, 427, 428, 420, 421, 54, 55, 415, 416, 123, 900, 212, 214, 439, 122, 190, 424, 129, 130, 422, 423, 211, 904, 440, 113, 242, 406, 315, 407, 455, 548, 549, 114, 465, 339, 340, 453, 454, 280, 281, 282, 475, 193, 469, 449, 450, 417, 434, 435, 216, 217, 901, 704, 705, 706, 95, 208, 111, 112, 464, 438, 185, 108, 463, 175, 176, 468, 387, 388, 389, 137, 233, 474, 092, 093, 094, 442, 198, 430, 201, 363, 364, 365, 223, 224, 451, 452, 58, 59, 431, 432, 66, 67, 68, 441, 355, 356, 477, 393, 394, 395, 458, 226, 550, 902, 37, 38, 72, 73, 456, 457, 240, 126, 467, 81, 82, 462, 436, 437, 239, 125, 466, 207, 472, 443, 444, 445, 299, 476, 100, 101, 479, 433, 358, 200, 429, 173, 35, 36, 215, 903, 461, 361, 362, 478, 408, 409, 410, 411, 220, 221, 473, 712, 713, 459, 570, 571, 672, 628, 447, 448, 480, 481, 482, 485, 486, 488, 641, 642, 645, 905, 483, 484, 487, 493, 489, 490, 492, 491};
+                    if (supported.FirstOrDefault(sn => sn == speciesNum) != 0)
+                    {
+                        return true;
+                    }
+                    break;
                 default:
-                    Console.WriteLine("Fucker didn't provide any generation, go fuck yourself");
+                    Console.WriteLine("Generation wasn't provided. We determine and thus must return false");
                     return false;
             }
             return false;
@@ -117,6 +125,7 @@ namespace CoreAPI.Helpers
                 "8" => new PK8(data),
                 "LGPE" => new PB7(data),
                 "BDSP" => new PB8(data),
+                "PLA" => new PA8(data),
                 _ => null,
             };
         }
@@ -135,6 +144,7 @@ namespace CoreAPI.Helpers
                 PB7 _ => "LGPE",
                 PK8 _ => "8",
                 PB8 _ => "BDSP",
+                PA8 _ => "PLA",
                 _ => ""
             };
         }
@@ -152,375 +162,16 @@ namespace CoreAPI.Helpers
                 "6" => GameVersion.ORAS,
                 "7" => GameVersion.USUM,
                 "8" => GameVersion.SWSH,
-                "8.5" => GameVersion.BDSP,
+                "BDSP" => GameVersion.BDSP,
+                "PLA" => GameVersion.PLA,
+                "LGPE" => GameVersion.Gen7b,
                 _ => GameVersion.Any,
             };
         }
 
-        // For fuck's sake rewrite this later, I can't stand looking at it anymore
-        public static string GetPokeSprite(int pokemonNum, string pokemonName, string pokemonGender, string form, string generation, bool isShiny)
-        {
-            var formSet = false;
-            switch (pokemonName)
-            {
-                case "Type: Null":
-                    {
-                        pokemonName = "type-null";
-                        break;
-                    }
-                case "Farfetch'd":
-                case "Farfetch’d":
-                    {
-                        pokemonName = "farfetchd";
-                        break;
-                    }
-                case "Nidoran♂":
-                case "Nidoran♀":
-                    {
-                        if (pokemonName.Contains("♂"))
-                        {
-                            pokemonName = "nidoran-m";
-                        }
-                        else
-                        {
-                            pokemonName = "nidoran-f";
-                        }
-                        formSet = true;
-                        break;
-                    }
-                case "Mr. Mime":
-                    {
-                        pokemonName = "mr-mime";
-                        break;
-                    }
-                case "Mime Jr.":
-                    {
-                        pokemonName = "mime-jr";
-                        break;
-                    }
-                case "Tapu Koko":
-                case "Tapu Lele":
-                case "Tapu Bulu":
-                case "Tapu Fini":
-                    {
-                        pokemonName = pokemonName.Replace(" ", "-");
-                        break;
-                    }
-                case "Flabébé":
-                    {
-                        pokemonName = "flabebe";
-                        break;
-                    }
-                case "Meowstic":
-                    {
-                        if (generation != "8")
-                        {
-                            if (pokemonGender == "M")
-                            {
-                                form = "male";
-                            }
-                            else
-                            {
-                                form = "female";
-                            }
-                        }
-                        break;
-                    }
-                case "Rockruff":
-                    {
-                        formSet = true;
-                        break;
-                    }
-                case "Genesect":
-                    {
-                        formSet = true;
-                        break;
-                    }
-                case "Necrozma":
-                    {
-                        switch (form.ToLower())
-                        {
-                            case "dawn":
-                                {
-                                    form = "dawn-wings";
-                                    break;
-                                }
-                            case "dusk":
-                                {
-                                    form = "dusk-mane";
-                                    break;
-                                }
-                        }
-                        break;
-                    }
-            }
-            if (form.ToLower() == "large" && pokemonName.ToLower() != "gourgeist")
-            {
-                formSet = true;
-            }
-            pokemonName = pokemonName.Replace("'", "").Replace("é", "e").Replace("’", "").Replace(" ", "-");
-            form = form.Replace("%-C", "").Replace("%", "").Replace("é", "e");
-            var url = "https://sprites.fm1337.com/";
-            if (generation == "LGPE")
-            {
-                generation = "7";
-            }
-            int result = int.Parse(generation);
-            switch (generation)
-            {
-                case "1":
-                    {
-                        url += "red-blue/normal/" + pokemonName.ToLower() + "-color";
-                        formSet = true;
-                        break;
-                    }
-                case "2":
-                    {
-                        url += "crystal/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "3":
-                    {
-                        url += "emerald/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "4":
-                case "BDSP":
-                    {
-                        url += "heartgold-soulsilver/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "5":
-                    {
-                        url += "black-white-2/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "6":
-                    {
-                        url += "omega-ruby-alpha-sapphire/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "7":
-                    {
-                        url += "ultra-sun-ultra-moon/";
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-                case "8":
-                    {
-                        url += "sprites/8/";
-                        if(pokemonGender == "female")
-                        {
-                            url += "female/";
-                        }
-                        if (isShiny)
-                        {
-                            url += "shiny/" + pokemonName.ToLower();
-                        }
-                        else
-                        {
-                            url += "normal/" + pokemonName.ToLower();
-                        }
-                        break;
-                    }
-            }
-            switch (pokemonNum)
-            {
-                case 774:
-                    {
-                        if (form.StartsWith("M"))
-                        {
-                            form = "meteor";
-                        }
-                        else
-                        {
-                            form = form.Replace("C-", "").ToLower() + "-core";
-                        }
-                        url += "-" + form;
-                        formSet = true;
-                        break;
-                    }
-                case 201:
-                    {
-                        if (form == "!")
-                        {
-                            form = "em";
-                        }
-                        else if (form == "?")
-                        {
-                            form = "qm";
-                        }
-                        else
-                        {
-                            form = form.ToLower();
-                        }
-                        url += "-" + form;
-                        formSet = true;
-                        break;
-                    }
-                case 386:
-                case 493:
-                case 479:
-                case 646:
-                case 550:
-                    {
-                        if ((result == 5 && pokemonName.ToLower() == "kyurem") || (result < 5 && pokemonName.ToLower() == "rotom"))
-                        {
-                            formSet = true;
-                        }
-                        else if (result == 5 && pokemonName.ToLower() == "basculin")
-                        {
-                            url += "-" + form.ToLower() + "-striped";
-                            formSet = true;
-                        }
-                        else
-                        {
-                            url += "-" + form.ToLower();
-                            formSet = true;
-                        }
-                        break;
-                    }
-                case 25:
-                    {
-                        if (form.ToLower() != "normal")
-                        {
-                            if (result == 6)
-                            {
-                                url += "-cosplay";
-                                formSet = true;
-                            }
-                            else if (result == 7)
-                            {
-                                if (form.ToLower() != "cosplay")
-                                {
-                                    url += "-" + form.ToLower() + "-cap";
-                                    formSet = true;
-                                }
-                                else
-                                {
-                                    url += "-cosplay";
-                                    formSet = true;
-                                }
-                            }
-                        }
-                        break;
-                    }
-                case 676:
-                    {
-                        if (form.ToLower() == "natural")
-                        {
-                            formSet = true;
-                        }
-                        break;
-                    }
-                case 664:
-                case 665:
-                case 658:
-                    {
-                        formSet = true;
-                        break;
-                    }
-                case 414:
-                    {
-                        formSet = true;
-                        break;
-                    }
-                case 741:
-                    {
-                        if (form.ToLower() == "pa’u")
-                        {
-                            form = "pau";
-                        }
-                        break;
-                    }
-                case 778:
-                    {
-                        if (form.ToLower() == "disguised")
-                        {
-                            formSet = true;
-                        }
-
-                        break;
-                    }
-            }
-
-            if (!formSet && result > 3)
-            {
-                if (form.ToLower() != "normal" && form != "" && form != "♀")
-                {
-                    if (form.ToLower() == "alola")
-                    {
-                        form = "alolan";
-                    }
-                    url += "-" + form.Replace(" ", "-").ToLower();
-                    formSet = true;
-                }
-            }
-            if (pkmnWithFemaleForms.Any(p => p == pokemonName.ToLower()) && pokemonGender == "F" && result > 3 && !formSet)
-            {
-                if (form.ToLower() == "normal" && form.Length == 0)
-                {
-                    url += "-f";
-                    formSet = true;
-                }
-            }
-
-            url += ".png";
-            // Console.WriteLine(origin_game);
-            // Console.WriteLine(form);
-            // Console.WriteLine(generation);
-            return url;
-        }
         public static string GetForm(PKM pkm, int alt)
         {
-            var ds = FormConverter.GetFormList(pkm.Species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, pkm.Format);
+            var ds = FormConverter.GetFormList(pkm.Species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, pkm.Context);
             if (ds.Length > 1)
             {
                 return ds[alt];
@@ -553,6 +204,7 @@ namespace CoreAPI.Helpers
                 PB7 _ => GameVersion.GE,
                 PK8 _ => GameVersion.SW,
                 PB8 _ => GameVersion.BD,
+                PA8 _ => GameVersion.PLA,
                 _ => 0
             };
         }
@@ -650,20 +302,21 @@ namespace CoreAPI.Helpers
             Pink,
         }
 
-        public static string[] GetFormList(in int species)
+        public static string[] GetFormList(in int species, in string generation = "8")
         {
             var s = GameInfo.Strings;
             if (species == (int)Species.Alcremie)
                 return FormConverter.GetAlcremieFormList(s.forms);
-            return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, 8).ToArray();
+            return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, GetEntityFromGeneration(generation)).ToArray();
         }
 
-        public static BasePokemon GetBasePokemon(int species, int form, int generation)
+        public static BasePokemon GetBasePokemon(int species, int form, string generation)
         {
             try
             {
+                dynamic pi;
                 var gameStrings = GameInfo.Strings;
-                var pi = PersonalTable.SWSH.GetFormEntry(species, form);
+                pi = PersonalTable.SWSH.GetFormEntry(species, form);
                 if (pi.HP == 0)
                     pi = PersonalTable.USUM.GetFormEntry(species, form);
                    
@@ -716,7 +369,7 @@ namespace CoreAPI.Helpers
                     Genderless = pi.Genderless,
                     OnlyFemale = pi.OnlyFemale,
                     OnlyMale = pi.OnlyMale,
-                    BST = pi.BST,
+                    BST = pi.GetBaseStatTotal(),
                     SpeciesSpriteURL = Sprite.getFormURL(species, generation.ToString(), gameStrings.forms[form], false, (pi.Gender == 1 ? "F" : pi.Gender == 0 ? "M": "-"), gameStrings.Species[species]),
                 };
                 switch (abilities.Count)
@@ -743,6 +396,35 @@ namespace CoreAPI.Helpers
                 Console.WriteLine(e);
                 return null;
             }
+        }
+        public static EntityContext GetEntityFromGeneration(string generation)
+        {
+            switch (generation)
+            {
+                case "1":
+                    return EntityContext.Gen1;
+                case "2":
+                    return EntityContext.Gen2;
+                case "3":
+                    return EntityContext.Gen3;
+                case "4":
+                    return EntityContext.Gen4;
+                case "5":
+                    return EntityContext.Gen5;
+                case "6":
+                    return EntityContext.Gen6;
+                case "7":
+                    return EntityContext.Gen7;
+                case "8":
+                    return EntityContext.Gen8;
+                case "LGPE":
+                    return EntityContext.Gen7b;
+                case "BDSP":
+                    return EntityContext.Gen8a;
+                case "PLA":
+                    return EntityContext.Gen8b;
+            }
+            throw new Exception("Unsupported generation");
         }
     }
 }
