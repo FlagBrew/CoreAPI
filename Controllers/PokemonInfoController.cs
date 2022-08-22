@@ -35,7 +35,8 @@ namespace CoreAPI.Controllers
                     {
                         throw new ArgumentException("Bad data!");
                     }
-                    generation = Utils.GetGeneration(pkm);
+                    generation = Utils.GetGenerationFromVersion(pkm.Version);
+                    pkm = Utils.GetPKMwithGen(generation, data);
                 }
                 else
                 {
