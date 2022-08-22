@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using CoreAPI.Models;
 using System.ComponentModel.DataAnnotations;
 using CoreAPI.Helpers;
+using System.Collections.Generic;
 
 namespace CoreAPI.Controllers
 {
@@ -24,10 +25,10 @@ namespace CoreAPI.Controllers
             // Make sure the generation is between 1 and 8 and is actually a number
             try
             {
-                var gen = int.Parse(generation);
-                if (gen < 1 || gen > 8)
+                var acceptableGenerations = new List<String>() { "1", "2", "3", "4", "5", "6", "7", "8", "BDSP", "PLA"};
+                if (acceptableGenerations.FirstOrDefault(g => g == generation.ToUpper()) == string.Empty)
                 {
-                    throw new ArgumentOutOfRangeException("Must be between 1 and 8");
+                    throw new ArgumentOutOfRangeException("Must be between 1 and PLA");
                 }
             }
             catch

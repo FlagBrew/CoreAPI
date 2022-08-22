@@ -31,7 +31,8 @@ namespace CoreAPI.Controllers
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
-                    generation = Utils.GetGeneration(pkm);
+                    generation = Utils.GetGenerationFromVersion(pkm.Version);
+                    pkm = Utils.GetPKMwithGen(generation, data);
                 }
                 else
                 {
@@ -77,7 +78,8 @@ namespace CoreAPI.Controllers
                     {
                         throw new System.ArgumentException("Bad data!");
                     }
-                    generation = Utils.GetGeneration(pkm);
+                    generation = Utils.GetGenerationFromVersion(pkm.Version);
+                    pkm = Utils.GetPKMwithGen(generation, data);
                 }
                 else
                 {
@@ -94,6 +96,7 @@ namespace CoreAPI.Controllers
                 return "Bad Data Was Provided";
             }
 
+            System.Console.WriteLine(generation);
             if (!Utils.PokemonExistsInGeneration(generation, pkm.Species))
             {
                 Response.StatusCode = 400;

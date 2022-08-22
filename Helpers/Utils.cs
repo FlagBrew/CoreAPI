@@ -132,6 +132,7 @@ namespace CoreAPI.Helpers
 
         public static string GetGeneration(PKM pkm)
         {
+
             return pkm switch
             {
                 PK1 _ => "1",
@@ -152,6 +153,7 @@ namespace CoreAPI.Helpers
 
         public static GameVersion GetGameVersion(string generation)
         {
+            // Also supports game code
             return generation switch
             {
                 "1" => GameVersion.RBY,
@@ -164,9 +166,47 @@ namespace CoreAPI.Helpers
                 "8" => GameVersion.SWSH,
                 "BDSP" => GameVersion.BDSP,
                 "PLA" => GameVersion.PLA,
-                "LGPE" => GameVersion.Gen7b,
+                "LGPE" => GameVersion.GG,
                 _ => GameVersion.Any,
             };
+        }
+
+        public static string GetGenerationFromVersion(int version)
+        {
+            int[] gen1 = { 35, 36, 37, 38, 50, 51, 84, 83 };
+            int[] gen2 = { 39, 40, 41, 52, 53, 85 };
+            int[] gen3 = { 1, 2, 3, 4, 5, 54, 55, 56, 57, 58, 59 };
+            int[] gen4 = { 10, 11, 12, 7, 8, 60, 61, 62, 0x3F };
+            int[] gen5 = { 20, 21, 22, 23, 0x40, 65 };
+            int[] gen6 = { 24, 25, 26, 27, 66, 67, 68 };
+            int[] gen7 = { 30, 0x1F, 0x20, 33, 34, 42, 43, 69, 70, 71 };
+            int[] gen8 = { 44, 45, 47, 72 };
+            int[] genBDSP = { 73, 48, 49 };
+            switch (true)
+            {
+                case var _ when gen1.Contains(version):
+                    return "1";
+                case var _ when gen2.Contains(version):
+                    return "2";
+                case var _ when gen3.Contains(version):
+                    return "3";
+                case var _ when gen4.Contains(version):
+                    return "4";
+                case var _ when gen5.Contains(version):
+                    return "5";
+                case var _ when gen6.Contains(version):
+                    return "6";
+                case var _ when gen7.Contains(version):
+                    return "7";
+                case var _ when gen8.Contains(version):
+                    return "8";
+                case var _ when genBDSP.Contains(version):
+                    return "BDSP";
+                case var _ when version == 471:
+                    return "PLA";
+                default:
+                    throw new NotSupportedException();
+            }
         }
 
         public static string GetForm(PKM pkm, int alt)
@@ -217,7 +257,7 @@ namespace CoreAPI.Helpers
                 return match.Value;
             return "";
         }
-        public static List<GenerationLocation> GetLocations(string pokemon, string generation, string[] moves)
+        public static List<GenerationLocation> GetLocations(string pokemon, string generation, string specialGen, string[] moves)
         {
             // If the pokemon doesn't exist, then we return a null list and handle it on the controller
             if (!Enum.GetNames(typeof(Species)).Any(s => s.ToLower() == pokemon))
@@ -261,11 +301,35 @@ namespace CoreAPI.Helpers
                 // Now we get the location
                 var loc = GetStringFromRegex("(?<=.{8}).+?(?=:)", encounter);
                 // And the games for the location
-                var games = GetStringFromRegex(@"([\t ][A-Z |,]{1,100}$|Any)", encounter);
+                var games = GetStringFromRegex(@"([\t ][A-Z , a-z 0-9]{1,100}$|Any)", encounter);
                 // We also have to do some cleanup on the games data
                 games = games.Replace(" ", "");
                 games = games.Trim(':');
                 games = games.Trim('\t');
+                if (specialGen == "" && ContainsAny(games, "BD", "SP", "PLA", "GG", "GE", "GO", "GP")) {
+                    continue;
+                }
+
+                if (specialGen == "BDSP" && !ContainsAny(games, "BD", "SP")) {
+                    continue;
+                }
+
+                if (specialGen == "PLA" && !games.Contains("PLA"))
+                {
+                    continue;
+                }
+
+                if (specialGen == "LGPE" && !ContainsAny(games, "GO", "GG", "GP", "GE"))
+                {
+                    continue;
+                }
+
+                if (specialGen != "" && games.Contains("Gen"))
+                {
+                    // Remove the gen out of there as we only want our special generation and not just a generic one.
+                    games = Regex.Replace(games, @",Gen[0-9]{1,2}", "");
+                }
+
                 // Now we need to split the games list into an array
                 var gamesArray = games.Split(',');
                 // Next we add the data to the location list
@@ -425,6 +489,16 @@ namespace CoreAPI.Helpers
                     return EntityContext.Gen8b;
             }
             throw new Exception("Unsupported generation");
+        }
+        public static bool ContainsAny(this string haystack, params string[] needles)
+        {
+            foreach (string needle in needles)
+            {
+                if (haystack.Contains(needle))
+                    return true;
+            }
+
+            return false;
         }
     }
 }
