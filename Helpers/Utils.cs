@@ -179,7 +179,8 @@ namespace CoreAPI.Helpers
             int[] gen4 = { 10, 11, 12, 7, 8, 60, 61, 62, 0x3F };
             int[] gen5 = { 20, 21, 22, 23, 0x40, 65 };
             int[] gen6 = { 24, 25, 26, 27, 66, 67, 68 };
-            int[] gen7 = { 30, 0x1F, 0x20, 33, 34, 42, 43, 69, 70, 71 };
+            int[] gen7 = { 30, 0x1F, 0x20, 33, 69, 70 };
+            int[] genLGPE = { 71, 34, 42, 43 };
             int[] gen8 = { 44, 45, 47, 72 };
             int[] genBDSP = { 73, 48, 49 };
             switch (true)
@@ -198,6 +199,8 @@ namespace CoreAPI.Helpers
                     return "6";
                 case var _ when gen7.Contains(version):
                     return "7";
+                case var _ when genLGPE.Contains(version):
+                    return "LGPE";
                 case var _ when gen8.Contains(version):
                     return "8";
                 case var _ when genBDSP.Contains(version):
@@ -490,6 +493,7 @@ namespace CoreAPI.Helpers
             }
             throw new Exception("Unsupported generation");
         }
+        // Borrowed from https://stackoverflow.com/questions/3519539/how-to-check-if-a-string-contains-any-of-some-strings
         public static bool ContainsAny(this string haystack, params string[] needles)
         {
             foreach (string needle in needles)
