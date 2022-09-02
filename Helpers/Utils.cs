@@ -436,7 +436,7 @@ namespace CoreAPI.Helpers
                     Genderless = pi.Genderless,
                     OnlyFemale = pi.OnlyFemale,
                     OnlyMale = pi.OnlyMale,
-                    BST = pi.GetBaseStatTotal(),
+                    BST = pi.ATK + pi.DEF + pi.SPE + pi.SPA + pi.SPD + pi.HP,
                     SpeciesSpriteURL = Sprite.getFormURL(species, generation.ToString(), gameStrings.forms[form], false, (pi.Gender == 1 ? "F" : pi.Gender == 0 ? "M": "-"), gameStrings.Species[species]),
                 };
                 switch (abilities.Count)
