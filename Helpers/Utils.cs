@@ -374,18 +374,18 @@ namespace CoreAPI.Helpers
             var s = GameInfo.Strings;
             if (species == (int)Species.Alcremie)
                 return FormConverter.GetAlcremieFormList(s.forms);
-            return FormConverter.GetFormList(species, s.Types, s.forms, GameInfo.GenderSymbolASCII, GetEntityFromGeneration(generation)).ToArray();
+            return FormConverter.GetFormList((ushort)species, s.Types, s.forms, GameInfo.GenderSymbolASCII, GetEntityFromGeneration(generation)).ToArray();
         }
 
-        public static BasePokemon GetBasePokemon(int species, int form, string generation)
+        public static BasePokemon GetBasePokemon(int species, byte form, string generation)
         {
             try
             {
                 dynamic pi;
                 var gameStrings = GameInfo.Strings;
-                pi = PersonalTable.SWSH.GetFormEntry(species, form);
+                pi = PersonalTable.SWSH.GetFormEntry((ushort)species, form);
                 if (pi.HP == 0)
-                    pi = PersonalTable.USUM.GetFormEntry(species, form);
+                    pi = PersonalTable.USUM.GetFormEntry((ushort)species, form);
                    
 
                 var abilities = new List<string>();

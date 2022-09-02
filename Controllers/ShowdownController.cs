@@ -26,7 +26,6 @@ namespace CoreAPI.Controllers
             try
             {
                 showdown = new ShowdownSet(set);
-                Console.WriteLine(Utils.GetGameVersion(generation));
                 var sav = SaveUtil.GetBlankSAV(Utils.GetGameVersion(generation), "Yeet");
                 PKM newPKM = sav.GetLegalFromSet(showdown, out var result);
                 PokemonSummary pks = new PokemonSummary(newPKM, GameInfo.Strings);

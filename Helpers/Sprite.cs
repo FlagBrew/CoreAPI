@@ -91,14 +91,15 @@ namespace CoreAPI.Helpers
         }
         private static IEnumerable<string> getAllForms(int species)
         {
-            string[] pkx_forms_1 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen1);
-            string[] pkx_forms_2 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen2);
-            string[] pkx_forms_3 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen3);
-            string[] pkx_forms_4 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen4);
-            string[] pkx_forms_5 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen5);
-            string[] pkx_forms_6 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen6);
-            string[] pkx_forms_7 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen7);
-            string[] pkx_forms_8 = FormConverter.GetFormList(species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen8);
+            ushort lazy_cast = (ushort) species;
+            string[] pkx_forms_1 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen1);
+            string[] pkx_forms_2 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen2);
+            string[] pkx_forms_3 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen3);
+            string[] pkx_forms_4 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen4);
+            string[] pkx_forms_5 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen5);
+            string[] pkx_forms_6 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen6);
+            string[] pkx_forms_7 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen7);
+            string[] pkx_forms_8 = FormConverter.GetFormList(lazy_cast, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, EntityContext.Gen8);
 
             return pkx_forms_1.Union(pkx_forms_2).Union(pkx_forms_3).Union(pkx_forms_4).Union(pkx_forms_5).Union(pkx_forms_6).Union(pkx_forms_7).Union(pkx_forms_8);
         }

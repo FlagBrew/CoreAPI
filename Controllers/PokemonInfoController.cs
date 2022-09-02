@@ -35,8 +35,10 @@ namespace CoreAPI.Controllers
                     {
                         throw new ArgumentException("Bad data!");
                     }
+                    Console.WriteLine(pkm.Generation);
                     generation = Utils.GetGenerationFromVersion(pkm.Version);
                     pkm = Utils.GetPKMwithGen(generation, data);
+                    Console.WriteLine(pkm.Generation);
                 }
                 else
                 {
@@ -95,7 +97,7 @@ namespace CoreAPI.Controllers
                 var formNum = 0;
                 if (form != null)
                 {
-                    var forms = FormConverter.GetFormList((int)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, Utils.GetEntityFromGeneration(generation));
+                    var forms = FormConverter.GetFormList((ushort)s, GameInfo.Strings.Types, GameInfo.Strings.forms, GameInfo.GenderSymbolASCII, Utils.GetEntityFromGeneration(generation));
                     formNum = StringUtil.FindIndexIgnoreCase(forms, form);
                     if (formNum < 0 || formNum >= forms.Length)
                     {
@@ -103,7 +105,7 @@ namespace CoreAPI.Controllers
                         formNum = 0;
                     }
                 }
-                return Utils.GetBasePokemon((int)s, formNum, generation);
+                return Utils.GetBasePokemon((int)s, System.Convert.ToByte(formNum), generation);
             }
             catch
             {
