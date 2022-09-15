@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pythonnet = ">=3.0.0rc4"
+flask = "*"
 
 [dev-packages]
 

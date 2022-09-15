@@ -77,7 +77,7 @@ class Sprites:
         return None
 
 
-def placeholder_get_info(strings: LanguageStrings):
+def generate_bindings(strings: LanguageStrings):
     contexts = [
         EntityContext.Gen1,
         EntityContext.Gen2,
@@ -147,7 +147,7 @@ def placeholder_get_info(strings: LanguageStrings):
     except FileNotFoundError:
         pass
 
-    print("There are {} forms to go through and you have gotten through {} of them, meaning {} more to go, good luck, you're doing this manually bitch".format(len(species_form), lastIndex, len(species_form)- lastIndex))
+    print("There are {} forms to go through and you have gotten through {} of them, meaning {} more to go, good luck, you're doing this manually".format(len(species_form), lastIndex, len(species_form)- lastIndex))
     bindings = {}
     if lastIndex != 0:
         bindings = data.get('bindings')

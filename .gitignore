@@ -4,4 +4,4 @@
 *.pa8
 .vscode/
 .pytest_cache/
-utils/__pycache__/
+*.pyc
