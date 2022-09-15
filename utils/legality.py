@@ -19,4 +19,3 @@ def legality_check(pkmn):
     report = LegalityFormatting.GetLegalityReport(la)
 
     return la.Valid, report
-

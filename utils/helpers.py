@@ -103,7 +103,7 @@ def get_pkmn(data, generation = None) -> Union[PokeList1, PokeList2, PK3, PK4, P
             return PB7(data)
         elif generation == "PLA":
             return PA8(data)
-        else:
+        elif generation is None:
             # Get the pkmn from both approaches
             entityPkmn = EntityFormat.GetFromBytes(data)
             getPkmnPkmn = get_pkmn(data, get_generation_from_version(entityPkmn.Version))
@@ -121,9 +121,10 @@ def get_pkmn(data, generation = None) -> Union[PokeList1, PokeList2, PK3, PK4, P
             # we do this rather than just returning the pokemon directly as legality checks
             # seem to fail if we don't have the correct generation despite the fact that the pokemon is valid
             #return get_pkmn(data, get_generation_from_version(pkmn.Version))
+        else:
+            return None
     except:
         return None
-        
 
 def get_game_version(pkm):
     return {
@@ -176,4 +177,29 @@ def get_generation_from_version(ver):
         return "PLA"
     else:
         raise ValueError("Unsuppored game version")
+
+def get_pokemon_from_flask_request(request):
+    try:
+        pkmn = request.files['pkmn']
+    except:
+        return None, {"error": "Missing pokemon file"}
+
+    # let's try to get the generation
+    try:
+        generation = request.form['generation']
+    except:
+        generation = None
     
+    # copy the file to a byte array
+    data = bytearray(pkmn.read())
+    if len(data) == 0:
+        return None, {"error": "Missing pokemon file"}
+    pkmn.close()
+    # get the pkmn
+    pkmn = get_pkmn(data, generation)
+
+    # if we couldn't get the pkmn, return an error
+    if pkmn is None:
+        return None, {"error": "Invalid pokemon file or bad generation"}
+
+    return pkmn, None
