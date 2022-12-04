@@ -192,30 +192,3 @@ def get_pokemon_from_base64(input, generation = None):
 
     return pkmn, None
     
-
-
-def get_pokemon_from_flask_request(request):
-    try:
-        pkmn = request.files['pkmn']
-    except:
-        return None, {"error": "Missing pokemon file"}
-
-    # let's try to get the generation
-    try:
-        generation = request.form['generation']
-    except:
-        generation = None
-    
-    # copy the file to a byte array
-    data = bytearray(pkmn.read())
-    if len(data) == 0:
-        return None, {"error": "Missing pokemon file"}
-    pkmn.close()
-    # get the pkmn
-    pkmn = get_pkmn(data, generation)
-
-    # if we couldn't get the pkmn, return an error
-    if pkmn is None:
-        return None, {"error": "Invalid pokemon file or bad generation"}
-
-    return pkmn, None

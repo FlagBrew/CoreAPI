@@ -1,6 +1,5 @@
 # type: ignore ReportMissingImport
 
-import random
 from utils.helpers import LanguageStrings
 from PKHeX.Core import FormConverter, GameInfo, EntityContext
 import json

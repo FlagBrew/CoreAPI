@@ -1,7 +1,7 @@
 # type: ignore ReportMissingImport
 
 from pythonnet import load
-#load("coreclr")
+#load("coreclr") <-- Using something other than mono caused sig 11 to occur
 
 import clr, sys, os
 
@@ -18,4 +18,4 @@ RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons)
 APILegality.EnableEasterEggs = False
 APILegality.PrioritizeGame = False
 APILegality.UseTrainerData = False
-APILegality.Timeout = 30
+APILegality.Timeout = 15
