@@ -10,6 +10,32 @@ VERSION_FULL=$(shell git describe --tags --always --dirty --match=v* 2> /dev/nul
 clean:
 	/bin/rm -rfv ${PROJECT}
 
+
+# Docker
+docker:
+	docker compose \
+		--project-name ${COMPOSE_PROJECT} \
+		--file docker-compose.yaml \
+		up \
+		--remove-orphans \
+		--build \
+		--timeout 0 ${COMPOSE_ARGS}
+
+docker-clean:
+	docker compose \
+		--project-name ${COMPOSE_PROJECT} \
+		--file docker-compose.yaml \
+		down \
+		--volumes \
+		--remove-orphans \
+		--rmi local --timeout 1
+
+docker-build:
+	docker build \
+		--tag ${PROJECT} \
+		--force-rm .
+
+
 # Python
 python-fetch:
 	python3 -m pip install -r python/requirements.txt
