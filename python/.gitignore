@@ -1,0 +1,7 @@
+*.pk[1-8]
+*.pb8
+*.pb7
+*.pa8
+.vscode/
+.pytest_cache/
+*.pyc

@@ -1,0 +1,87 @@
+{
+  "ability": "",
+  "ability_num": -1,
+  "ball": "None",
+  "base64": "AQv/CwCzNwAAAC0ybxVn1icCiecAAAAAAAAAAAAAk/oUKBQoNwCzAEsAWgA2AFKKjoqIUAAAAAAAAIuIgoqIk5SNhlBQ",
+  "checksum": 44268,
+  "contest_stats": [
+    { "stat_name": "Cool", "stat_value": 0 },
+    { "stat_name": "Beauty", "stat_value": 0 },
+    { "stat_name": "Cute", "stat_value": 0 },
+    { "stat_name": "Smart", "stat_value": 0 },
+    { "stat_name": "Tough", "stat_value": 0 },
+    { "stat_name": "Sheen", "stat_value": 0 }
+  ],
+  "dex_number": 108,
+  "ec": "00000000",
+  "egg_data": { "day": 1, "location": "", "month": 1, "year": 1 },
+  "esv": "65535",
+  "exp": 166375,
+  "fateful_flag": false,
+  "form_num": 0,
+  "friendship": 0,
+  "gender": "M",
+  "gender_flag": 0,
+  "generation": 1,
+  "held_item": "None",
+  "hp_type": "Steel",
+  "ht": "N/A",
+  "illegal_reasons": "Legal!",
+  "is_egg": false,
+  "is_legal": true,
+  "is_nicknamed": false,
+  "is_shiny": false,
+  "item_num": 0,
+  "level": 55,
+  "markings": 0,
+  "met_data": { "day": 1, "level": 0, "location": "", "month": 1, "year": 1 },
+  "moves": [
+    { "name": "Disable", "pp": 20, "pp_ups": 0, "type": "Normal" },
+    { "name": "Defense Curl", "pp": 40, "pp_ups": 0, "type": "Normal" },
+    { "name": "Slam", "pp": 20, "pp_ups": 0, "type": "Normal" },
+    { "name": "Screech", "pp": 40, "pp_ups": 0, "type": "Normal" }
+  ],
+  "nature": "Hardy",
+  "nickname": "LICKITUNG",
+  "ot": "KOKI",
+  "ot_gender": "M",
+  "ot_lang": "English",
+  "pid": "00000000",
+  "pkrs_days": 0,
+  "pkrs_strain": 0,
+  "relearn_moves": [
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" }
+  ],
+  "ribbons": [],
+  "sid": 0,
+  "size": 33,
+  "species": "Lickitung",
+  "sprites": {
+    "item": null,
+    "species": "https://cdn.sigkill.tech/sprites/pokemon-gen7x/regular/lickitung.png"
+  },
+  "stats": [
+    { "stat_ev": 14, "stat_iv": 0, "stat_name": "HP", "stat_total": "179" },
+    { "stat_ev": 9, "stat_iv": 0, "stat_name": "Attack", "stat_total": "75" },
+    { "stat_ev": 3, "stat_iv": 0, "stat_name": "Defense", "stat_total": "90" },
+    {
+      "stat_ev": 10,
+      "stat_iv": 0,
+      "stat_name": "Special Attack",
+      "stat_total": "82"
+    },
+    {
+      "stat_ev": 10,
+      "stat_iv": 0,
+      "stat_name": "Special Defense",
+      "stat_total": "82"
+    },
+    { "stat_ev": 15, "stat_iv": 0, "stat_name": "Speed", "stat_total": "54" }
+  ],
+  "tid": 54823,
+  "tsv": 0,
+  "version": ""
+}

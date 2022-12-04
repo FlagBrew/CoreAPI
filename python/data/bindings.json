@@ -1,0 +1,2192 @@
+{
+    "abomasnow_mega": {
+        "file": "abomasnow-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "absol_mega": {
+        "file": "absol-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "aegislash_blade": {
+        "file": "aegislash-blade.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "aegislash_shield": {
+        "file": "aegislash.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "aerodactyl_mega": {
+        "file": "aerodactyl-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "aggron_mega": {
+        "file": "aggron-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alakazam_mega": {
+        "file": "alakazam-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_caramel_swirl": {
+        "file": "alcremie-caramel-swirl.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_lemon_cream": {
+        "file": "alcremie-lemon-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_matcha_cream": {
+        "file": "alcremie-matcha-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_mint_cream": {
+        "file": "alcremie-mint-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_rainbow_swirl": {
+        "file": "alcremie-rainbow-swirl.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_ruby_cream": {
+        "file": "alcremie-ruby-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_ruby_swirl": {
+        "file": "alcremie-ruby-swirl.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_salted_cream": {
+        "file": "alcremie-salted-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "alcremie_vanilla_cream": {
+        "file": "alcremie-vanilla-cream.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "altaria_mega": {
+        "file": "altaria-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "ampharos_mega": {
+        "file": "ampharos-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "araquanid_large": {
+        "file": "araquanid.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arcanine_hisui": {
+        "file": "arcanine-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arcanine_lord": {
+        "file": "arcanine-hisui-noble.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_???": {
+        "file": "arceus-unknown.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_bug": {
+        "file": "arceus-bug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_dark": {
+        "file": "arceus-dark.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_dragon": {
+        "file": "arceus-dragon.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_electric": {
+        "file": "arceus-electric.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_fairy": {
+        "file": "arceus-fairy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_fighting": {
+        "file": "arceus-fighting.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_fire": {
+        "file": "arceus-fire.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_flying": {
+        "file": "arceus-flying.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_ghost": {
+        "file": "arceus-ghost.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_grass": {
+        "file": "arceus-grass.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_ground": {
+        "file": "arceus-ground.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_ice": {
+        "file": "arceus-ice.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_legend": {
+        "file": "arceus.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_poison": {
+        "file": "arceus-poison.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_psychic": {
+        "file": "arceus-psychic.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_rock": {
+        "file": "arceus-rock.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_steel": {
+        "file": "arceus-steel.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "arceus_water": {
+        "file": "arceus-water.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "articuno_galar": {
+        "file": "articuno-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "audino_mega": {
+        "file": "audino-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "avalugg_hisui": {
+        "file": "avalugg-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "avalugg_lord": {
+        "file": "avalugg-hisui-noble.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "banette_mega": {
+        "file": "banette-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "basculegion_f": {
+        "file": "basculegion.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "basculegion_m": {
+        "file": "basculegion.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "basculin_blue": {
+        "file": "basculin-blue-striped.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "basculin_red": {
+        "file": "basculin.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "basculin_white": {
+        "file": "basculin-white-striped.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "beedrill_mega": {
+        "file": "beedrill-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "blastoise_mega": {
+        "file": "blastoise-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "blaziken_mega": {
+        "file": "blaziken-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "braviary_hisui": {
+        "file": "braviary-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "burmy_plant": {
+        "file": "burmy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "burmy_sandy": {
+        "file": "burmy-sandy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "burmy_trash": {
+        "file": "burmy-trash.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "calyrex_ice": {
+        "file": "calyrex-ice-rider.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "calyrex_shadow": {
+        "file": "calyrex-shadow-rider.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "camerupt_mega": {
+        "file": "camerupt-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "castform_rainy": {
+        "file": "castform-rainy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "castform_snowy": {
+        "file": "castform-snowy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "castform_sunny": {
+        "file": "castform-sunny.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "charizard_mega_x": {
+        "file": "charizard-mega-x.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "charizard_mega_y": {
+        "file": "charizard-mega-y.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "cherrim_overcast": {
+        "file": "cherrim.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "cherrim_sunshine": {
+        "file": "cherrim-sunshine.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "corsola_galar": {
+        "file": "corsola-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "cramorant_gorging": {
+        "file": "cramorant-gorging.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "cramorant_gulping": {
+        "file": "cramorant-gulping.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "darmanitan_galar": {
+        "file": "darmanitan-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "darmanitan_galar_zen": {
+        "file": "darmanitan-galar-zen.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "darmanitan_standard": {
+        "file": "darmanitan.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "darmanitan_zen": {
+        "file": "darmanitan-zen.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "darumaka_galar": {
+        "file": "darumaka-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "decidueye_hisui": {
+        "file": "decidueye-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deerling_autumn": {
+        "file": "deerling-autumn.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deerling_spring": {
+        "file": "deerling.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deerling_summer": {
+        "file": "deerling-summer.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deerling_winter": {
+        "file": "deerling-winter.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deoxys_attack": {
+        "file": "deoxys-attack.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deoxys_defense": {
+        "file": "deoxys-defense.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "deoxys_speed": {
+        "file": "deoxys-speed.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "dialga_origin": {
+        "file": "dialga-origin.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "diancie_mega": {
+        "file": "diancie-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "diglett_alola": {
+        "file": "diglett-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "dugtrio_alola": {
+        "file": "dugtrio-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "eevee_starter": {
+        "file": "eevee-starter.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "eiscue_ice_face": {
+        "file": "eiscue.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "eiscue_noice_face": {
+        "file": "eiscue-noice.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "electrode_hisui": {
+        "file": "electrode-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "electrode_lord": {
+        "file": "electrode-hisui-noble.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "eternatus_eternamax": {
+        "file": "eternatus-eternamax.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "exeggutor_alola": {
+        "file": "exeggutor-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "farfetch\u2019d_galar": {
+        "file": "farfetchd-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "flab\u00e9b\u00e9_blue": {
+        "file": "flabebe-blue.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "flab\u00e9b\u00e9_orange": {
+        "file": "flabebe-orange.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "flab\u00e9b\u00e9_red": {
+        "file": "flabebe.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "flab\u00e9b\u00e9_white": {
+        "file": "flabebe-white.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "flab\u00e9b\u00e9_yellow": {
+        "file": "flabebe-yellow.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_blue": {
+        "file": "floette-blue.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_eternal": {
+        "file": "floette-eternal.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_orange": {
+        "file": "floette-orange.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_red": {
+        "file": "floette.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_white": {
+        "file": "floette-white.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "floette_yellow": {
+        "file": "floette-yellow.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "florges_blue": {
+        "file": "florges-blue.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "florges_orange": {
+        "file": "florges-orange.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "florges_red": {
+        "file": "florges.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "florges_white": {
+        "file": "florges-white.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "florges_yellow": {
+        "file": "florges-yellow.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_dandy": {
+        "file": "furfrou-dandy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_debutante": {
+        "file": "furfrou-debutante.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_diamond": {
+        "file": "furfrou-diamond.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_heart": {
+        "file": "furfrou-heart.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_kabuki": {
+        "file": "furfrou-kabuki.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_la_reine": {
+        "file": "furfrou-la-reine.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_matron": {
+        "file": "furfrou-matron.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_natural": {
+        "file": "furfrou.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_pharaoh": {
+        "file": "furfrou-pharaoh.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "furfrou_star": {
+        "file": "furfrou-star.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gallade_mega": {
+        "file": "gallade-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "garchomp_mega": {
+        "file": "garchomp-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gardevoir_mega": {
+        "file": "gardevoir-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gastrodon_east": {
+        "file": "gastrodon-east.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gastrodon_west": {
+        "file": "gastrodon.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "genesect_electric": {
+        "file": "genesect-shock.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "genesect_fire": {
+        "file": "genesect-burn.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "genesect_ice": {
+        "file": "genesect-chill.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "genesect_water": {
+        "file": "genesect-douse.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gengar_mega": {
+        "file": "gengar-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "geodude_alola": {
+        "file": "geodude-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "giratina_altered": {
+        "file": "giratina.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "giratina_origin": {
+        "file": "giratina-origin.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "glalie_mega": {
+        "file": "glalie-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "golem_alola": {
+        "file": "golem-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "goodra_hisui": {
+        "file": "goodra-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gourgeist_average": {
+        "file": "gourgeist.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gourgeist_large": {
+        "file": "gourgeist-large.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gourgeist_small": {
+        "file": "gourgeist-small.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gourgeist_super": {
+        "file": "gourgeist-super.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "graveler_alola": {
+        "file": "graveler-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "greninja_active": {
+        "file": "greninja.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "greninja_ash": {
+        "file": "greninja-ash.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "grimer_alola": {
+        "file": "grimer-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "groudon_primal": {
+        "file": "groudon-primal.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "growlithe_hisui": {
+        "file": "growlithe-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gumshoos_large": {
+        "file": "gumshoos.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "gyarados_mega": {
+        "file": "gyarados-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "heracross_mega": {
+        "file": "heracross-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "hoopa_confined": {
+        "file": "hoopa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "hoopa_unbound": {
+        "file": "hoopa-unbound.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "houndoom_mega": {
+        "file": "houndoom-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "indeedee_f": {
+        "file": "indeedee.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "indeedee_m": {
+        "file": "indeedee.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "kangaskhan_mega": {
+        "file": "kangaskhan-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "keldeo_ordinary": {
+        "file": "keldeo.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "keldeo_resolute": {
+        "file": "keldeo-resolute.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "kleavor_lord": {
+        "file": "kleavor-noble.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "kommo-o_large": {
+        "file": "kommo-o.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "kyogre_primal": {
+        "file": "kyogre-primal.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "kyurem_black": {
+        "file": "kyurem-black.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "kyurem_white": {
+        "file": "kyurem-white.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "landorus_incarnate": {
+        "file": "landorus.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "landorus_therian": {
+        "file": "landorus-therian.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "latias_mega": {
+        "file": "latias-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "latios_mega": {
+        "file": "latios-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lilligant_hisui": {
+        "file": "lilligant-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lilligant_lady": {
+        "file": "lilligant-hisui-noble.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "linoone_galar": {
+        "file": "linoone-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lopunny_mega": {
+        "file": "lopunny-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lucario_mega": {
+        "file": "lucario-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lurantis_large": {
+        "file": "lurantis.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lycanroc_dusk": {
+        "file": "lycanroc-dusk.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lycanroc_midday": {
+        "file": "lycanroc.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "lycanroc_midnight": {
+        "file": "lycanroc-midnight.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "magearna_original": {
+        "file": "magearna-original.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "manectric_mega": {
+        "file": "manectric-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "marowak_alola": {
+        "file": "marowak-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "marowak_large": {
+        "file": "marowak.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mawile_mega": {
+        "file": "mawile-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "medicham_mega": {
+        "file": "medicham-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "meloetta_aria": {
+        "file": "meloetta.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "meloetta_pirouette": {
+        "file": "meloetta-pirouette.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "meowstic_f": {
+        "file": "meowstic.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "meowstic_m": {
+        "file": "meowstic.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "meowth_alola": {
+        "file": "meowth-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "meowth_galar": {
+        "file": "meowth-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "metagross_mega": {
+        "file": "metagross-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mewtwo_mega_x": {
+        "file": "mewtwo-mega-x.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mewtwo_mega_y": {
+        "file": "mewtwo-mega-y.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mimikyu_*busted": {
+        "file": "mimikyu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mimikyu_busted": {
+        "file": "mimikyu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mimikyu_disguised": {
+        "file": "mimikyu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mimikyu_large": {
+        "file": "mimikyu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_c-blue": {
+        "file": "minior-blue.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-green": {
+        "file": "minior-green.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-indigo": {
+        "file": "minior-indigo.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-orange": {
+        "file": "minior-orange.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-red": {
+        "file": "minior-red.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-violet": {
+        "file": "minior-violet.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_c-yellow": {
+        "file": "minior-yellow.png",
+        "hasGen7Naming": true,
+        "hasFemale": false
+    },
+    "minior_m-blue": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-green": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-indigo": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-orange": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-red": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-violet": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "minior_m-yellow": {
+        "file": "minior.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "moltres_galar": {
+        "file": "moltres-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "morpeko_full_belly": {
+        "file": "morpeko.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "morpeko_hangry": {
+        "file": "morpeko-hangry.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mothim_plant": {
+        "file": "mothim.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mothim_sandy": {
+        "file": "mothim.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mothim_trash": {
+        "file": "mothim.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mr._mime": {
+        "file": "mr-mime.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "mr._mime_galar": {
+        "file": "mr-mime-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "muk_alola": {
+        "file": "muk-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "necrozma_dawn": {
+        "file": "necrozma-dawn.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "necrozma_dusk": {
+        "file": "necrozma-dusk.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "necrozma_ultra": {
+        "file": "necrozma-ultra.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "ninetales_alola": {
+        "file": "ninetales-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "oricorio_baile": {
+        "file": "oricorio.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "oricorio_pa\u2019u": {
+        "file": "oricorio-pau.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "oricorio_pom-pom": {
+        "file": "oricorio-pom-pom.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "oricorio_sensu": {
+        "file": "oricorio-sensu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "palkia_origin": {
+        "file": "palkia-origin.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "persian_alola": {
+        "file": "persian-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pichu_spiky": {
+        "file": "pichu-spiky-eared.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pidgeot_mega": {
+        "file": "pidgeot-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pikachu_alola": {
+        "file": "pikachu-alola-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_belle": {
+        "file": "pikachu-belle.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_cosplay": {
+        "file": "pikachu-cosplay.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_hoenn": {
+        "file": "pikachu-hoenn-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_kalos": {
+        "file": "pikachu-kalos-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_libre": {
+        "file": "pikachu-libre.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_original": {
+        "file": "pikachu-original-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_partner": {
+        "file": "pikachu-partner-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_ph.d.": {
+        "file": "pikachu-phd.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_pop_star": {
+        "file": "pikachu-pop-star.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_rock_star": {
+        "file": "pikachu-rock-star.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_sinnoh": {
+        "file": "pikachu-sinnoh-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_starter": {
+        "file": "pikachu-starter.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_unova": {
+        "file": "pikachu-unova-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pikachu_world": {
+        "file": "pikachu-world-cap.png",
+        "hasGen7Naming": false,
+        "hasFemale": true
+    },
+    "pinsir_mega": {
+        "file": "pinsir-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "polteageist_antique": {
+        "file": "polteageist.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "polteageist_phony": {
+        "file": "polteageist.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "ponyta_galar": {
+        "file": "ponyta-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pumpkaboo_average": {
+        "file": "pumpkaboo.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pumpkaboo_large": {
+        "file": "pumpkaboo-large.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pumpkaboo_small": {
+        "file": "pumpkaboo-small.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "pumpkaboo_super": {
+        "file": "pumpkaboo-super.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "qwilfish_hisui": {
+        "file": "qwilfish-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "raichu_alola": {
+        "file": "raichu-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rapidash_galar": {
+        "file": "rapidash-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "raticate_alola": {
+        "file": "raticate-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "raticate_large": {
+        "file": "raticate.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rattata_alola": {
+        "file": "rattata-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rayquaza_mega": {
+        "file": "rayquaza-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "ribombee_large": {
+        "file": "ribombee.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rockruff_dusk": {
+        "file": "rockruff.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rotom_fan": {
+        "file": "rotom-fan.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rotom_frost": {
+        "file": "rotom-frost.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rotom_heat": {
+        "file": "rotom-heat.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rotom_mow": {
+        "file": "rotom-mow.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "rotom_wash": {
+        "file": "rotom-wash.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sableye_mega": {
+        "file": "sableye-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "salamence_mega": {
+        "file": "salamence-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "salazzle_large": {
+        "file": "salazzle.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "samurott_hisui": {
+        "file": "samurott-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sandshrew_alola": {
+        "file": "sandshrew-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sandslash_alola": {
+        "file": "sandslash-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sawsbuck_autumn": {
+        "file": "sawsbuck-autumn.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sawsbuck_spring": {
+        "file": "sawsbuck.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sawsbuck_summer": {
+        "file": "sawsbuck-summer.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sawsbuck_winter": {
+        "file": "sawsbuck-winter.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_archipelago": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_continental": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_elegant": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_fancy": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_garden": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_high_plains": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_icy_snow": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_jungle": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_marine": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_meadow": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_modern": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_monsoon": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_ocean": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_pok\u00e9_ball": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_polar": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_river": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_sandstorm": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_savanna": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_sun": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scatterbug_tundra": {
+        "file": "scatterbug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sceptile_mega": {
+        "file": "sceptile-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "scizor_mega": {
+        "file": "scizor-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sharpedo_mega": {
+        "file": "sharpedo-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "shaymin_land": {
+        "file": "shaymin.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "shaymin_sky": {
+        "file": "shaymin-sky.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "shellos_east": {
+        "file": "shellos-east.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "shellos_west": {
+        "file": "shellos.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_bug": {
+        "file": "silvally-bug.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_dark": {
+        "file": "silvally-dark.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_dragon": {
+        "file": "silvally-dragon.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_electric": {
+        "file": "silvally-electric.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_fairy": {
+        "file": "silvally-fairy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_fighting": {
+        "file": "silvally-fighting.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_fire": {
+        "file": "silvally-fire.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_flying": {
+        "file": "silvally-flying.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_ghost": {
+        "file": "silvally-ghost.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_grass": {
+        "file": "silvally-grass.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_ground": {
+        "file": "silvally-ground.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_ice": {
+        "file": "silvally-ice.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_poison": {
+        "file": "silvally-poison.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_psychic": {
+        "file": "silvally-psychic.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_rock": {
+        "file": "silvally-rock.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_steel": {
+        "file": "silvally-steel.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "silvally_water": {
+        "file": "silvally-water.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sinistea_antique": {
+        "file": "sinistea.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sinistea_phony": {
+        "file": "sinistea.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sliggoo_hisui": {
+        "file": "sliggoo-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "slowbro_galar": {
+        "file": "slowbro-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "slowbro_mega": {
+        "file": "slowbro-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "slowking_galar": {
+        "file": "slowking-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "slowpoke_galar": {
+        "file": "slowpoke-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "sneasel_hisui": {
+        "file": "sneasel-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_archipelago": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_continental": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_elegant": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_fancy": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_garden": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_high_plains": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_icy_snow": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_jungle": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_marine": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_meadow": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_modern": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_monsoon": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_ocean": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_pok\u00e9_ball": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_polar": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_river": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_sandstorm": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_savanna": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_sun": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "spewpa_tundra": {
+        "file": "spewpa.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "steelix_mega": {
+        "file": "steelix-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "stunfisk_galar": {
+        "file": "stunfisk-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "swampert_mega": {
+        "file": "swampert-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "thundurus_incarnate": {
+        "file": "thundurus.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "thundurus_therian": {
+        "file": "thundurus-therian.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "togedemaru_large": {
+        "file": "togedemaru.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "tornadus_incarnate": {
+        "file": "tornadus.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "tornadus_therian": {
+        "file": "tornadus-therian.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "toxtricity_amped_form": {
+        "file": "toxtricity.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "toxtricity_low_key": {
+        "file": "toxtricity-low-key.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "typhlosion_hisui": {
+        "file": "typhlosion-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "tyranitar_mega": {
+        "file": "tyranitar-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_a": {
+        "file": "unown.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_b": {
+        "file": "unown-b.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_c": {
+        "file": "unown-c.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_d": {
+        "file": "unown-d.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_e": {
+        "file": "unown-e.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_exclamation": {
+        "file": "unown-exclamation.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_f": {
+        "file": "unown-f.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_g": {
+        "file": "unown-g.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_h": {
+        "file": "unown-h.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_i": {
+        "file": "unown-i.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_j": {
+        "file": "unown-j.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_k": {
+        "file": "unown-k.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_l": {
+        "file": "unown-l.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_m": {
+        "file": "unown-m.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_n": {
+        "file": "unown-n.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_o": {
+        "file": "unown-o.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_p": {
+        "file": "unown-p.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_q": {
+        "file": "unown-q.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_question": {
+        "file": "unown-question.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_r": {
+        "file": "unown-r.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_s": {
+        "file": "unown-s.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_t": {
+        "file": "unown-t.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_u": {
+        "file": "unown-u.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_v": {
+        "file": "unown-v.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_w": {
+        "file": "unown-w.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_x": {
+        "file": "unown-x.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_y": {
+        "file": "unown-y.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "unown_z": {
+        "file": "unown-z.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "urshifu_rapid_strike": {
+        "file": "urshifu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "urshifu_single_strike": {
+        "file": "urshifu.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "venusaur_mega": {
+        "file": "venusaur-mega.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vikavolt_large": {
+        "file": "vikavolt.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_archipelago": {
+        "file": "vivillon-archipelago.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_continental": {
+        "file": "vivillon-continental.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_elegant": {
+        "file": "vivillon-elegant.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_fancy": {
+        "file": "vivillon-fancy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_garden": {
+        "file": "vivillon-garden.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_high_plains": {
+        "file": "vivillon-high-plains.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_icy_snow": {
+        "file": "vivillon-icy-snow.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_jungle": {
+        "file": "vivillon-jungle.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_marine": {
+        "file": "vivillon-marine.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_meadow": {
+        "file": "vivillon.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_modern": {
+        "file": "vivillon-modern.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_monsoon": {
+        "file": "vivillon-monsoon.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_ocean": {
+        "file": "vivillon-ocean.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_pok\u00e9_ball": {
+        "file": "vivillon-poke-ball.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_polar": {
+        "file": "vivillon-polar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_river": {
+        "file": "vivillon-river.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_sandstorm": {
+        "file": "vivillon-sandstorm.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_savanna": {
+        "file": "vivillon-savanna.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_sun": {
+        "file": "vivillon-sun.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vivillon_tundra": {
+        "file": "vivillon-tundra.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "voltorb_hisui": {
+        "file": "voltorb-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "vulpix_alola": {
+        "file": "vulpix-alola.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "weezing_galar": {
+        "file": "weezing-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "wishiwashi_school": {
+        "file": "wishiwashi-school.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "wishiwashi_solo": {
+        "file": "wishiwashi.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "wormadam_plant": {
+        "file": "wormadam.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "wormadam_sandy": {
+        "file": "wormadam-sandy.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "wormadam_trash": {
+        "file": "wormadam-trash.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "xerneas_active": {
+        "file": "xerneas-active.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "xerneas_neutral": {
+        "file": "xerneas.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "yamask_galar": {
+        "file": "yamask-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zacian_crowned": {
+        "file": "zacian-crowned.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zacian_hero": {
+        "file": "zacian.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zamazenta_crowned": {
+        "file": "zamazenta-crowned.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zamazenta_hero": {
+        "file": "zamazenta.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zapdos_galar": {
+        "file": "zapdos-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zarude_dada": {
+        "file": "zarude-dada.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zigzagoon_galar": {
+        "file": "zigzagoon-galar.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zoroark_hisui": {
+        "file": "zoroark-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zorua_hisui": {
+        "file": "zorua-hisui.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zygarde_10%": {
+        "file": "zygarde-10.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zygarde_10%-c": {
+        "file": "zygarde-10.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zygarde_50%": {
+        "file": "zygarde.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zygarde_50%-c": {
+        "file": "zygarde.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    },
+    "zygarde_complete": {
+        "file": "zygarde-complete.png",
+        "hasGen7Naming": false,
+        "hasFemale": false
+    }
+}

@@ -1,0 +1,176 @@
+{
+  "ability": "Intimidate",
+  "ability_num": 4,
+  "ball": "Timer Ball",
+  "base64": "bWRLvQAA02PXAoACOTAx1HDKAQAWBFUJeDN51wMC/PQOAAAAAAAAAAAAAAAAAAAAiAAIAADAAwAAAAAAAAAAAEkAbgBjAGkAbgBlAHIAbwBhAHIAAAAAAAAA6AGXAhcBWQAgEBAQAwMDAwoANAAXAQAAAAD///8/UwBhAGsAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAARgABBAkAAAAAAAAAAABKAGUAcwBzAGkAZQAAAAAAAAAAAAAAAAAAAP8AAAAAAAAUCgUUCgUAMnVOAAqBACExBwECAAAAAA==",
+  "checksum": 25555,
+  "contest_stats": [
+    {
+      "stat_name": "Cool",
+      "stat_value": 0
+    },
+    {
+      "stat_name": "Beauty",
+      "stat_value": 0
+    },
+    {
+      "stat_name": "Cute",
+      "stat_value": 0
+    },
+    {
+      "stat_name": "Smart",
+      "stat_value": 0
+    },
+    {
+      "stat_name": "Tough",
+      "stat_value": 0
+    },
+    {
+      "stat_name": "Sheen",
+      "stat_value": 0
+    }
+  ],
+  "dex_number": 727,
+  "ec": "BD4B646D",
+  "egg_data": {
+    "day": 5,
+    "location": "a Link Trade (---)",
+    "month": 10,
+    "year": 2020
+  },
+  "esv": "3648",
+  "exp": 117360,
+  "fateful_flag": false,
+  "form_num": 0,
+  "friendship": 255,
+  "gender": "F",
+  "gender_flag": 1,
+  "generation": 7,
+  "held_item": "Assault Vest",
+  "hp_type": "Dark",
+  "ht": "Saks",
+  "illegal_reasons": "Invalid: Can't have ball for encounter type.",
+  "is_egg": false,
+  "is_legal": false,
+  "is_nicknamed": false,
+  "is_shiny": true,
+  "item_num": 640,
+  "level": 50,
+  "markings": 2389,
+  "met_data": {
+    "day": 5,
+    "level": 1,
+    "location": "Paniola Ranch",
+    "month": 10,
+    "year": 2020
+  },
+  "moves": [
+    {
+      "name": "Flame Charge",
+      "pp": 32,
+      "pp_ups": 3,
+      "type": "Fire"
+    },
+    {
+      "name": "Darkest Lariat",
+      "pp": 16,
+      "pp_ups": 3,
+      "type": "Dark"
+    },
+    {
+      "name": "Revenge",
+      "pp": 16,
+      "pp_ups": 3,
+      "type": "Fighting"
+    },
+    {
+      "name": "Earthquake",
+      "pp": 16,
+      "pp_ups": 3,
+      "type": "Ground"
+    }
+  ],
+  "nature": "Adamant",
+  "nickname": "Incineroar",
+  "ot": "Jessie",
+  "ot_gender": "F",
+  "ot_lang": "English",
+  "pid": "D7793378",
+  "pkrs_days": 0,
+  "pkrs_strain": 0,
+  "relearn_moves": [
+    {
+      "name": "Scratch",
+      "type": "Normal"
+    },
+    {
+      "name": "Ember",
+      "type": "Fire"
+    },
+    {
+      "name": "Revenge",
+      "type": "Fighting"
+    },
+    {
+      "name": "None",
+      "type": "Normal"
+    }
+  ],
+  "ribbons": [
+    "Best Friends",
+    "Effort",
+    "Footprint",
+    "Alola Champion",
+    "Battle Royal Champion",
+    "Battle Tree Great",
+    "Battle Tree Master"
+  ],
+  "sid": 3559,
+  "size": 232,
+  "species": "Incineroar",
+  "sprites": {
+    "item": "https://cdn.sigkill.tech/sprites/items/hold-item/assault-vest.png",
+    "species": "https://cdn.sigkill.tech/sprites/pokemon-gen7x/shiny/incineroar.png"
+  },
+  "stats": [
+    {
+      "stat_ev": 31,
+      "stat_iv": 252,
+      "stat_name": "HP",
+      "stat_total": "202"
+    },
+    {
+      "stat_ev": 31,
+      "stat_iv": 244,
+      "stat_name": "Attack",
+      "stat_total": "182"
+    },
+    {
+      "stat_ev": 31,
+      "stat_iv": 14,
+      "stat_name": "Defense",
+      "stat_total": "112"
+    },
+    {
+      "stat_ev": 31,
+      "stat_iv": 0,
+      "stat_name": "Special Attack",
+      "stat_total": "90"
+    },
+    {
+      "stat_ev": 31,
+      "stat_iv": 0,
+      "stat_name": "Special Defense",
+      "stat_total": "110"
+    },
+    {
+      "stat_ev": 31,
+      "stat_iv": 0,
+      "stat_name": "Speed",
+      "stat_total": "80"
+    }
+  ],
+  "tid": 993401,
+  "tsv": 3648,
+  "version": "Ultra Moon"
+}

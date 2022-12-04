@@ -1,0 +1,98 @@
+{
+  "ability": "Pressure",
+  "ability_num": -1,
+  "ball": "Ultra Ball",
+  "base64": "3mlDwRNceHa7zM7Dvc/Iyf9zAgLO4+Ld////APpbAACQAAAAWmICAAAjAAA2AGEAqgA6AB4eBQoAAAAAAAAAAAAAAAAAizIS0g1sAQAAAAA=",
+  "checksum": 23546,
+  "contest_stats": [
+    { "stat_name": "Cool", "stat_value": 0 },
+    { "stat_name": "Beauty", "stat_value": 0 },
+    { "stat_name": "Cute", "stat_value": 0 },
+    { "stat_name": "Smart", "stat_value": 0 },
+    { "stat_name": "Tough", "stat_value": 0 },
+    { "stat_name": "Sheen", "stat_value": 0 }
+  ],
+  "dex_number": 144,
+  "ec": "C14369DE",
+  "egg_data": {
+    "day": 1,
+    "location": "Littleroot Town",
+    "month": 1,
+    "year": 1
+  },
+  "esv": "5395",
+  "exp": 156250,
+  "fateful_flag": false,
+  "form_num": 0,
+  "friendship": 35,
+  "gender": "-",
+  "gender_flag": 2,
+  "generation": 3,
+  "held_item": "None",
+  "hp_type": "Fighting",
+  "ht": "N/A",
+  "illegal_reasons": "Legal!",
+  "is_egg": false,
+  "is_legal": true,
+  "is_nicknamed": false,
+  "is_shiny": false,
+  "item_num": 0,
+  "level": 50,
+  "markings": 0,
+  "met_data": {
+    "day": 1,
+    "level": 50,
+    "location": "Seafoam Islands",
+    "month": 1,
+    "year": 1
+  },
+  "moves": [
+    { "name": "Mist", "pp": 30, "pp_ups": 0, "type": "Ice" },
+    { "name": "Agility", "pp": 30, "pp_ups": 0, "type": "Psychic" },
+    { "name": "Mind Reader", "pp": 5, "pp_ups": 0, "type": "Normal" },
+    { "name": "Ice Beam", "pp": 10, "pp_ups": 0, "type": "Ice" }
+  ],
+  "nature": "Brave",
+  "nickname": "ARTICUNO",
+  "ot": "Toni",
+  "ot_gender": "M",
+  "ot_lang": "English",
+  "pid": "C14369DE",
+  "pkrs_days": 0,
+  "pkrs_strain": 0,
+  "relearn_moves": [
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" }
+  ],
+  "ribbons": [],
+  "sid": 30328,
+  "size": 80,
+  "species": "Articuno",
+  "sprites": {
+    "item": null,
+    "species": "https://cdn.sigkill.tech/sprites/pokemon-gen7x/regular/articuno.png"
+  },
+  "stats": [
+    { "stat_ev": 18, "stat_iv": 0, "stat_name": "HP", "stat_total": "159" },
+    { "stat_ev": 14, "stat_iv": 0, "stat_name": "Attack", "stat_total": "106" },
+    { "stat_ev": 3, "stat_iv": 0, "stat_name": "Defense", "stat_total": "106" },
+    {
+      "stat_ev": 22,
+      "stat_iv": 0,
+      "stat_name": "Special Attack",
+      "stat_total": "111"
+    },
+    {
+      "stat_ev": 0,
+      "stat_iv": 0,
+      "stat_name": "Special Defense",
+      "stat_total": "130"
+    },
+    { "stat_ev": 24, "stat_iv": 0, "stat_name": "Speed", "stat_total": "91" }
+  ],
+  "tid": 23571,
+  "tsv": 1357,
+  "version": "FireRed"
+}

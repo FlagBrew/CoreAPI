@@ -1,0 +1,93 @@
+{
+  "ability": "",
+  "ability_num": -1,
+  "ball": "None",
+  "base64": "ATz/PBiRXwAA3doAATkAPwA8ADcARwAy6XQeFAAAVgDEBAcAAAAXABcADgAMABIACwALi6CzqKVQUFAAAACPjouIloCGUFBQUA==",
+  "checksum": 60009,
+  "contest_stats": [
+    { "stat_name": "Cool", "stat_value": 0 },
+    { "stat_name": "Beauty", "stat_value": 0 },
+    { "stat_name": "Cute", "stat_value": 0 },
+    { "stat_name": "Smart", "stat_value": 0 },
+    { "stat_name": "Tough", "stat_value": 0 },
+    { "stat_name": "Sheen", "stat_value": 0 }
+  ],
+  "dex_number": 60,
+  "ec": "00000000",
+  "egg_data": { "day": 1, "location": "None", "month": 1, "year": 1 },
+  "esv": "65535",
+  "exp": 313,
+  "fateful_flag": false,
+  "form_num": 0,
+  "friendship": 86,
+  "gender": "M",
+  "gender_flag": 0,
+  "generation": 2,
+  "held_item": "Water Stone",
+  "hp_type": "Water",
+  "ht": "N/A",
+  "illegal_reasons": "Legal!",
+  "is_egg": false,
+  "is_legal": true,
+  "is_nicknamed": false,
+  "is_shiny": false,
+  "item_num": 24,
+  "level": 7,
+  "markings": 0,
+  "met_data": {
+    "day": 1,
+    "level": 4,
+    "location": "Route 30",
+    "month": 1,
+    "year": 1
+  },
+  "moves": [
+    { "name": "Bubble", "pp": 30, "pp_ups": 0, "type": "Water" },
+    { "name": "Hypnosis", "pp": 20, "pp_ups": 0, "type": "Psychic" },
+    { "name": "None", "pp": 0, "pp_ups": 0, "type": "Normal" },
+    { "name": "None", "pp": 0, "pp_ups": 0, "type": "Normal" }
+  ],
+  "nature": "Hardy",
+  "nickname": "POLIWAG",
+  "ot": "Latif",
+  "ot_gender": "M",
+  "ot_lang": "English",
+  "pid": "00000000",
+  "pkrs_days": 0,
+  "pkrs_strain": 0,
+  "relearn_moves": [
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" },
+    { "name": "None", "type": "Normal" }
+  ],
+  "ribbons": [],
+  "sid": 0,
+  "size": 32,
+  "species": "Poliwag",
+  "sprites": {
+    "item": "https://cdn.sigkill.tech/sprites/items/medicine/max-potion.png",
+    "species": "https://cdn.sigkill.tech/sprites/pokemon-gen7x/regular/poliwag.png"
+  },
+  "stats": [
+    { "stat_ev": 6, "stat_iv": 63, "stat_name": "HP", "stat_total": "23" },
+    { "stat_ev": 14, "stat_iv": 60, "stat_name": "Attack", "stat_total": "14" },
+    { "stat_ev": 9, "stat_iv": 55, "stat_name": "Defense", "stat_total": "12" },
+    {
+      "stat_ev": 4,
+      "stat_iv": 50,
+      "stat_name": "Special Attack",
+      "stat_total": "11"
+    },
+    {
+      "stat_ev": 4,
+      "stat_iv": 50,
+      "stat_name": "Special Defense",
+      "stat_total": "11"
+    },
+    { "stat_ev": 7, "stat_iv": 71, "stat_name": "Speed", "stat_total": "18" }
+  ],
+  "tid": 56794,
+  "tsv": 0,
+  "version": ""
+}
