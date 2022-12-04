@@ -1,0 +1,16 @@
+tmp/
+**/*.log
+**/~*
+**/*.tmp
+**/tmp
+**/*.txt
+**/*.test
+**/*.prof
+**/*.conf
+**/*.toml
+**/vendor
+**/.cache
+**/dist
+**/.env
+bin
+coreapi

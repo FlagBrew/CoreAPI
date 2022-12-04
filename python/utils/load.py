@@ -7,7 +7,7 @@ import clr, sys, os
 
 
 
-sys.path.append(os.getcwd() + r"/deps/")
+sys.path.append(os.getcwd() + r"/python/deps/")
 clr.AddReference("PKHeX.Core")
 clr.AddReference("PKHeX.Core.AutoMod")
 from PKHeX.Core import GameInfo, EncounterEvent, RibbonStrings

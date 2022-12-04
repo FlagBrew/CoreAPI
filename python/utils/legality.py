@@ -7,12 +7,19 @@ from multiprocessing import Process, Queue
 import time
 import base64
 
-def autolegalityThead(info, pkmn, set, legalization_res, out):
 
+x = None
+
+def autolegalityThead(info, pkmn, set, legalization_res, out):
     pkmn, _ = APILegality.GetLegalFromTemplate(info, pkmn, set, legalization_res)
     out.put(base64.b64encode(bytearray(byte for byte in pkmn.DecryptedBoxData)).decode('UTF-8'))
-    
+
+def cancel():
+    if x is not None:
+        x.kill()
+
 def legalize(pkmn, generation):
+    global x
     info = helpers.get_trainer_info(pkmn, helpers.get_game_version(pkmn))
     set = RegenTemplate(pkmn, info.Generation)
     legalization_res = LegalizationResult(0)
@@ -21,6 +28,7 @@ def legalize(pkmn, generation):
     x = Process(target=autolegalityThead, args=(info, pkmn, set, legalization_res, out))
     x.daemon = True
     x.start()
+
     i = 0
     killed = False
     while x.is_alive():

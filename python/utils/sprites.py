@@ -31,9 +31,9 @@ class Sprites:
     _item_bindings = {}
 
     def __init__(self):
-        with open("data/bindings.json", mode='r') as file:
+        with open("python/data/bindings.json", mode='r') as file:
             self._bindings = json.load(file)
-        with open("data/item-map.json", mode='r') as file:
+        with open("python/data/item-map.json", mode='r') as file:
             self._item_bindings = json.load(file)
     
     def get_pokemon_sprite(self, species, gender, shiny, form, useGen8Sprites, formArg = None):

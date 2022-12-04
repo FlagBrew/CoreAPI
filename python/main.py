@@ -1,8 +1,9 @@
 import base64
+import signal
 from utils.load import *
 import argparse
 from utils.helpers import get_pokemon_from_base64, LanguageStrings, MoveTypes
-from utils.legality import legality_check, legalize
+from utils.legality import legality_check, legalize, cancel
 from utils.pkmn import Pokemon
 from utils.sprites import Sprites
 import json
@@ -14,7 +15,6 @@ moveTypes = MoveTypes()
 
 def handleArgs():
     parser = argparse.ArgumentParser()
-
     parser.add_argument('--mode', type=str, required=True, choices=['legalize', 'report', 'info'], help='The function to perform')
     parser.add_argument('--pkmn', type=str, required=True, help='The base64 encoded pokemon to perform the function on')
     parser.add_argument('--generation', type=str, required=False, help='The generation of the pokemon to perform the function on')
@@ -62,8 +62,15 @@ def getInfo(pkmn):
         sys.stdout.write("\n")
         sys.stdout.flush()
 
+def handleTermination(signum, frame):
+    cancel()
+    sys.exit(0)
+
 if __name__ == '__main__':
     args = handleArgs()
+
+    signal.signal(signal.SIGINT, handleTermination)
+    signal.signal(signal.SIGTERM, handleTermination)
 
     pkmn, error = get_pokemon_from_base64(args.pkmn, args.generation)
     if error is not None:

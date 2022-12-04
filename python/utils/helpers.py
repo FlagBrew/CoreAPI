@@ -3,7 +3,7 @@
 from typing import Union
 import json
 import base64
-from PKHeX.Core import PokeList1, PokeList2, PK3, PK4, PK5, PK6, PK7, PK8, PB7, PB8, PA8, GameVersion, GameStrings, SimpleTrainerInfo, EntityFormat
+from PKHeX.Core import PokeList1, PokeList2, PK3, PK4, PK5, PK6, PK7, PK8, PK9, PB7, PB8, PA8, GameVersion, GameStrings, SimpleTrainerInfo, EntityFormat
 
 class LanguageStrings:
     __strings = None
@@ -62,7 +62,7 @@ class MoveTypes:
     __types = None
     def __init__(self) -> None:
         # open the JSON file
-        with open("data/move_types.json", mode='r') as file:
+        with open("python/data/move_types.json", mode='r') as file:
             self.__types = json.load(file)
 
     def get_type_name(self, type: str):
@@ -98,6 +98,8 @@ def get_pkmn(data, generation = None) -> Union[PokeList1, PokeList2, PK3, PK4, P
             return PK7(data)
         elif generation == "8":
             return PK8(data)
+        elif generation == "9":
+            return PK9(data)
         elif generation == "BDSP":
             return PB8(data)
         elif generation == "LGPE":
@@ -138,6 +140,7 @@ def get_game_version(pkm):
         "<class 'PKHeX.Core.PK7'>": GameVersion.UM,
         "<class 'PKHeX.Core.PB7'>": GameVersion.GE,
         "<class 'PKHeX.Core.PK8'>": GameVersion.SW,
+        "<class 'PKHeX.Core.PK9'>": GameVersion.SL,
         "<class 'PKHeX.Core.PB8'>": GameVersion.BD,
         "<class 'PKHeX.Core.PA8'>": GameVersion.PLA,
     }[str(type(pkm))]
@@ -175,6 +178,8 @@ def get_generation_from_version(ver):
         return "BDSP"
     elif ver == 471:
         return "PLA"
+    elif ver in [50, 51]:
+        return "9"
     else:
         raise ValueError("Unsuppored game version")
 
