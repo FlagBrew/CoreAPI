@@ -1,3 +1,5 @@
+# type: ignore ReportMissingImport
+
 import base64
 import signal
 from utils.load import *
@@ -8,6 +10,7 @@ from utils.pkmn import Pokemon
 from utils.sprites import Sprites
 import json
 import sys
+from PKHeX.Core.AutoMod import ALMVersion
 
 language = LanguageStrings()
 sprites = Sprites()
@@ -15,7 +18,7 @@ moveTypes = MoveTypes()
 
 def handleArgs():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', type=str, required=True, choices=['legalize', 'report', 'info'], help='The function to perform')
+    parser.add_argument('--mode', type=str, required=True, choices=['legalize', 'report', 'info', 'version'], help='The function to perform')
     parser.add_argument('--pkmn', type=str, required=True, help='The base64 encoded pokemon to perform the function on')
     parser.add_argument('--generation', type=str, required=False, help='The generation of the pokemon to perform the function on')
     return parser.parse_args()
@@ -55,6 +58,12 @@ def autoLegality(pkmn, generation):
     }))
     sys.stdout.write("\n")
     sys.stdout.flush()
+def version():
+    sys.stdout.write(json.dumps({
+        "alm_version": ALMVersion.CurrentVersion
+    }))
+    sys.stdout.write("\n")
+    sys.stdout.flush()
 
 
 def getInfo(pkmn):
@@ -72,6 +81,10 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, handleTermination)
     signal.signal(signal.SIGTERM, handleTermination)
 
+    if args.mode == 'version':
+        version()
+        sys.exit(0)
+
     pkmn, error = get_pokemon_from_base64(args.pkmn, args.generation)
     if error is not None:
         sys.stderr.write(json.dumps(error, ensure_ascii=False))
@@ -88,7 +101,7 @@ if __name__ == '__main__':
             sys.stderr.write(json.dumps({"error": "something went wrong with legalizing your Pokemon"}))
             sys.stderr.write("\n")
             sys.stderr.flush()
-            print(e)
+            # print(e)
             sys.exit(1)
     elif args.mode == 'info':
         try:
@@ -97,5 +110,5 @@ if __name__ == '__main__':
             sys.stderr.write(json.dumps({"error": "something went wrong with getting info for your Pokemon"}))
             sys.stderr.write("\n")
             sys.stderr.flush()
-            print(e)
+            # print(e)
             sys.exit(1)

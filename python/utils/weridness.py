@@ -36,7 +36,7 @@ def fix_weridness_for_strings(input: str):
             string = split[-1]
             # replace the input with the new string
             input = input.replace(match, string)
-            print(split, string, input)
+            # print(split, string, input)
     
 
     # if there isn't anything we need to fix, just return the input

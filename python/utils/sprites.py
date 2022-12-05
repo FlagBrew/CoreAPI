@@ -139,14 +139,14 @@ def generate_bindings(strings: LanguageStrings):
             lastIndex = data.get("last_index")
             # check the size
             if len(species_form) != data.get('last_size'):
-                print(len(species_form), data.get('last_size'))
+                # print(len(species_form), data.get('last_size'))
                 q = input("The size of the species_form list is different than the lastSize in bindings.json, do you want to start from the beginning? (y/n): ")
                 if q == "y":
                     lastIndex = 0
     except FileNotFoundError:
         pass
 
-    print("There are {} forms to go through and you have gotten through {} of them, meaning {} more to go, good luck, you're doing this manually".format(len(species_form), lastIndex, len(species_form)- lastIndex))
+    # print("There are {} forms to go through and you have gotten through {} of them, meaning {} more to go, good luck, you're doing this manually".format(len(species_form), lastIndex, len(species_form)- lastIndex))
     bindings = {}
     if lastIndex != 0:
         bindings = data.get('bindings')
@@ -204,7 +204,7 @@ def generate_bindings(strings: LanguageStrings):
                 "last_index": species_form.index(s),
                 "last_size": len(species_form)
             }, f, indent=4)
-        print("Interrupted, saved bindings to bindings.json")
+        # print("Interrupted, saved bindings to bindings.json")
 
     
         

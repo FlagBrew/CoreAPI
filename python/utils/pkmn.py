@@ -1,7 +1,7 @@
 # type: ignore ReportMissingImport
 
 import json
-from utils.helpers import LanguageStrings, MoveTypes
+from utils.helpers import LanguageStrings, MoveTypes, get_generation_from_version
 from utils.sprites import Sprites
 from utils.weridness import fix_weridness_for_strings
 from utils.legality import legality_check
@@ -79,7 +79,7 @@ class Pokemon:
 
         self.ot_gender = GameInfo.GenderSymbolASCII[pkmn.OT_Gender]
         self.is_legal, self.illegal_reasons = legality_check(pkmn)
-        self.generation = pkmn.Generation
+        self.generation = get_generation_from_version(pkmn.Version)
         self.dex_number = pkmn.Species
         self.size = pkmn.SIZE_STORED
         self.item_num = pkmn.HeldItem

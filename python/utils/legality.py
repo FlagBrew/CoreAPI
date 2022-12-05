@@ -45,7 +45,7 @@ def legalize(pkmn, generation):
 
     legalized, err = helpers.get_pokemon_from_base64(result, generation)
     if err is not None:
-        print(err, info.Generation)
+        # print(err, info.Generation)
         return None
     
     SimpleEdits.SetTrainerData(legalized, info)

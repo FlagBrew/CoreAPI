@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/FlagBrew/CoreAPI/internal/handlers/generalhandler"
 	"github.com/FlagBrew/CoreAPI/internal/handlers/infohandler"
 	"github.com/FlagBrew/CoreAPI/internal/handlers/legalityhandler"
 	"github.com/go-chi/chi/v5"
@@ -73,9 +74,7 @@ func httpServer(ctx context.Context) *http.Server {
 
 	r.Route("/api/info", infohandler.NewHandler().Route)
 	r.Route("/api/legality", legalityhandler.NewHandler().Route)
-	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("pong"))
-	})
+	r.Route("/api/general", generalhandler.NewHandler().Route)
 
 	return &http.Server{
 		Addr:    cli.Flags.HTTP.Addr,
