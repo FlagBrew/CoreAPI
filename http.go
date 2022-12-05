@@ -73,6 +73,9 @@ func httpServer(ctx context.Context) *http.Server {
 
 	r.Route("/api/info", infohandler.NewHandler().Route)
 	r.Route("/api/legality", legalityhandler.NewHandler().Route)
+	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("pong"))
+	})
 
 	return &http.Server{
 		Addr:    cli.Flags.HTTP.Addr,
