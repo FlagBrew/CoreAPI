@@ -66,8 +66,8 @@ def version():
     sys.stdout.flush()
 
 
-def getInfo(pkmn):
-        sys.stdout.write(Pokemon(pkmn, language, moveTypes, sprites).toJSON())
+def getInfo(pkmn, generation):
+        sys.stdout.write(Pokemon(pkmn, language, moveTypes, sprites, generation).toJSON())
         sys.stdout.write("\n")
         sys.stdout.flush()
 
@@ -105,7 +105,7 @@ if __name__ == '__main__':
             sys.exit(1)
     elif args.mode == 'info':
         try:
-            getInfo(pkmn)
+            getInfo(pkmn, args.generation if args.generation is not None else "")
         except Exception as e:
             sys.stderr.write(json.dumps({"error": "something went wrong with getting info for your Pokemon"}))
             sys.stderr.write("\n")

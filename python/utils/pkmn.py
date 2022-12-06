@@ -10,7 +10,7 @@ import segno
 from PKHeX.Core import GameInfo, RibbonInfo, RibbonStrings, EntitySummary, GameStrings, QRMessageUtil, FormConverter
 
 class Pokemon:
-    def __init__(self, pkmn, strings: LanguageStrings, moveTypes: MoveTypes, spriteHelper: Sprites) -> None:
+    def __init__(self, pkmn, strings: LanguageStrings, moveTypes: MoveTypes, spriteHelper: Sprites, generation: str) -> None:
         # We can piggyback off of EntitySummary to get a lot of the data we need
         entity = EntitySummary(pkmn, GameStrings("en"))
         self.nickname = entity.Nickname
@@ -79,7 +79,12 @@ class Pokemon:
 
         self.ot_gender = GameInfo.GenderSymbolASCII[pkmn.OT_Gender]
         self.is_legal, self.illegal_reasons = legality_check(pkmn)
-        self.generation = get_generation_from_version(pkmn.Version)
+        try:
+            self.generation = get_generation_from_version(pkmn.Version)
+        except:
+
+            self.generation = generation if generation != "" else str(pkmn.Generation)
+
         self.dex_number = pkmn.Species
         self.size = pkmn.SIZE_STORED
         self.item_num = pkmn.HeldItem
