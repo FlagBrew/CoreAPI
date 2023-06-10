@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using PKHeX.Core;
 
 namespace coreconsole.Models;
@@ -49,8 +50,8 @@ public struct Sprites
     private static JsonElement _itemBindings;
     private static bool _spritesLoaded;
 
-    public string Species { get; set; }
-    public string Item { get; set; }
+    [JsonPropertyName("species")] public string Species { get; set; }
+    [JsonPropertyName("item")] public string Item { get; set; }
 
     public static void Init()
     {
@@ -89,60 +90,48 @@ public struct Sprites
         var species = summary.Species.ToLower();
         var forms = FormConverter.GetFormList(pkmn.Species, GameInfo.Strings.types, GameInfo.Strings.forms,
             GameInfo.GenderSymbolASCII, pkmn.Context);
-        
+
         var path = $"{BaseUrl}";
 
         if (pkmn.Generation <= 7)
-        {
             path += "pokemon-gen7x/";
-        }
         else
-        {
             path += "pokemon-gen8/";
-        }
 
         path += pkmn.IsShiny ? "shiny/" : "regular/";
         var form = (forms[pkmn.Form] ?? "").ToLower();
-        
+
         if (SpeciesWithFemaleForms.Contains(species) && pkmn.Gender == 2)
         {
             path += "female/";
 
-            if (species == "pikachu" && form == "normal")
-            {
-                checkBinding = false;
-            }
+            if (species == "pikachu" && form == "normal") checkBinding = false;
         }
 
-        if (form == "")
-        {
-            checkBinding = false;
-        }
+        if (form == "") checkBinding = false;
 
         if (checkBinding)
         {
             if (SpeciesBindings.TryGetProperty($"{species.Replace(" ", "_")}_{form.Replace(" ", "_")}",
-                    out JsonElement binding))
+                    out var binding))
             {
                 if (species == "alcremie" && pkmn is IFormArgument ifo)
                 {
-                    if (!Enum.TryParse(ifo.FormArgument.ToString(), out AlcremieDecoration dec))
-                    {
-                        return "";
-                    }
-                    
+                    if (!Enum.TryParse(ifo.FormArgument.ToString(), out AlcremieDecoration dec)) return "";
+
                     var name = Enum.GetName(dec)!.ToLower();
-                    if (!binding.TryGetProperty("file", out JsonElement file))
-                    {
-                        return "";
-                    }
+                    if (!binding.TryGetProperty("file", out var file)) return "";
                     path += $"{file.GetString()!.Replace(".png", $"-{name}.png")}";
-                } else {
+                }
+                else
+                {
                     path += $"{binding.GetProperty("file").GetString()}";
                 }
 
                 return path;
-            };
+            }
+
+            ;
             return $"{path}{species}.png";
         }
 

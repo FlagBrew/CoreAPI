@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace coreconsole.Models;
 
 public struct Stat
@@ -10,8 +12,8 @@ public struct Stat
         Total = total;
     }
 
-    public string Name { get; set; }
-    public int IV { get; set; }
-    public int EV { get; set; }
-    public string Total { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
+    [JsonPropertyName("iv")] public int IV { get; set; }
+    [JsonPropertyName("ev")] public int EV { get; set; }
+    [JsonPropertyName("total")] public string Total { get; set; }
 }

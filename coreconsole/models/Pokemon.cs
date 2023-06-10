@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using coreconsole.handlers;
 using PKHeX.Core;
 
@@ -23,6 +24,7 @@ public struct Pokemon
         Ability = summary.Ability;
         HeldItem = pkmn.HeldItem == 0 ? "None" : summary.HeldItem;
         Ball = summary.Ball;
+        Ot = summary.OT;
         Version = summary.Version;
         OtLang = summary.OTLang;
         Ec = summary.EC;
@@ -63,7 +65,7 @@ public struct Pokemon
             new(pkmn.Move3, summary.Move3, pkmn.Context, pkmn.Move3_PP, pkmn.Move3_PPUps),
             new(pkmn.Move4, summary.Move4, pkmn.Context, pkmn.Move4_PP, pkmn.Move4_PPUps)
         };
-        MoveInfo.GetType(pkmn.Move1, pkmn.Context);
+
         RelearnMoves = new List<Move>
         {
             new(pkmn.RelearnMove1, summary.Relearn1, pkmn.Context, null, null),
@@ -109,69 +111,69 @@ public struct Pokemon
         SpriteSet = new Sprites(summary, pkmn);
     }
 
-    public Sprites SpriteSet { get; set; }
+    [JsonPropertyName("ot")] public string Ot { get; set; }
 
-    public bool IsLegal { get; set; }
+    [JsonPropertyName("sprites")] public Sprites SpriteSet { get; set; }
 
-    public string Report { get; set; }
-
-    public string Base64 { get; set; }
-
-    // ReSharper disable once MemberCanBePrivate.Global
-    public int StoredSize { get; set; }
+    [JsonPropertyName("is_legal")] public bool IsLegal { get; set; }
+    [JsonPropertyName("illegal_reasons")] public string Report { get; set; }
+    [JsonPropertyName("base64")] public string Base64 { get; set; }
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public int PartySize { get; set; }
+    [JsonPropertyName("stored_size")] public int StoredSize { get; set; }
 
-    public EggData EggData { get; set; }
-    public List<ContestStat> ContestStats { get; set; }
-    public List<Move> Moves { get; set; }
-    public List<Move> RelearnMoves { get; set; }
-    public List<Stat> Stats { get; set; }
-    public List<string> Ribbons { get; set; }
-    public MetData MetData { get; set; }
-    public bool FatefulEncounter { get; set; }
-    public bool IsEgg { get; set; }
-    public bool IsNicknamed { get; set; }
-    public bool IsShiny { get; set; }
-    public byte FormNum { get; set; }
-    public int AbilityNum { get; set; }
-    public int Friendship { get; set; }
-    public int GenderFlag { get; set; }
-    public int Generation { get; set; }
-    public int ItemNum { get; set; }
-    public int Level { get; set; }
-    public int Markings { get; set; }
+    // ReSharper disable once MemberCanBePrivate.Global
+    [JsonPropertyName("party_size")] public int PartySize { get; set; }
+    [JsonPropertyName("egg_data")] public EggData EggData { get; set; }
+    [JsonPropertyName("contest_stats")] public List<ContestStat> ContestStats { get; set; }
+    [JsonPropertyName("moves")] public List<Move> Moves { get; set; }
+    [JsonPropertyName("relearn_moves")] public List<Move> RelearnMoves { get; set; }
+    [JsonPropertyName("stats")] public List<Stat> Stats { get; set; }
+    [JsonPropertyName("ribbons")] public List<string> Ribbons { get; set; }
+    [JsonPropertyName("met_data")] public MetData MetData { get; set; }
+    [JsonPropertyName("fateful_flag")] public bool FatefulEncounter { get; set; }
+    [JsonPropertyName("is_egg")] public bool IsEgg { get; set; }
+    [JsonPropertyName("is_nicknamed")] public bool IsNicknamed { get; set; }
+    [JsonPropertyName("is_shiny")] public bool IsShiny { get; set; }
+
+    [JsonPropertyName("form_num")] public byte FormNum { get; set; }
+    [JsonPropertyName("ability_num")] public int AbilityNum { get; set; }
+    [JsonPropertyName("friendship")] public int Friendship { get; set; }
+    [JsonPropertyName("gender_flag")] public int GenderFlag { get; set; }
+    [JsonPropertyName("generation")] public int Generation { get; set; }
+    [JsonPropertyName("item_num")] public int ItemNum { get; set; }
+    [JsonPropertyName("level")] public int Level { get; set; }
+    [JsonPropertyName("markings")] public int Markings { get; set; }
 
     // ReSharper disable once IdentifierTypo
-    public int PkrsDays { get; set; }
+    [JsonPropertyName("pkrs_days")] public int PkrsDays { get; set; }
 
     // ReSharper disable once IdentifierTypo
-    public int PkrsStrain { get; set; }
+    [JsonPropertyName("pkrs_strain")] public int PkrsStrain { get; set; }
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public int VersionNum { get; set; }
-    public string Ability { get; set; }
-    public string Ball { get; set; }
-    public string Ec { get; set; }
-    public string Esv { get; set; }
-    public string Gender { get; set; }
-    public string HeldItem { get; set; }
-    public string HpType { get; set; }
-    public string Ht { get; set; }
-    public string Nature { get; set; }
-    public string Nickname { get; set; }
-    public string OtGender { get; set; }
-    public string OtLang { get; set; }
-    public string Pid { get; set; }
-    public string Species { get; set; }
+    [JsonPropertyName("version_num")] public int VersionNum { get; set; }
+    [JsonPropertyName("ability")] public string Ability { get; set; }
+    [JsonPropertyName("ball")] public string Ball { get; set; }
+    [JsonPropertyName("ec")] public string Ec { get; set; }
+    [JsonPropertyName("esv")] public string Esv { get; set; }
+    [JsonPropertyName("gender")] public string Gender { get; set; }
+    [JsonPropertyName("held_item")] public string HeldItem { get; set; }
+    [JsonPropertyName("hp_type")] public string HpType { get; set; }
+    [JsonPropertyName("ht")] public string Ht { get; set; }
+    [JsonPropertyName("nature")] public string Nature { get; set; }
+    [JsonPropertyName("nickname")] public string Nickname { get; set; }
+    [JsonPropertyName("ot_gender")] public string OtGender { get; set; }
+    [JsonPropertyName("ot_lang")] public string OtLang { get; set; }
+    [JsonPropertyName("pid")] public string Pid { get; set; }
+    [JsonPropertyName("species")] public string Species { get; set; }
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public string Version { get; set; }
-    public uint Exp { get; set; }
-    public uint Tsv { get; set; }
-    public ushort Checksum { get; set; }
-    public ushort DexNumber { get; set; }
-    public ushort Sid { get; set; }
-    public ushort Tid { get; set; }
+    [JsonPropertyName("version")] public string Version { get; set; }
+    [JsonPropertyName("exp")] public uint Exp { get; set; }
+    [JsonPropertyName("tsv")] public uint Tsv { get; set; }
+    [JsonPropertyName("checksum")] public ushort Checksum { get; set; }
+    [JsonPropertyName("dex_number")] public ushort DexNumber { get; set; }
+    [JsonPropertyName("sid")] public ushort Sid { get; set; }
+    [JsonPropertyName("tid")] public ushort Tid { get; set; }
 }

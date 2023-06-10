@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace coreconsole.Models;
 
 public struct ContestStat
@@ -8,6 +10,6 @@ public struct ContestStat
         Value = value;
     }
 
-    public string Name { get; set; }
-    public int Value { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
+    [JsonPropertyName("value")] public int Value { get; set; }
 }

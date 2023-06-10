@@ -1,15 +1,14 @@
+using System.Text.Json.Serialization;
 using PKHeX.Core;
 
 namespace coreconsole.Models;
 
 public struct Move
 {
-    // public static List<MoveType>? MoveTypes;
-
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public int Pp { get; set; }
-    public int PpUps { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
+    [JsonPropertyName("type")] public string Type { get; set; }
+    [JsonPropertyName("pp")] public int Pp { get; set; }
+    [JsonPropertyName("pp_ups")] public int PpUps { get; set; }
 
     public Move(ushort id, string name, EntityContext context, int? pp, int? ppUps)
     {
@@ -21,18 +20,3 @@ public struct Move
         PpUps = ppUps ?? 0;
     }
 }
-
-// public struct MoveType
-// {
-//     // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
-//     [JsonPropertyName("move_id")] public int MoveId { set; get; }
-//
-//     // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
-//     [JsonPropertyName("type_id")] public int TypeId { set; get; }
-//
-//     public MoveType(int moveId, int typeId)
-//     {
-//         MoveId = moveId;
-//         TypeId = typeId;
-//     }
-// }
