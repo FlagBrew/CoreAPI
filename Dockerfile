@@ -7,6 +7,15 @@ COPY . /build
 RUN make go-build
 RUN upx --best --lzma coreapi
 
+# build-cs-release image
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as build-cs-release
+WORKDIR /build
+
+COPY . /build
+RUN apt-get update && apt-get install --assume-yes make
+RUN make cs-build-release
+
+
 # Run image
 FROM python:3
 RUN apt update && \
@@ -14,11 +23,11 @@ RUN apt update && \
 
 RUN mkdir /app
 RUN mkdir /data
-RUN mkdir /app/python
+RUN mkdir /app/css
 COPY --from=build-go /build/coreapi /app
-COPY --from=build-go /build/python /app/python
 COPY --from=build-go /build/start.sh /app
 COPY --from=build-go /build/.env.example /data/.env
+COPY --from=build-cs-release /build/cc /app/cc
 
 # runtime params
 WORKDIR /app
