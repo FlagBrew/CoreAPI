@@ -1,8 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.CommandLine;
+using System.Text.Json;
 using coreconsole.handlers;
 using PKHeX.Core;
+using Version = coreconsole.Models.Version;
 
 namespace coreconsole;
 
@@ -51,11 +53,18 @@ public static class MainClass
         cmd3.SetHandler(Legality.LegalizeHandler, pokemonArg, generationOption,
             legalizationGenerationOverride, legalizationGameVersionOverride);
 
+        var cmd4 = new Command("version", "Returns the version for ALM/PKHeX");
+        cmd4.SetHandler(() =>
+        {
+           Console.WriteLine(JsonSerializer.Serialize(new Version()));
+        });
+
         var cli = new RootCommand("CoreConsole - a tool for interacting with PKHeX and Auto Legality via CLI.")
         {
             cmd1,
             cmd2,
-            cmd3
+            cmd3,
+            cmd4
         };
         cli.Invoke(args);
     }

@@ -8,11 +8,14 @@ import (
 	"syscall"
 )
 
-func RunCorePython(mode, pokemon, generation string, ctx context.Context) (string, error) {
-	cmd := exec.Command("python", "python/main.py", "--mode", mode, "--pkmn", pokemon)
-	if generation != "" {
-		cmd.Args = append(cmd.Args, "--generation", generation)
+func RunCoreConsole(ctx context.Context, mode, pokemon string, extraArgs ...string) (string, error) {
+	args := []string{mode}
+	if pokemon != "" {
+		args = append(args, pokemon)
 	}
+	args = append(args, extraArgs...)
+	cmd := exec.Command("./coreconsole", args...)
+	cmd.Dir = "./cc"
 
 	var out bytes.Buffer
 	var err bytes.Buffer

@@ -1,5 +1,6 @@
 package models
 
 type ALMVersion struct {
-	Version string `json:"alm_version"`
+	ALMVersion   string `json:"alm_version"`
+	PKHeXVersion string `json:"pkhex_version"`
 }

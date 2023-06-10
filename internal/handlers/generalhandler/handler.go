@@ -25,7 +25,7 @@ func (h *Handler) Route(r chi.Router) {
 
 func (h *Handler) ping(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
-	version, err := utils.RunCorePython("version", "potato", "", r.Context())
+	version, err := utils.RunCoreConsole(r.Context(), "version", "")
 
 	if err != nil {
 		chix.Error(w, r, fmt.Errorf("something went wrong, please try again later"))
@@ -34,12 +34,14 @@ func (h *Handler) ping(w http.ResponseWriter, r *http.Request) {
 
 	v := &models.ALMVersion{}
 	if err := json.Unmarshal([]byte(version), &v); err != nil {
+		fmt.Println(err)
 		chix.Error(w, r, fmt.Errorf("something went wrong, please try again later"))
 		return
 	}
 
 	chix.JSON(w, r, 200, chix.M{
-		"alm_version":   v.Version,
+		"alm_version":   v.ALMVersion,
+		"pkhex_version": v.PKHeXVersion,
 		"response_time": time.Since(start).Milliseconds(),
 	})
 }

@@ -35,8 +35,13 @@ func (h *Handler) getInfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Run the core python script
-	output, err := utils.RunCorePython("info", pkmn, infoRequest.Generation, r.Context())
+	// Run the coreconsole script
+	var extraArgs []string
+	if infoRequest.Generation != "" {
+		extraArgs = append(extraArgs, fmt.Sprintf("--generation=%s", infoRequest.Generation))
+	}
+
+	output, err := utils.RunCoreConsole(r.Context(), "summary", pkmn, extraArgs...)
 	if err != nil {
 		if err.Error() != "exit status 1" {
 			chix.Error(w, r, err)

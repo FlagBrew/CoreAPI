@@ -36,8 +36,13 @@ func (h *Handler) legalityReport(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Run the core python script
-	output, err := utils.RunCorePython("report", pkmn, legalityReportRequest.Generation, r.Context())
+	// Run the coreconsole script
+	var extraArgs []string
+	if legalityReportRequest.Generation != "" {
+		extraArgs = append(extraArgs, fmt.Sprintf("--generation=%s", legalityReportRequest.Generation))
+	}
+
+	output, err := utils.RunCoreConsole(r.Context(), "legality", pkmn, extraArgs...)
 	if err != nil {
 		if err.Error() != "exit status 1" {
 			chix.Error(w, r, err)
@@ -76,8 +81,21 @@ func (h *Handler) autoLegality(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Run the core python script
-	output, err := utils.RunCorePython("legalize", pkmn, autoLegalityRequest.Generation, r.Context())
+	// Run the coreconsole script
+	var extraArgs []string
+	if autoLegalityRequest.Generation != "" {
+		extraArgs = append(extraArgs, fmt.Sprintf("--generation=%s", autoLegalityRequest.Generation))
+	}
+
+	if autoLegalityRequest.ForcedGeneration != "" {
+		extraArgs = append(extraArgs, fmt.Sprintf("--legalization-generation=%s", autoLegalityRequest.ForcedGeneration))
+	}
+
+	if autoLegalityRequest.ForcedVersion != "" {
+		extraArgs = append(extraArgs, fmt.Sprintf("--version=%s", autoLegalityRequest.ForcedVersion))
+	}
+
+	output, err := utils.RunCoreConsole(r.Context(), "legalize", pkmn, extraArgs...)
 	if err != nil {
 		if err.Error() != "exit status 1" {
 			chix.Error(w, r, err)

@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="PKHeX.Core" Version="23.6.3"/>
-        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
+        <PackageReference Include="PKHeX.Core" Version="23.6.3" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -19,15 +19,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Tests\**"/>
+        <Compile Remove="Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Remove="Tests\**"/>
+        <EmbeddedResource Remove="Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Tests\**"/>
+        <None Remove="Tests\**" />
     </ItemGroup>
 
 </Project>

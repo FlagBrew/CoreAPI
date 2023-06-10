@@ -34,7 +34,7 @@ public static class Legality
         var report = CheckLegality(pkmn);
         if (report.Valid)
         {
-            Console.WriteLine("{\"error\": \"this pokemon is already legal!\"");
+            Console.WriteLine("{\"error\": \"this pokemon is already legal!\"}");
             return;
         }
         var result = AutoLegalize(pkmn, generation, version);
