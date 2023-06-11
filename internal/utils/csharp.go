@@ -18,9 +18,9 @@ func RunCoreConsole(ctx context.Context, mode, pokemon string, extraArgs ...stri
 	cmd.Dir = "./cc"
 
 	var out bytes.Buffer
-	var err bytes.Buffer
+	var errBytes bytes.Buffer
 	cmd.Stdout = &out
-	cmd.Stderr = &err
+	cmd.Stderr = &errBytes
 
 	ch := make(chan error)
 	go func() {
@@ -28,15 +28,18 @@ func RunCoreConsole(ctx context.Context, mode, pokemon string, extraArgs ...stri
 	}()
 	errored := false
 	killed := false
+	exitCode := 0
 	select {
 	case <-ctx.Done():
 		if err := cmd.Process.Signal(syscall.SIGINT); err != nil {
-			fmt.Println("failed to kill process: ", err)
 			return "", err
 		}
 		killed = true
 	case err := <-ch:
 		if err != nil {
+			if exitError, ok := err.(*exec.ExitError); ok {
+				exitCode = exitError.ExitCode()
+			}
 			errored = true
 		}
 	}
@@ -46,7 +49,7 @@ func RunCoreConsole(ctx context.Context, mode, pokemon string, extraArgs ...stri
 	}
 
 	if errored {
-		return err.String(), fmt.Errorf("exit status 1")
+		return errBytes.String(), fmt.Errorf("CoreConsole exited with code %d", exitCode)
 	}
 
 	return out.String(), nil

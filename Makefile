@@ -43,11 +43,14 @@ docker-build:
 
 cs-build-release:
 	cd coreconsole && \
-	dotnet build -c Release -o ../cc
+	dotnet build coreconsole.csproj -c Release -o ../cc && \
+	cp data ../cc/data -r
+
 
 cs-build-debug:
 	cd coreconsole && \
-	dotnet build -c Debug -o ../cc
+	dotnet build coreconsole.csproj -c Debug -o ../cc && \
+	cp data ../cc/data -r
 
 cs-clean:
 	/bin/rm -rfv cc

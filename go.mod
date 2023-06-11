@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/apex/log v1.9.0
+	github.com/getsentry/sentry-go v0.21.0
 	github.com/go-chi/chi/v5 v5.0.8
 	github.com/go-chi/httprate v0.7.4
 	github.com/lrstanley/chix v1.0.0

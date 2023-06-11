@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"time"
 
 	"github.com/FlagBrew/CoreAPI/internal/models"
 	"github.com/apex/log"
+	"github.com/getsentry/sentry-go"
 	"github.com/lrstanley/chix"
 	"github.com/lrstanley/clix"
 )
@@ -27,12 +29,16 @@ func main() {
 		logger.Fatal("Not configured yet, please configure")
 	}
 
+	sentry.Init(sentry.ClientOptions{
+		Dsn: cli.Flags.Logging.SentryDSN,
+	})
+
 	ctx := context.Background()
 
 	if err := chix.RunCtx(
 		ctx, httpServer(ctx),
 	); err != nil {
+		defer sentry.Flush(2 * time.Second)
 		log.WithError(err).Fatal("shutting down")
 	}
-
 }

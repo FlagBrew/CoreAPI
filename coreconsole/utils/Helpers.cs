@@ -5,9 +5,10 @@ using Sentry;
 
 namespace coreconsole.utils;
 
-public class Helpers
+public static class Helpers
 {
     public static JsonSerializerOptions? SerializerOptions;
+
     // Used for tests
     public static byte[] StringToByteArray(string hex)
     {
@@ -22,14 +23,14 @@ public class Helpers
         EncounterEvent.RefreshMGDB(string.Empty);
         RibbonStrings.ResetDictionary(GameInfo.Strings.ribbons);
         Sprites.Init();
-        
+
         SerializerOptions = new JsonSerializerOptions
         {
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
     }
 
-    public static PKM? PokemonFromBase64(string pokemon, EntityContext context = EntityContext.None)
+    public static PKM PokemonFromBase64(string pokemon, EntityContext context = EntityContext.None)
     {
         try
         {
@@ -37,25 +38,24 @@ public class Helpers
 
             var pkmn = EntityFormat.GetFromBytes(pkmnStrBytes, context);
 
-            if (pkmn is null)
-            {
-                Console.Error.WriteLine("{\"error\": \"base64 is not a pokemon\"}");
-                SentrySdk.CaptureMessage(level: SentryLevel.Error, message: "base64 provided is not a pokemon");
-                return null;
-            }
-
-            return pkmn;
+            if (pkmn is not null) return pkmn;
+            Console.Error.WriteLine("{\"error\": \"base64 is not a pokemon\"}");
+            SentrySdk.CaptureMessage(level: SentryLevel.Error, message: "base64 provided is not a pokemon");
+            Environment.Exit((int)enums.ExitCode.Base64NotPokemon);
         }
         catch (Exception e) when (e is FormatException or ArgumentNullException)
         {
             Console.Error.WriteLine("{\"error\": \"invalid base64 string provided\"}");
             SentrySdk.CaptureException(e);
-            return null;
-        } catch (Exception e) when (e is not FormatException and not ArgumentNullException)
+            Environment.Exit((int)enums.ExitCode.BadBase64);
+        }
+        catch (Exception e) when (e is not FormatException and not ArgumentNullException)
         {
             SentrySdk.CaptureException(e);
-            return null;
+            Environment.Exit((int)enums.ExitCode.UnknownErrorDuringBase64ToPokemon);
         }
+
+        return null;
     }
 
     public static bool LoadEnv()
@@ -70,7 +70,7 @@ public class Helpers
         {
             var parts = line.Split("=");
             if (parts.Length != 2) continue;
-            
+
             Environment.SetEnvironmentVariable(parts[0], parts[1]);
         }
 

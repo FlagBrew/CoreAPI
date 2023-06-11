@@ -1,10 +1,10 @@
 package models
 
 type Flags struct {
-	Configured bool       `long:"configured" env:"CONFIGURED" required:"true" description:"If set to false, the web application will exit, should be set to true when everything is configured correctly"`
-	Env        string     `short:"e" long:"env" env:"ENV" required:"true" description:"The environment the program is running in: production/development"`
-	HTTP       ConfigHTTP `group:"HTTP Server Options" namespace:"http" env-namespace:"HTTP"`
-	//Logging    LoggingKeys `group:"Logging Options" namespace:"logging" env-namespace:"LOGGING"`
+	Configured bool        `long:"configured" env:"CONFIGURED" required:"true" description:"If set to false, the web application will exit, should be set to true when everything is configured correctly"`
+	Env        string      `short:"e" long:"env" env:"ENV" required:"true" description:"The environment the program is running in: production/development"`
+	HTTP       ConfigHTTP  `group:"HTTP Server Options" namespace:"http" env-namespace:"HTTP"`
+	Logging    LoggingKeys `group:"Logging Options" namespace:"logging" env-namespace:"LOGGING"`
 }
 
 type ConfigHTTP struct {
