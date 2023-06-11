@@ -19,6 +19,7 @@ jobs:
 
       - name: Create container and extract
         run: |
+          mkdir -p ./app
           docker create --name extract myapp
           docker cp extract:/app/coreapi ./app/coreapi
           docker cp extract:/app/cc ./app/cc
