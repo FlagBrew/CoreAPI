@@ -65,9 +65,7 @@ public static class Legality
         pkmn.SetTrainerData(info);
 
         // Check if still legal
-        if (!CheckLegality(pkmn).Valid) return null;
-
-        return pkmn;
+        return !CheckLegality(pkmn).Valid ? null : pkmn;
     }
 
     private static SimpleTrainerInfo _GetTrainerInfo(PKM pokemon, GameVersion? version)

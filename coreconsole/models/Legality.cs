@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using PKHeX.Core;
+using Sentry;
 
 namespace coreconsole.Models;
 
@@ -26,9 +27,16 @@ public struct AutoLegalizationResult
         Legal = la.Valid;
         Report = la.Report().Split("\n");
 
-        if (pokemon != null)
+        if (pokemon == null) return;
+        try
         {
-            PokemonBase64 = Convert.ToBase64String(pokemon.SIZE_PARTY > pokemon.SIZE_STORED ? pokemon.DecryptedPartyData : pokemon.DecryptedBoxData);
+            PokemonBase64 = Convert.ToBase64String(pokemon.SIZE_PARTY > pokemon.SIZE_STORED
+                ? pokemon.DecryptedPartyData
+                : pokemon.DecryptedBoxData);
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
         }
     }
 }

@@ -3,7 +3,9 @@
 using System.CommandLine;
 using System.Text.Json;
 using coreconsole.handlers;
+using coreconsole.utils;
 using PKHeX.Core;
+using Sentry;
 using Version = coreconsole.Models.Version;
 
 namespace coreconsole;
@@ -12,7 +14,14 @@ public static class MainClass
 {
     public static void Main(string[] args)
     {
-        var pokemonArg = new Argument<string>(
+        if(!Helpers.LoadEnv()) return;
+        
+        using (SentrySdk.Init(o =>
+               {
+                   o.Dsn = Environment.GetEnvironmentVariable("SENTRY_DSN");
+               }))
+        {
+                 var pokemonArg = new Argument<string>(
             "pokemon",
             "The pokemon file (in base64 format)."
         );
@@ -66,6 +75,7 @@ public static class MainClass
             cmd3,
             cmd4
         };
-        cli.Invoke(args);
+        cli.Invoke(args);   
+        }
     }
 }

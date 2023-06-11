@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using coreconsole.handlers;
 using PKHeX.Core;
+using Sentry;
 
 namespace coreconsole.Models;
 
@@ -93,16 +94,41 @@ public struct Pokemon
         Ribbons = tmpRibbons;
         MetData = new MetData(summary.MetLoc, summary.MetLevel, summary.Met_Year, summary.Met_Month, summary.Met_Day);
         EggData = new EggData(summary.EggLoc, summary.Egg_Year, summary.Egg_Month, summary.Egg_Day);
-        OtGender = GameInfo.GenderSymbolASCII[pkmn.OT_Gender];
+        try
+        {
+            OtGender = GameInfo.GenderSymbolASCII[pkmn.OT_Gender];
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
+            OtGender = "";
+        }
         DexNumber = pkmn.Species;
         StoredSize = pkmn.SIZE_STORED;
         PartySize = pkmn.SIZE_PARTY;
         ItemNum = pkmn.HeldItem;
         Generation = pkmn.Generation;
         VersionNum = pkmn.Version;
-        Base64 = Convert.ToBase64String(PartySize > StoredSize ? pkmn.DecryptedPartyData : pkmn.DecryptedBoxData);
-
-        if (Version == "") Version = Enum.GetName(typeof(GameVersion), VersionNum) ?? "???";
+        try
+        {
+            Base64 = Convert.ToBase64String(PartySize > StoredSize ? pkmn.DecryptedPartyData : pkmn.DecryptedBoxData);
+            if (Version == "") Version = Enum.GetName(typeof(GameVersion), VersionNum) ?? "???";
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
+            Base64 = "";
+        }
+        
+        try
+        {
+            if (Version == "") Version = Enum.GetName(typeof(GameVersion), VersionNum) ?? "???";
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
+            Version = "";
+        }
 
         var legality = Legality.CheckLegality(pkmn);
 

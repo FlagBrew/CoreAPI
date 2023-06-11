@@ -1,6 +1,7 @@
 using System.Text.Json;
 using coreconsole.Models;
 using PKHeX.Core;
+using Sentry;
 
 namespace coreconsole.utils;
 
@@ -38,7 +39,8 @@ public class Helpers
 
             if (pkmn is null)
             {
-                Console.Error.WriteLine("base64 is not a pokemon");
+                Console.Error.WriteLine("{\"error\": \"base64 is not a pokemon\"}");
+                SentrySdk.CaptureMessage(level: SentryLevel.Error, message: "base64 provided is not a pokemon");
                 return null;
             }
 
@@ -46,8 +48,32 @@ public class Helpers
         }
         catch (Exception e) when (e is FormatException or ArgumentNullException)
         {
-            Console.Error.WriteLine("invalid base64 string provided");
+            Console.Error.WriteLine("{\"error\": \"invalid base64 string provided\"}");
+            SentrySdk.CaptureException(e);
+            return null;
+        } catch (Exception e) when (e is not FormatException and not ArgumentNullException)
+        {
+            SentrySdk.CaptureException(e);
             return null;
         }
+    }
+
+    public static bool LoadEnv()
+    {
+        if (!File.Exists(".env"))
+        {
+            Console.Error.WriteLine(".env is missing");
+            return false;
+        }
+
+        foreach (var line in File.ReadAllLines(".env"))
+        {
+            var parts = line.Split("=");
+            if (parts.Length != 2) continue;
+            
+            Environment.SetEnvironmentVariable(parts[0], parts[1]);
+        }
+
+        return true;
     }
 }

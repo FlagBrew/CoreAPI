@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using PKHeX.Core;
+using Sentry;
 
 namespace coreconsole.Models;
 
@@ -65,7 +66,7 @@ public struct Sprites
         }
         catch (Exception e)
         {
-            Console.WriteLine("Failed to load sprites!");
+            SentrySdk.CaptureException(e);
             _spritesLoaded = false;
         }
     }
@@ -117,11 +118,17 @@ public struct Sprites
             {
                 if (species == "alcremie" && pkmn is IFormArgument ifo)
                 {
-                    if (!Enum.TryParse(ifo.FormArgument.ToString(), out AlcremieDecoration dec)) return "";
-
-                    var name = Enum.GetName(dec)!.ToLower();
-                    if (!binding.TryGetProperty("file", out var file)) return "";
-                    path += $"{file.GetString()!.Replace(".png", $"-{name}.png")}";
+                    try
+                    {
+                        if (!Enum.TryParse(ifo.FormArgument.ToString(), out AlcremieDecoration dec)) return "";
+                        var name = Enum.GetName(dec)!.ToLower();
+                        if (!binding.TryGetProperty("file", out var file)) return "";
+                        path += $"{file.GetString()!.Replace(".png", $"-{name}.png")}";
+                    }
+                    catch (Exception e)
+                    {
+                        SentrySdk.CaptureException(e);
+                    }
                 }
                 else
                 {
