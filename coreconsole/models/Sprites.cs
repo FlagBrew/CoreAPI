@@ -89,8 +89,17 @@ public struct Sprites
     {
         var checkBinding = true;
         var species = summary.Species.ToLower();
-        var forms = FormConverter.GetFormList(pkmn.Species, GameInfo.Strings.types, GameInfo.Strings.forms,
-            GameInfo.GenderSymbolASCII, pkmn.Context);
+        string[] forms;
+        try
+        {
+            forms = FormConverter.GetFormList(pkmn.Species, GameInfo.Strings.types, GameInfo.Strings.forms,
+                GameInfo.GenderSymbolASCII, pkmn.Context);
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
+            return "";
+        }
 
         var path = $"{BaseUrl}";
 
@@ -100,7 +109,16 @@ public struct Sprites
             path += "pokemon-gen8/";
 
         path += pkmn.IsShiny ? "shiny/" : "regular/";
-        var form = (forms[pkmn.Form] ?? "").ToLower();
+        string form;
+        try
+        {
+            form = (forms[pkmn.Form] ?? "").ToLower();
+        }
+        catch (Exception e)
+        {
+            SentrySdk.CaptureException(e);
+            form = "";
+        }
 
         if (SpeciesWithFemaleForms.Contains(species) && pkmn.Gender == 2)
         {

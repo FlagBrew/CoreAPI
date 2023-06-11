@@ -6,7 +6,6 @@ type GetInfoRequest struct {
 
 type GetInfoRequestB64 struct {
 	Generation string `json:"generation" form:"generation" query:"generation" validate:"omitempty,oneof=Gen6 Gen7 Gen8 Gen8b"`
-	Base64     string `json:"base64" form:"base64" query:"base64" validate:"required"`
 }
 
 type LegalityCheckRequest struct {
