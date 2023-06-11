@@ -14,3 +14,4 @@ tmp/
 **/.env
 bin
 coreapi
+cc/

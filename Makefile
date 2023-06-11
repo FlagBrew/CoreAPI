@@ -6,9 +6,12 @@ export PACKAGE := "github.com/FlagBrew/CoreAPI"
 VERSION=$(shell git describe --tags --always --abbrev=0 --match=v* 2> /dev/null | sed -r "s:^v::g" || echo 0)
 VERSION_FULL=$(shell git describe --tags --always --dirty --match=v* 2> /dev/null | sed -r "s:^v::g" || echo 0)
 
+build-all: cs-build-release go-build
+
 # General
-clean:
+clean: cs-clean
 	/bin/rm -rfv ${PROJECT}
+
 
 
 # Docker
@@ -36,9 +39,21 @@ docker-build:
 		--force-rm .
 
 
-# Python
-python-fetch:
-	python3 -m pip install -r python/requirements.txt
+# CSharp
+
+cs-build-release:
+	cd coreconsole && \
+	dotnet build coreconsole.csproj -c Release -o ../cc && \
+	cp data ../cc/data -r
+
+
+cs-build-debug:
+	cd coreconsole && \
+	dotnet build coreconsole.csproj -c Debug -o ../cc && \
+	cp data ../cc/data -r
+
+cs-clean:
+	/bin/rm -rfv cc
 
 # Go
 go-fetch:
